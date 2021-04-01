@@ -1,0 +1,8 @@
+@import './variables';
+@import './header';
+//Make sure variables are first because it stores those variables that are being used in the other scss files.
+
+.contact {
+  @include flexCenter();
+}
+
