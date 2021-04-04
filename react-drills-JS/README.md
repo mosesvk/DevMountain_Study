@@ -61,8 +61,31 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App
 ```
+<summary> <code> app-1/src/App.js USING HOOKS </code> </summary>
+
+import React, { useState } from "react";
+
+const Login = () => {
+  const [message, changeMessage] = useState("");
+
+  const messageChange = (val) => {
+    changeMessage(val);
+  };
+
+  return (
+    <div>
+      <input
+        placeholder="enter text here"
+        onChange={(e) => messageChange(e.target.value)}
+      />
+      <h2>{message}</h2>
+    </div>
+  );
+};
+
+export default Login
 
 </details>
 
