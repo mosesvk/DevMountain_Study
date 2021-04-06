@@ -1,0 +1,99 @@
+:root {
+  --shadow: 0 10px 6px -6px #777;
+}
+
+.budget-container {
+  width: 100%;
+  height: 100%;
+}
+
+.top {
+  width: 100%;
+  height: 100px;
+  background: white;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 40px
+}
+
+.user-info {
+  font-size: 20px;
+}
+
+.user-info > span:nth-child(1) {
+  margin: 0px 16px;
+  color: gray;
+  font-weight: bolder;
+}
+
+.photo {
+  width: 80px;
+  border-radius: 10%;
+  margin: 0px 28px;
+}
+
+.title {
+  margin-left: 28px;
+}
+
+.purchases-container {
+  width: 50%;
+}
+
+.purchases-container > .add-purchase {
+  width: 100%;
+  height: 260px;
+  background: white;
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin-bottom: 28px;
+}
+
+.purchases-container > .add-purchase > div > section {
+  display: flex;
+  justify-content: space-between;
+}
+.purchases-container > .add-purchase > div > section > button {
+  background: #72c934;
+  height: 44px;
+  margin-top: 23px;
+}
+.purchases-container > .add-purchase > div > section > div > input {
+  text-align: right;
+}
+
+.display-purchases {
+  width: 100%;
+  height: 350px;
+  background: white;
+  box-shadow: var(--shadow);
+  padding: 16px;
+  overflow-y: scroll;
+}
+
+#delete-btn {
+  float: right;
+}
+
+.chart-container {
+  width: 500px;
+  height: 638px;
+  background: white;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 52px;
+}
+
+.content-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 52px;
+}
+
+.user-info > span:nth-child(2) {
+  cursor: pointer;
+}
