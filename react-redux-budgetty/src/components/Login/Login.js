@@ -13,17 +13,21 @@ class Login extends Component {
       password: ''
     }
   }
-
+  
   async componentDidMount() {
-    let res = await axios.get('/auth/user-data')
+    let res = await axios.get(`http://localhost:4400/auth/user-data`)
+    console.log(res)
     if (res.data.loggedIn) this.props.history.push('/my-budget')
   }
 
   async login(e) {
     if (e) e.preventDefault();
     const { email, password } = this.state;
+    console.log(`${email}  ${password}`)
     try {
-      const res = await axios.post('/auth/login', { email, password });
+      console.log('hit')
+      const res = await axios.post(`http://localhost:4400/auth/login`, { email, password });
+      console.log(res)
       if (res.data.loggedIn) this.props.history.push('/my-budget');
     } catch (e) {
       alert('Login failed. Please try again.');
