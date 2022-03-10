@@ -9,6 +9,7 @@ app.use(cors())
 
 app.get('/api', (req, res) => {
   console.log('hit backend')
+  // we ALWAYS need to send an object. Makes it easier to decode
   res.send({result: 'helloooooo'})
 })
 
