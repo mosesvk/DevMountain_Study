@@ -39,7 +39,7 @@ const ListTodos = () => {
   return (
     <>
       {" "}
-      <table class="table mt-5 text-center">
+      <table className="table mt-5 text-center">
         <thead>
           <tr>
             <th>Description</th>
