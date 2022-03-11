@@ -22,14 +22,24 @@ app.post('/todos', async (req, res) => {
 
     // newTodo will be a large object and you can take a look at it. but we only need the 'row' property from that object
     res.json(newTodo.rows[0])
-    
+
   } catch (err) {
     console.error(err.message);
   }
 });
-// get all todos
 
-// get a todo
+// get all todos
+app.get('/todos', async(req, res) => {
+  try {
+    const allTodos = await pool.query('SELECT * FROM todo')
+
+    res.json(allTodos.rows)
+  } catch (err) {
+    console.error(err.message)
+  }
+})
+
+// get a todo by id
 
 // update a todo
 
