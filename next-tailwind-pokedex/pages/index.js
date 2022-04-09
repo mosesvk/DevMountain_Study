@@ -12,9 +12,9 @@ export default function Home({pokemon}) {
         {pokemon.map((item, idx) => (
           <li key={idx}>
             <Link href={`/pokemon?id={idx + 1}`}>
-              <a>
-                <img src={item.image} alt={item.name} />
-                <span>{idx + 1}</span>
+              <a className="border p-4 border-grey my-2 hover:shadow-md capitalize flex items-center text-lg bg-gray-200 rounded-md">
+                <img src={item.image} alt={item.name} className='w-20 h-20 mr-3'/>
+                <span className='mr-2 font-bold'>{idx + 1}</span>
                 {item.name}
               </a>
             </Link>
