@@ -1,5 +1,8 @@
-const defaultHandler = async(req, res) => {
-  res.json('Hello World')
-}
+import { connectToDatabase } from '../../lib/mongodb';
 
-export default defaultHandler
+const defaultHandler = async (req, res) => {
+  const {db} = await connectToDatabase()
+  res.json('Hello World');
+};
+
+export default defaultHandler;
