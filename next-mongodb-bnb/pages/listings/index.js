@@ -16,8 +16,8 @@ export async function getServerSideProps(context) {
 
   const db = client.db('sample_airbnb');
 
-  let listings = await db.collection('listingsAndReviews').find({}).toArray();
-  listings.JSON.parse(JSON.stringify(listings))
+  let listings = await db.collection('listingsAndReviews').find({}).limit(20).toArray();
+  listings = JSON.parse(JSON.stringify(listings))
 
   return {
     props: {listings}

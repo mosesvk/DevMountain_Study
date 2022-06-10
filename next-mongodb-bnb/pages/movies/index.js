@@ -31,7 +31,7 @@ export async function getServerSideProps(context) {
 
   const db = client.db("sample_mflix");
 
-  let users = await db.collection("users").find({}).toArray();
+  let users = await db.collection("users").find({}).limit(20).toArray();
   users = JSON.parse(JSON.stringify(users));
 
   return {
