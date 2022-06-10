@@ -1,9 +1,14 @@
 import clientPromise from '../../lib/mongodb'
 
 const Movies = ({users}) => {
-  console.log(users)
+
   return (
     <div className="container">
+      <div>
+        <a href='/' className='card'>
+          Back
+        </a>
+      </div>
       <div>
         {users.map((user, index) => {
           return (
