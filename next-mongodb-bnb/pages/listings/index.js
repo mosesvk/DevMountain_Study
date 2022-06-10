@@ -1,8 +1,18 @@
 import clientPromise from '../../lib/mongodb'
 
+
 const Listings = ({listings}) => {
 
   console.log(listings)
+
+  const display = (
+    <>
+      <div className='card'>
+        <h1>{listings.name}</h1>
+        <img src={listings.images.picture_url} alt={listings.name} />
+      </div>
+    </>
+  )
 
   return (
     <h1>Listings</h1>
