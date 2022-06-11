@@ -25,9 +25,9 @@ export default function Home({ properties }) {
 
       <div class='flex flex-row flex-wrap'>
         {properties &&
-          properties.map((property) => (
-            <div>
-              <div class='flex-auto w-1/4 rounded overflow-hidden shadow-lg m-2'>
+          properties.map((property, idx) => (
+            <div class='flex-auto w-1/4 rounded overflow-hidden shadow-lg m-2' key={idx}>
+              <div >
                 <img src={property.image} class='w-full' />
               </div>
 
