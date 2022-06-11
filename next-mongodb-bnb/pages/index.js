@@ -1,11 +1,13 @@
 import Head from 'next/head';
 import clientPromise from '../lib/mongodb';
+import bookHandler from './api/book';
 
 export default function Home({ properties }) {
 
-  const bookProperty = async(property) => {
-    const data = await fetch(`http://localhost:3000/api/bool/property_id=${property._id}&guest=Mo`)
-    console.log(data.json())
+  const book = async(id) => {
+    const data = await fetch(`http://localhost:3000/api/book?property_id=${id}&guest=Mo`)
+    const res = await data.json(data)
+    console.log(res)
   }
 
   return (
@@ -42,7 +44,8 @@ export default function Home({ properties }) {
               </div>
 
               <div class='text-center py-2 my-2'>
-                <button class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-5 rounded'>Book</button>
+                {/* Remember we have to execute the onClick function and not just point to it */}
+                <button onClick={() => book(property._id)} class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-5 rounded'>Book</button>
               </div>
 
             </div>
