@@ -2,7 +2,12 @@ import Head from 'next/head';
 import clientPromise from '../lib/mongodb';
 
 export default function Home({ properties }) {
-  console.log(properties)
+
+  const bookProperty = async(property) => {
+    const data = await fetch(`http://localhost:3000/api/bool/property_id=${property._id}&guest=Mo`)
+    console.log(data.json())
+  }
+
   return (
     <>
       <Head>
