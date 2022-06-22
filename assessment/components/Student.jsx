@@ -1,4 +1,11 @@
+import { useState } from 'react'
+import { BsPlusLg } from 'react-icons/Bs';
+import { FcMinus } from 'react-icons/Fc'
+
 const Student = ({ item }) => {
+  const [isCardView, setIsCardView] = useState(true)
+
+
   return (
     <div class='flex py-2 border-bottom'>
       <div class='m-5'>
@@ -17,6 +24,14 @@ const Student = ({ item }) => {
           <p>Average</p>
         </div>
       </div>
+      <button
+        key='tableModeButton'
+        onClick={() => {
+          setIsCardView(!isCardView)
+        }}
+      >
+        {isCardView ? <BsPlusLg /> : <FcMinus />}
+      </button>
     </div>
   );
 };

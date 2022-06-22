@@ -12,6 +12,10 @@ export default function Home({ data }) {
       </Head>
 
       <div class='lg:w-1/2 mt-28'>
+        <div class='bg-white flex flex-col'>
+          <input type="text" placeholder='Search by Name' class='m-2 p-2 border-b-2 hover:border-gray-400 focus:border-gray-400 disabled:opacity-75' />
+          <input type="text" placeholder='Search by Tag' class='m-2 p-2 border-b-2 hover:border-gray-400 focus:border-gray-400 disabled:opacity-75' />
+        </div>
         <div class='bg-white h-screen overflow-auto'>
           {data.students.map((item, idx) => (
             <Student item={item} key={idx} />
