@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Student from '../components/Student';
 
 export default function Home({ data }) {
-
+  console.log(data.students)
   return (
     <div class='bg-gray-300 flex justify-center'>
       <Head>
