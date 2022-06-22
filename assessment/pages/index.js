@@ -11,7 +11,7 @@ export default function Home({ data }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <div class='lg:px-40 lg:py-20 bg-white'>
+      <div class='lg:mx-20 lg:my-20 border-2'>
         {data.students.map((item, idx) => (
           <Student item={item} key={idx} />
         ))}

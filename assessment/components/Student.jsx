@@ -1,9 +1,9 @@
 const Student = ({ item }) => {
   return (
     <div class='flex mb-2 border-bottom'>
-      <div class='w-1/3'>
-        <div class='rounded-full border-black'>
-          <img src={item.pic} />
+      <div class='mr-5'>
+        <div class='rounded-full border-2'>
+          <img src={item.pic} class='w-24' />
         </div>
       </div>
       <div class='w-2/3'>
