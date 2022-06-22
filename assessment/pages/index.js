@@ -11,12 +11,10 @@ export default function Home({ data }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <div class='lg:px-40 lg:spy-20 bg-white'>
-        <main class=''>
-          {data.students.map((item, idx) => (
-            <Student item={item} key={idx} />
-          ))}
-        </main>
+      <div class='lg:px-40 lg:py-20 bg-white'>
+        {data.students.map((item, idx) => (
+          <Student item={item} key={idx} />
+        ))}
       </div>
     </div>
   );
