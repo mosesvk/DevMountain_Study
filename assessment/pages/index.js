@@ -17,11 +17,16 @@ export default function Home({ data }) {
   //item.tagNames.includes(filterTag);
 
   const filterArray = array
-    .filter((item) => item.fullName.toLowerCase().includes(filterString))
+    .filter((item) => item.fullName.toLowerCase().includes(filterString)  && item.tagNames.includes(filterTag))
     .map((item, idx) => <Student item={item} key={idx} />);
 
-  const inputHandler = (e) => {
+
+  const nameHandler = (e) => {
     setFilterString(e.target.value);
+  };
+
+  const tagHandler = (e) => {
+    setFilterTag(e.target.value);
   };
 
   return (
@@ -38,12 +43,13 @@ export default function Home({ data }) {
             type='text'
             placeholder='Search by Name'
             class='m-2 p-2 border-b-2 hover:border-gray-400 focus:border-gray-400 disabled:opacity-75'
-            onChange={inputHandler}
+            onChange={nameHandler}
           />
           <input
             type='text'
             placeholder='Search by Tag'
             class='m-2 p-2 border-b-2 hover:border-gray-400 focus:border-gray-400 disabled:opacity-75'
+            onChange={tagHandler}
           />
         </div>
         <div class='bg-white h-screen overflow-auto'>{filterArray}</div>
