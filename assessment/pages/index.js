@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Student from '../components/Student';
 
 export default function Home({ data }) {
   const [filterString, setFilterString] = useState('');
   const [filterTag, setFilterTag] = useState('');
+  const [filteredArray, setFilteredArray] = useState([])
 
   const array = data.students.map((item) => {
     item.fullName = `${item.firstName} ${item.lastName}`;
@@ -12,14 +13,15 @@ export default function Home({ data }) {
     return item;
   });
 
-  console.log(array);
-
   //item.tagNames.includes(filterTag);
 
   const filterArray = array
-    .filter((item) => item.fullName.toLowerCase().includes(filterString)  && item.tagNames.includes(filterTag))
-    .map((item, idx) => <Student item={item} key={idx} />);
-
+    .filter((item) => 
+      item.fullName.toLowerCase().includes(filterString) ||
+      item.tagNames.includes(filterTag)
+    )
+    // .filter((item) => item.tagNames.includes(filterTag))
+    .map((item, idx) => <Student array={array} item={item} key={idx} />)
 
   const nameHandler = (e) => {
     setFilterString(e.target.value);
@@ -59,10 +61,8 @@ export default function Home({ data }) {
 }
 
 export async function getServerSideProps() {
-  // Fetch data from external API
   const res = await fetch(`https://api.hatchways.io/assessment/students`);
   const data = await res.json();
 
-  // Pass data to the page via props
   return { props: { data } };
 }

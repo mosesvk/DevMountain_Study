@@ -2,15 +2,14 @@ import { useState } from 'react';
 import { BsPlusLg } from 'react-icons/Bs';
 import { FcMinus } from 'react-icons/Fc';
 
-const Student = ({ item }) => {
+const Student = ({ item, array }) => {
   const [isCardView, setIsCardView] = useState(true);
   const [inputTag, setInputTag] = useState('');
   const [tags, setTags] = useState([]);
-  const [filteredItems, setFilteredItems] = useState([]);
 
-  const array = item.grades.map((item) => Number(item));
+  const arrayNum = item.grades.map((item) => Number(item));
 
-  const average = array.reduce((a, b) => a + b) / array.length;
+  const average = arrayNum.reduce((a, b) => a + b) / arrayNum.length;
 
   const handleChange = (e) => {
     setInputTag(e.target.value);
@@ -19,6 +18,7 @@ const Student = ({ item }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     tags.push(inputTag);
+    item.tagNames.push(inputTag)
     setInputTag('');
   };
 
@@ -48,8 +48,6 @@ const Student = ({ item }) => {
                 ))}
                 <div class='flex'>
                   {tags?.map((tag, idx) => {
-                    item.tagNames.push(tag);
-                    
                     return (
                       <p
                         key={idx}
