@@ -17,8 +17,7 @@ export default function Home({ data }) {
 
   const filterArray = array
     .filter((item) => 
-      item.fullName.toLowerCase().includes(filterString) ||
-      item.tagNames.includes(filterTag)
+      item.fullName.toLowerCase().includes(filterString)
     )
     // .filter((item) => item.tagNames.includes(filterTag))
     .map((item, idx) => <Student array={array} item={item} key={idx} />)
