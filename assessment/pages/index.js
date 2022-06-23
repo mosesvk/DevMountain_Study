@@ -1,8 +1,29 @@
+import { useState } from 'react';
 import Head from 'next/head';
 import Student from '../components/Student';
 
 export default function Home({ data }) {
-  console.log(data.students)
+  const [filterString, setFilterString] = useState('');
+  const [filterTag, setFilterTag] = useState('');
+
+  const array = data.students.map((item) => {
+    item.fullName = `${item.firstName} ${item.lastName}`;
+    item.tagNames = [];
+    return item;
+  });
+
+  console.log(array);
+
+  //item.tagNames.includes(filterTag);
+
+  const filterArray = array
+    .filter((item) => item.fullName.toLowerCase().includes(filterString))
+    .map((item, idx) => <Student item={item} key={idx} />);
+
+  const inputHandler = (e) => {
+    setFilterString(e.target.value);
+  };
+
   return (
     <div class='bg-gray-300 flex justify-center'>
       <Head>
@@ -13,14 +34,19 @@ export default function Home({ data }) {
 
       <div class='lg:w-1/2 mt-28'>
         <div class='bg-white flex flex-col'>
-          <input type="text" placeholder='Search by Name' class='m-2 p-2 border-b-2 hover:border-gray-400 focus:border-gray-400 disabled:opacity-75' />
-          <input type="text" placeholder='Search by Tag' class='m-2 p-2 border-b-2 hover:border-gray-400 focus:border-gray-400 disabled:opacity-75' />
+          <input
+            type='text'
+            placeholder='Search by Name'
+            class='m-2 p-2 border-b-2 hover:border-gray-400 focus:border-gray-400 disabled:opacity-75'
+            onChange={inputHandler}
+          />
+          <input
+            type='text'
+            placeholder='Search by Tag'
+            class='m-2 p-2 border-b-2 hover:border-gray-400 focus:border-gray-400 disabled:opacity-75'
+          />
         </div>
-        <div class='bg-white h-screen overflow-auto'>
-          {data.students.map((item, idx) => (
-            <Student item={item} key={idx} />
-          ))}
-        </div>
+        <div class='bg-white h-screen overflow-auto'>{filterArray}</div>
       </div>
     </div>
   );
