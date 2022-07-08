@@ -1,10 +1,13 @@
 import './App.css';
-import { useState, useEffect, useReducer } from 'react';
+import { useState, useEffect, useReducer, useRef } from 'react';
 
 function App() {
   const [emotion, setEmotion] = useState('happy');
   const [secondaryEmotion, setSecondaryEmotion] = useState('tired');
-  const [checked, setChecked] = useReducer((checked) => !checked, false);
+  const [checked, setChecked] = useReducer(
+      (checked) => !checked,
+      false
+      );
   // useReducer allows us to manage the function in the useReducer instead of the onChange inside the JSX
   // It will take in two arguments, 1) function that will update the state... 2) initial state
 
@@ -29,8 +32,8 @@ function App() {
       <br />
       <br />
       <div>
-          <input type='checkbox' value={checked} onChange={setChecked} />
-          <label>{checked ? 'checked' : 'not checked'}</label>
+        <input type='checkbox' value={checked} onChange={setChecked} />
+        <label>{checked ? 'checked' : 'not checked'}</label>
       </div>
     </div>
   );
