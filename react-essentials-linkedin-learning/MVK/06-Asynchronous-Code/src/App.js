@@ -12,25 +12,27 @@ const GithubUser = ({ name, location, avatar }) => {
 
 const App = () => {
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     fetch(`https://api.github.com/users/moonhighway`)
       .then((res) => res.json())
-      .then(setData);
+      .then(setData)
+      .then(() => setLoading(false))
+      .catch(setError)
   }, []);
 
+  if (loading) return <h1>Loading...</h1>
+  if (error) return <pre>{JSON.stringify(error)}</pre>
+  if (!data) return null
+
   return (
-    <div>
-      {data ? (
-        <GithubUser
-          name={data.name}
-          location={data.location}
-          avatar={data.avatar_url}
-        />
-      ) : (
-        <h1>Waiting for Data</h1>
-      )}
-    </div>
+    <GithubUser
+      name={data.name}
+      location={data.location}
+      avatar={data.avatar_url}
+    />
   );
 };
 
