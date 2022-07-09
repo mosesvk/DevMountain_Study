@@ -14,7 +14,7 @@ const useInput = (initialValue) => {
 
 const App = () => {
     const [titleProps, resetTitle] = useInput('');
-    const [colorProps, resetColor] = useInput('black')
+    const [colorProps, resetColor] = useInput('#000000')
 
     const submit = (e) => {
         e.preventDefault()
