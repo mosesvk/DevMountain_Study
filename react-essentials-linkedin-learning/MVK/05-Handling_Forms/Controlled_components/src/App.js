@@ -15,9 +15,10 @@ class App extends Component {
             <div className="App">
                 <div className="container">
                     <input type="text"
-                        placeholder="Your message here.."
+                        placeholder="Your message.."
                         value={this.state.message}
                         onChange={(event) => this.updateMessage(event.target.value)}
+
                     />
                     <p>the message is: {this.state.message}</p>
                 </div>
