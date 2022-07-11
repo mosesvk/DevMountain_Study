@@ -1,13 +1,19 @@
 import { useState, useEffect } from 'react';
 
-const GithubUser = ({ name, location, avatar }) => {
-  return (
-    <div>
-      <h1>{name}</h1>
-      <p>{location}</p>
-      <img src={avatar} height={200} alt={name} />
-    </div>
-  );
+const query = `
+query {
+  allLifts {
+    name
+    elevationGain
+    status
+  }
+}
+`;
+
+const opts = {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ query })
 };
 
 const App = () => {
@@ -16,23 +22,23 @@ const App = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    fetch(`https://api.github.com/users/moonhighway`)
+    fetch(`https://snowtooth.moonhighway.com/`)
       .then((res) => res.json())
       .then(setData)
       .then(() => setLoading(false))
       .catch(setError)
   }, []);
 
+  console.log(data)
+
   if (loading) return <h1>Loading...</h1>
   if (error) return <pre>{JSON.stringify(error)}</pre>
   if (!data) return null
 
   return (
-    <GithubUser
-      name={data.name}
-      location={data.location}
-      avatar={data.avatar_url}
-    />
+    <>
+      <h1>Hello</h1>
+    </>
   );
 };
 
