@@ -1,10 +1,21 @@
+import {useState, useEffect, useCallback} from 'react'
 import { BiCalendar } from 'react-icons/bi';
 import AddAppointment from './components/AddAppointment';
 import AppointmentInfo from './components/AppointmentInfo';
 import Search from './components/Search';
-import appointments from './data.json';
 
 function App() {
+  const [appointmentList, setAppointmentList] = useState([])
+
+  const fetchData = useCallback(() => {
+    fetch(`./data.json`)
+      .then((res) => res.json())
+      .then((data) => setAppointmentList(data))
+  }, [])
+
+  useEffect(() => {
+    fetchData()
+  }, [fetchData])
 
   return (
     <>
@@ -17,7 +28,7 @@ function App() {
         <Search />
 
         <ul className='divide-y divide-gray-200'>
-          {appointments.map((appointment) => (
+          {appointmentList.map((appointment) => (
             <AppointmentInfo key={appointment.id} appointment={appointment} />
           ))}
         </ul>
