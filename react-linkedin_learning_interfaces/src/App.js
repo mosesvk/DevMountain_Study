@@ -6,6 +6,7 @@ import Search from './components/Search';
 
 function App() {
   const [appointmentList, setAppointmentList] = useState([]);
+  const [query, setQuery] = useState('')
 
   const fetchData = useCallback(() => {
     fetch(`./data.json`)
