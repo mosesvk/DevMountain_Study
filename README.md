@@ -6,5 +6,5 @@
 
 #### Each project is titled specifically with what it containers
 
-## the Purpose is to practice each of these projects through codesandbox
+
 
