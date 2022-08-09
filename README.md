@@ -4,7 +4,6 @@
 
 ### This Project contains all of my study projects
 
-#### Each project is titled specifically with what it containers
 
 
 
