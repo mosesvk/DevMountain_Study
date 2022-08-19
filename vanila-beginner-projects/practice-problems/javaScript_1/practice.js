@@ -41,12 +41,18 @@ const magicNumbers = [7, 27, 87, 77, 777]
 
 //Write a function called logFive, it should contain a for loop that will run five times and should console log the numbers 1 - 5.  Invoke it below.
   const logFive = () => {
-
+    for (let i = 0; i < 6; i++) {
+      console.log(i)
+    }
   }
 
 //Modify the function below to include a for loop that will double all values in the array.
 function doubleMeNumbers() {
   let numsArr = [2, 4, 6, 8, 10]
+
+  for (let i = 0; i < numsArr.length; i++) {
+    numsArr.splice(i, 1, numsArr[i] * 2)
+  }
 
   return numsArr
 }
