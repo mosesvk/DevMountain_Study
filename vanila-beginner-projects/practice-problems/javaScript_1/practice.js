@@ -13,8 +13,10 @@ const devMtnStaff = ['Andrew', 'Scott', 'Matt', 'Lucas', 'Cole', 'Rob', 'Aaron']
 
 // console.log(devMtnStaff)
 //Add a new name to the end of the devMtnStaff array
+  devMtnStaff.push('Jamie')
 
 //Remove the first item from the devMtnStaff array
+
 
 // console.log(devMtnStaff)
 //Add a new name to the beginning of the devMtnStaff array
