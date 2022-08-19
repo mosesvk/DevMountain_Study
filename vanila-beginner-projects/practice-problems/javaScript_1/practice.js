@@ -70,9 +70,14 @@ const wordsArr = [
   `neighborhood.`,
 ]
 
-//Modify the function below to take in an array of words.  The function should loop through the array and return a completed sentance.
+//Modify the function below to take in an array of words.  The function should loop through the array and return a completed sentence.
 function makeMeASentance() {
   let newStr = ''
+
+  for (let i = 0; i < wordsArr.length; i++) {
+    let word = `${wordsArr[i]} `
+    newStr += word
+  }
 
   return newStr
 }
