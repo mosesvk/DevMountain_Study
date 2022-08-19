@@ -106,13 +106,14 @@ let andrewObj = {
 
 //Dot and bracket Notation
 //Using dot notation console log the name from andrewObj
+  console.log(andrewObj.name)
 
 //Using bracket notation console log the age from andrewObj
-
+  console.log(andrewObj['age'])
 //Console log the favorite color from andrewObj.
-
+  console.log(andrewObj.favorites.color)
 //Console log the first favorite person from andrewObj.
-
+  console.log()
 //Invoke the greeting method from andrewObj
 
 //Ternary operator
