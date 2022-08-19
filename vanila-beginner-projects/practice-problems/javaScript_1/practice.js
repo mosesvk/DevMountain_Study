@@ -9,17 +9,19 @@ const devMtnStaff = ['Andrew', 'Scott', 'Matt', 'Lucas', 'Cole', 'Rob', 'Aaron']
 
 //.push, .pop, .shift, .unshift
 //Remove the last item in the devMtnStaff array
-  devMtnStaff.pop()
+  devMtnStaff.unshift()
 
 // console.log(devMtnStaff)
 //Add a new name to the end of the devMtnStaff array
   devMtnStaff.push('Jamie')
 
 //Remove the first item from the devMtnStaff array
+  devMtnStaff.shift()
 
 
 // console.log(devMtnStaff)
 //Add a new name to the beginning of the devMtnStaff array
+  devMtnStaff.unshift('Foxie')
 
 //.slice, .splice
 const magicNumbers = [7, 27, 87, 77, 777]
