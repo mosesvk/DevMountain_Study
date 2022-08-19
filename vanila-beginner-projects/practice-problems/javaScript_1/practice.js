@@ -9,28 +9,28 @@ const devMtnStaff = ['Andrew', 'Scott', 'Matt', 'Lucas', 'Cole', 'Rob', 'Aaron']
 
 //.push, .pop, .shift, .unshift
 //Remove the last item in the devMtnStaff array
-  devMtnStaff.unshift()
+
 
 // console.log(devMtnStaff)
 //Add a new name to the end of the devMtnStaff array
   devMtnStaff.push('Jamie')
 
 //Remove the first item from the devMtnStaff array
-  devMtnStaff.shift()
+
 
 
 // console.log(devMtnStaff)
 //Add a new name to the beginning of the devMtnStaff array
-  devMtnStaff.unshift('Foxie')
+
 
 //.slice, .splice
 const magicNumbers = [7, 27, 87, 77, 777]
 //Make a copy of the magicNumbers array.
 
 //Make a copy of the magicNumbers excluding the first and last items
-
+  devMtnStaff.slice(1, -1)
 //Remove the number 87 from the magicNumbers array, then replace it with 67
-
+  devMtnStaff.splice(2, 1, 67)
 //.length
 
 //Find the length of the magicNumbers array and console log it.
@@ -40,6 +40,9 @@ const magicNumbers = [7, 27, 87, 77, 777]
 //For loops
 
 //Write a function called logFive, it should contain a for loop that will run five times and should console log the numbers 1 - 5.  Invoke it below.
+  const logFive = () => {
+
+  }
 
 //Modify the function below to include a for loop that will double all values in the array.
 function doubleMeNumbers() {
