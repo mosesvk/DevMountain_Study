@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { v4 as uuid } from 'uuid'
+import {v4 as uuidv4} from 'uuid';
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 import "easymde/dist/easymde.min.css"
+
 import { supabase } from '../api'
 
 const SimpleMDE = dynamic(() => import('react-simplemde-editor'), { ssr: false })
@@ -18,7 +19,7 @@ function CreatePost() {
   async function createNewPost() {
     if (!title || !content) return
     const user = supabase.auth.user()
-    const id = uuid()
+    const id = uuidv4()
     post.id = id
     const { data } = await supabase
       .from('posts')
