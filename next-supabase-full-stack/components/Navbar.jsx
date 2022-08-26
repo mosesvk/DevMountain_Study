@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'next/link'
 
-const Navbar = () => {
+const Navbar = ({user}) => {
+
   return (
     <nav className='p-6 border-b border-gray-300'>
       <Link href='/'>

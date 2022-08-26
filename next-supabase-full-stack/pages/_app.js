@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { supabase } from '../api'
+import Navbar from '../components/Navbar';
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
@@ -20,9 +21,9 @@ function MyApp({ Component, pageProps }) {
   }
   return (
   <div>
-
+    <Navbar user={user} />
     <div className="py-8 px-16">
-      <Component {...pageProps} />
+      <Component {...pageProps} user={user} />
     </div>
   </div>
   )

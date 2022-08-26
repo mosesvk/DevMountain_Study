@@ -1,20 +1,31 @@
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
-import ReactMarkdown from 'react-markdown'
 import { supabase } from '../../api'
+import PostItem from '../../components/PostItem'
 
 export default function Post({ post }) {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      async () => checkUser()
+    )
+    checkUser()
+    return () => {
+      authListener?.unsubscribe()
+    };
+  }, [])
+  async function checkUser() {
+    const user = supabase.auth.user()
+    setUser(user)
+  }
+
+
   const router = useRouter()
   if (router.isFallback) {
     return <div>Loading...</div>
   }
   return (
-    <div>
-      <h1 className="text-5xl mt-4 font-semibold tracking-wide">{post.title}</h1>
-      <p className="text-sm font-light my-4">by {post.user_email}</p>
-      <div className="mt-8">
-        <ReactMarkdown className='prose' children={post.content} />
-      </div>
-    </div>
+    <PostItem id={post.user_id} title={post.title} email={post.user_email} content={post.content} user={user} />
   )
 }
 
