@@ -13,10 +13,10 @@ function CreatePost() {
   const [post, setPost] = useState(initialState)
   const { title, content } = post
   const router = useRouter()
-  function onChange(e) {
+  const onChange = (e) => {
     setPost(() => ({ ...post, [e.target.name]: e.target.value }))
   }
-  async function createNewPost() {
+  const createNewPost = async () => {
     if (!title || !content) return
     const user = supabase.auth.user()
     const id = uuidv4()
