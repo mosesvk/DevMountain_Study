@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+$dark-red: rgb(119, 27, 27);
+$dark-blue: #1b5177;
+$black: black;
+$whiteSmoke: whiteSmoke;
+$gray: gray;
+
 
 .container {
   display: flex;
@@ -14,9 +20,9 @@
   width: 15rem;
   height: 2rem;
   cursor: pointer;
-  background-color: black;
-  color: whitesmoke;
-  border: black;
+  background-color: $black;
+  color: $whiteSmoke;
+  border: $black;
   font-family: 'Roboto';
 }
 
@@ -25,6 +31,17 @@
   height: 2rem;
   outline: none;
   border-radius: 5px;
-  border: 1px solid gray;
+  border: 1px solid $gray;
   margin: 5px 0;
+}
+
+
+.saveBtn{
+  width: 15rem;
+  height: 2rem;
+  cursor: pointer;
+  background-color: $dark-blue;
+  color: $whiteSmoke;
+  border: $dark-blue;
+  font-family: 'Roboto';
 }

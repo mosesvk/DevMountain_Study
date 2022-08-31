@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import styles from '../../styles/Evernote.module.scss';
+import { app, database } from '../../firebaseConfig';
+// collection to create a collection, and addDoc will add our data to that collection.
+import { collection, addDoc } from 'firebase/firestore';
 
 const NoteOperations = () => {
   const [isInputVisible, setInputVisible] = useState(false);
   const [noteTitle, setNoteTitle] = useState('');
+
+  const dbInstance = collection(database, 'notes');
 
   const inputToggle = () => {
     setInputVisible(!isInputVisible);
@@ -24,6 +29,7 @@ const NoteOperations = () => {
             className={styles.input}
             onChange={(e) => setNoteTitle(e.target.value)}
           />
+          <button className={styles.saveBtn}>Save Note</button>
         </div>
       ) : (
         <></>
