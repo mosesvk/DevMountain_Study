@@ -1,42 +1,54 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../../styles/Evernote.module.scss';
 import { app, database } from '../../firebaseConfig';
 // collection to create a collection, and addDoc will add our data to that collection.
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs } from 'firebase/firestore';
 // import ReactQuill from 'react-quill'; // this does not work, so the below code is a workaround
-const ReactQuill = typeof window === 'object' ? require('react-quill') : () => false;
+const ReactQuill =
+  typeof window === 'object' ? require('react-quill') : () => false;
 import 'react-quill/dist/quill.snow.css';
 
 const dbInstance = collection(database, 'notes');
-
-
 const NoteOperations = () => {
   const [isInputVisible, setInputVisible] = useState(false);
   const [noteTitle, setNoteTitle] = useState('');
-  const [noteDesc, setNoteDesc] = useState('')
-
+  const [noteDesc, setNoteDesc] = useState('');
+  const [notesArray, setNotesArray] = useState([])
 
   const inputToggleHandler = () => {
     setInputVisible(!isInputVisible);
   };
 
   const addDescHandler = (value) => {
-    setNoteDesc(value)
-  }
-
-  const saveNoteHandler = () => {
-
-    try {
-      addDoc(dbInstance, {
-        noteTitle: noteTitle,
-        noteDesc: noteDesc
-      });
-    } catch (err) {
-      console.error(err.message)
-    }
-
+    setNoteDesc(value);
   };
 
+  const saveNoteHandler = () => {
+    addDoc(dbInstance, {
+      noteTitle: noteTitle,
+      noteDesc: noteDesc,
+    }).then(() => {
+      setNoteTitle('');
+      setNoteDesc('');
+    });
+  };
+
+  const getNotes = () => {
+    getDocs(dbInstance).then((data) => {
+      setNotesArray(
+        data.docs.map((item) => {
+          return { ...item.data(), id: item.id };
+        })
+      );
+      // console.log(data.docs)
+    });
+  };
+
+  useEffect(() => {
+    getNotes()
+  }, [])
+
+  console.log(notesArray)
 
   return (
     <>
