@@ -9,15 +9,14 @@ $gray: gray;
 
 .container {
   display: flex;
-  margin: 10px;
 }
 
 .left{
-  width: 20rem;
+  width: 30rem;
 }
 
 .button {
-  width: 15rem;
+  width: 25rem;
   height: 2rem;
   cursor: pointer;
   background-color: $black;
@@ -27,7 +26,7 @@ $gray: gray;
 }
 
 .input{
-  width: 15rem;
+  width: 25rem;
   height: 2rem;
   outline: none;
   border-radius: 5px;
@@ -37,7 +36,7 @@ $gray: gray;
 
 
 .saveBtn{
-  width: 15rem;
+  width: 25rem;
   height: 2rem;
   cursor: pointer;
   background-color: $dark-blue;
@@ -49,4 +48,29 @@ $gray: gray;
 
 .ReactQuill{
   width: 15rem;
+}
+
+.notesInner{
+  margin-top: 0.5rem;
+  border: 1px solid $dark-red;
+  border-radius: 10px;
+  width: 25rem;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Roboto";
+}
+
+.notesInner:hover{
+  background-color: $dark-blue;
+  color: $whiteSmoke;
+}
+
+.editBtn, .deleteBtn{
+  width: 5rem;
+  height: 2rem;
+  background-color: $dark-blue;
+  color: $whiteSmoke;
+  border: none;
+  cursor: pointer;
+  margin: 10px 10px 10px 0;
 }

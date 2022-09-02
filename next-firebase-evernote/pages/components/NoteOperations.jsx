@@ -9,11 +9,11 @@ const ReactQuill =
 import 'react-quill/dist/quill.snow.css';
 
 const dbInstance = collection(database, 'notes');
-const NoteOperations = () => {
+const NoteOperations = ({getSingleNote}) => {
   const [isInputVisible, setInputVisible] = useState(false);
   const [noteTitle, setNoteTitle] = useState('');
   const [noteDesc, setNoteDesc] = useState('');
-  const [notesArray, setNotesArray] = useState([])
+  const [notesArray, setNotesArray] = useState([]);
 
   const inputToggleHandler = () => {
     setInputVisible(!isInputVisible);
@@ -45,10 +45,10 @@ const NoteOperations = () => {
   };
 
   useEffect(() => {
-    getNotes()
-  }, [])
+    getNotes();
+  }, []);
 
-  console.log(notesArray)
+  console.log(notesArray);
 
   return (
     <>
@@ -75,6 +75,19 @@ const NoteOperations = () => {
       ) : (
         <></>
       )}
+
+      <div className={styles.notesDisplay}>
+        {notesArray.map((note) => {
+          return (
+            <div
+              className={styles.notesInner}
+              onClick={() => getSingleNote(note.id)}
+            >
+              <h4>{note.noteTitle}</h4>
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 };
