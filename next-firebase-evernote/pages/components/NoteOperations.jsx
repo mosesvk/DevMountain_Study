@@ -8,11 +8,16 @@ const ReactQuill =
   typeof window === 'object' ? require('react-quill') : () => false;
 import 'react-quill/dist/quill.snow.css';
 
+
+
+
 const dbInstance = collection(database, 'notes');
-const NoteOperations = ({getSingleNote}) => {
+const NoteOperations = ({ getSingleNote }) => {
+
   const [isInputVisible, setInputVisible] = useState(false);
   const [noteTitle, setNoteTitle] = useState('');
   const [noteDesc, setNoteDesc] = useState('');
+  const [date, setDate] = useState('');
   const [notesArray, setNotesArray] = useState([]);
 
   const inputToggleHandler = () => {
@@ -25,11 +30,15 @@ const NoteOperations = ({getSingleNote}) => {
 
   const saveNoteHandler = () => {
     addDoc(dbInstance, {
+      date: date,
       noteTitle: noteTitle,
       noteDesc: noteDesc,
     }).then(() => {
       setNoteTitle('');
       setNoteDesc('');
+      setDate('');
+      getNotes();
+      inputToggleHandler();
     });
   };
 
@@ -48,7 +57,7 @@ const NoteOperations = ({getSingleNote}) => {
     getNotes();
   }, []);
 
-  console.log(notesArray);
+  // console.log(notesArray);
 
   return (
     <>
@@ -60,6 +69,7 @@ const NoteOperations = ({getSingleNote}) => {
 
       {isInputVisible ? (
         <div className={styles.inputContainer}>
+          <input type='date' value={date} onChange={(e) => setDate(e.target.value)} />
           <input
             placeholder='Enter the Title..'
             className={styles.input}

@@ -19,6 +19,7 @@ const NoteDetails = ({ ID }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [noteTitle, setNoteTitle] = useState('');
   const [noteDesc, setNoteDesc] = useState('');
+  const [date, setDate] = useState('');
 
   const getSingleNote = async () => {
     if (ID) {
@@ -42,6 +43,7 @@ const NoteDetails = ({ ID }) => {
     setIsEdit(true);
     setNoteTitle(singleNote.noteTitle);
     setNoteDesc(singleNote.noteDesc);
+    setDate(singleNote.date);
   };
 
   useEffect(() => {
@@ -56,6 +58,7 @@ const NoteDetails = ({ ID }) => {
     const collectionById = doc(database, 'notes', id);
 
     updateDoc(collectionById, {
+      date: date,
       noteTitle: noteTitle,
       noteDesc: noteDesc,
     }).then(() => {
@@ -87,6 +90,11 @@ const NoteDetails = ({ ID }) => {
       {isEdit ? (
         <div className={styles.inputContainer}>
           <input
+            type='date'
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+          <input
             className={styles.input}
             placeholder='Enter the Title..'
             onChange={(e) => setNoteTitle(e.target.value)}
@@ -105,6 +113,7 @@ const NoteDetails = ({ ID }) => {
       ) : (
         <></>
       )}
+      <h2>{Date(singleNote.date)}</h2>
       <h2>{singleNote.noteTitle}</h2>
       <div dangerouslySetInnerHTML={{ __html: singleNote.noteDesc }}></div>
     </>
