@@ -1,40 +1,41 @@
 const {
-  getAllWorkouts,
-  getOneWorkout,
-  createNewWorkout,
-  updateOneWorkout,
-  deleteOneWorkout,
+  getAll,
+  getOne,
+  createNew,
+  updateOne,
+  deleteOne,
 } = require('../services/workoutService');
 
-const getAllWorkouts = (req, res) => {
-  const allWorkouts = getAllWorkouts()
-  res.send('Get all workouts');
+const getAllCtrl = (req, res) => {
+  const allWorkouts = getAll();
+
+  res.send({ status: 'OK', data: allWorkouts });
 };
 
-const getOneWorkout = (req, res) => {
-  const workout = getOneWorkout()
+const getOneCtrl = (req, res) => {
+  const workout = getOne();
   res.send('Get an existing workout');
 };
 
-const createNewWorkout = (req, res) => {
-  const createdWorkout = createNewWorkout()
+const createNewCtrl = (req, res) => {
+  const createdWorkout = createNew();
   res.send('Create a new workout');
 };
 
-const updateOneWorkout = (req, res) => {
-  const updatedWorkout = updateOneWorkout()
+const updateOneCtrl = (req, res) => {
+  const updatedWorkout = updateOne();
   res.send('Update an existing workout');
 };
 
-const deleteOneWorkout = (req, res) => {
-  deleteOneWorkout()
+const deleteOneCtrl = (req, res) => {
+  deleteOne();
   res.send('Delete an existing workout');
 };
 
 module.exports = {
-  getAllWorkouts,
-  getOneWorkout,
-  createNewWorkout,
-  updateOneWorkout,
-  deleteOneWorkout,
+  getAllCtrl,
+  getOneCtrl,
+  createNewCtrl,
+  updateOneCtrl,
+  deleteOneCtrl,
 };

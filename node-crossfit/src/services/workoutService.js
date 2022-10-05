@@ -1,27 +1,31 @@
-const getAllWorkouts = () => {
+const Workout = require("../database/Workout");
+const getAll = () => {
+  // *** ADD ***
+  const allWorkouts = Workout.getAllWorkouts();
+  // *** ADD ***
+  return allWorkouts;
+};
+
+const getOne = () => {
   return;
 };
 
-const getOneWorkout = () => {
+const createNew = () => {
   return;
 };
 
-const createNewWorkout = () => {
+const updateOne = () => {
   return;
 };
 
-const updateOneWorkout = () => {
-  return;
-};
-
-const deleteOneWorkout = () => {
+const deleteOne = () => {
   return;
 };
 
 module.exports = {
-  getAllWorkouts,
-  getOneWorkout,
-  createNewWorkout,
-  updateOneWorkout,
-  deleteOneWorkout,
+  getAll,
+  getOne,
+  createNew,
+  updateOne,
+  deleteOne,
 };
