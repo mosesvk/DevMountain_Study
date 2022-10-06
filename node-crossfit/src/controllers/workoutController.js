@@ -60,8 +60,14 @@ const createNewCtrl = (req, res) => {
     trainerTips: body.trainerTips,
   };
 
-  const createdWorkout = createNew(newWorkout);
-  res.status(201).send({ status: 'OK', data: createdWorkout });
+  try {
+    const createdWorkout = createNew(newWorkout);
+    res.status(201).send({ status: 'OK', data: createdWorkout });
+  } catch (error) {
+    res
+      .status(error?.status || 500)
+      .send({ status: 'FAILED', data: { error: error?.message || error } });
+  }
 };
 
 const updateOneCtrl = (req, res) => {
