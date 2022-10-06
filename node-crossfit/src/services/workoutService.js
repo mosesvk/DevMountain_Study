@@ -10,7 +10,11 @@ const getAll = () => {
   return allWorkouts;
 };
 
-const getOne = (workoutId) => {
+const getOne = (workoutId, params) => {
+
+  console.log('getOneService')
+  console.log(params)
+  console.log('-----')
 
   const workout = Workout.getOneWorkout(workoutId)
 

@@ -13,19 +13,24 @@ const getAllCtrl = (req, res) => {
 };
 
 const getOneCtrl = (req, res) => {
+
   const { 
     params: {workoutId},
   } = req;
 
+  console.log('getOneCtrl')
+  console.log(params)
+  console.log('---')
+
   if (!workoutId) return;
 
-  const workout = getOne(workoutId)
+  const workout = getOne(workoutId, params)
 
-  res.send({status: 'OK', data: workout});
+  res.send({status: 'OK', data: workout, params});
 };
 
 const createNewCtrl = (req, res) => {
-  const {body} = req;
+  const {body, params} = req;
 
   if (
     !body.name || !body.mode || !body.equipment || !body.exercises || !body.trainerTips

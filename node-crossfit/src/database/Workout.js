@@ -1,4 +1,5 @@
 const DB = require('./db.json');
+const {workouts} = require('./db.json')
 const { saveToDatabase } = require("./utils");
 
 
@@ -7,27 +8,33 @@ const getAllWorkouts = () => {
 };
 
 const getOneWorkout = (workoutId) => {
-  const workout = DB.workouts.find((workout) => workout.id === workoutId);
-  if (!workout) {
-    return;
-  }
-  return workout;
+  
+  const workout = workouts.find(({id}) => (
+    id === workoutId
+  ))
+
+  if (!workout) return;
+
+  return workout
+
+
+
 };
 
 const createNewWorkout = (newWorkout) => {
-  const isAlreadyAdded =
-    DB.workouts.findIndex((workout) => workout.name === newWorkout.name) > -1;
 
-  if (isAlreadyAdded) {
-    return;
-  }
+  const isAlreadyAdded = workouts.findIndex(({name}) => name === newWorkout.name) > -1
 
-  DB.workouts.push(newWorkout);
-  saveToDatabase(DB);
-  return newWorkout;
+  if (isAlreadyAdded) return;
+
+  workouts.push(newWorkout)
+  saveToDatabase(DB)
+  return newWorkout
+
 };
 
 const updateOneWorkout = (workoutId, changes) => {
+
   const indexForUpdate = DB.workouts.findIndex(
     (workout) => workout.id === workoutId
   );
