@@ -1,3 +1,9 @@
+// The third layer is the Data Access Layer where we'll be working with our Database. 
+    // We'll be exporting some methods for certain database operations like creating a WOD that can be used by our Service Layer.
+
+
+
+
 const DB = require('./db.json');
 const {workouts} = require('./db.json')
 const { saveToDatabase } = require("./utils");

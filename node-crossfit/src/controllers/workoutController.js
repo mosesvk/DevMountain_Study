@@ -1,3 +1,7 @@
+// the CONTROLLER will be  handling all stuff that is related to HTTP. That means we're dealing with requests and responses for our endpoints.
+    // Above that layer is also a little Router from Express that passes requests to the corresponding controller.
+
+
 const {
   getAll,
   getOne,

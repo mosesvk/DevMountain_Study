@@ -1,3 +1,8 @@
+// The whole business logic will be in the SERVICE Layer that exports certain services (methods) which are used by the controller.
+
+
+
+
 const {v4: uuid} = require('uuid')
 const Workout = require("../database/Workout");
 
