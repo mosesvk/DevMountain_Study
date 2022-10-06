@@ -4,9 +4,9 @@ const Workout = require("../database/Workout");
 
 
 const getAll = () => {
-  // *** ADD ***
+
   const allWorkouts = Workout.getAllWorkouts();
-  // *** ADD ***
+
   return allWorkouts;
 };
 
