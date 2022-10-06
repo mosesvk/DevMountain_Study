@@ -1,10 +1,12 @@
 const express = require('express')
 const v1WorkoutRouter = require('./v1/routes/workoutRoutes')
+const bodyParser = require('body-parser')
 
 const app = express()
 const PORT = process.env.PORT || 3000
 
 // connecting to our router in 'v1/routes/index.js
+app.use(bodyParser.json())
 app.use('/api/v1/workouts', v1WorkoutRouter)
 
 app.listen(PORT, () => {

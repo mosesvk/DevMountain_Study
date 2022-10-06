@@ -18,8 +18,24 @@ const getOneCtrl = (req, res) => {
 };
 
 const createNewCtrl = (req, res) => {
-  const createdWorkout = createNew();
-  res.send('Create a new workout');
+  const {body} = req;
+
+  if (
+    !body.name || !body.mode || !body.equipment || !body.exercises || !body.trainerTips
+  ) {
+    return;
+  }
+
+  const newWorkout = {
+    name: body.name,
+    mode: body.mode,
+    equipment: body.equipment,
+    exercises: body.exercises,
+    trainerTips: body.trainerTips
+  }
+
+  const createdWorkout = createNew(newWorkout)
+  res.status(201).send({status: "OK", data: createdWorkout})
 };
 
 const updateOneCtrl = (req, res) => {
