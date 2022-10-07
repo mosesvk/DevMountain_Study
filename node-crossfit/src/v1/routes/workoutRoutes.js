@@ -6,10 +6,7 @@ const {
   updateOneWorkoutCtrl,
   deleteOneWorkoutCtrl,
 } = require("../../controllers/workoutController");
-const {
-  getAllRecordsCtrl,
-  getRecordForWorkoutCtrl
-} = require('../../controllers/recordController')
+
 
 
 const router = express.Router() 
@@ -17,7 +14,6 @@ const router = express.Router()
 app.route('/')
   .get(getAllWorkoutsCtrl)
   .get(getOneWorkoutCtrl)
-  .get(getAllRecordsCtrl)
   .post(createNewWorkoutCtrl)
 
 app.route('/:workoutId')
@@ -25,7 +21,10 @@ app.route('/:workoutId')
   .patch(updateOneWorkoutCtrl)
   .delete(deleteOneWorkoutCtrl)
 
-app.route('/:workoutId/records')
-  .get(getRecordForWorkoutCtrl)
+router.get('/:workoutId/records', getRecordForWorkoutCtrl)
+
+router.get('/records')
+
+
 
 module.exports = router
