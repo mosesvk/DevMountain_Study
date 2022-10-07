@@ -1,4 +1,6 @@
 const express = require('express')
+const app = express()
+const router = express.Router() 
 const {
   getAllWorkoutsCtrl,
   getOneWorkoutCtrl,
@@ -9,7 +11,6 @@ const {
 
 
 
-const router = express.Router() 
 
 app.route('/')
   .get(getAllWorkoutsCtrl)
@@ -21,10 +22,8 @@ app.route('/:workoutId')
   .patch(updateOneWorkoutCtrl)
   .delete(deleteOneWorkoutCtrl)
 
-router.get('/:workoutId/records', getRecordForWorkoutCtrl)
-
-router.get('/records')
 
 
 
-module.exports = router
+
+module.exports = app

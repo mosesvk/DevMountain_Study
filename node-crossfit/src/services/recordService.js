@@ -3,7 +3,7 @@ const Record = require('../database/Record');
 
 const getAllRecordsForWorkouts = () => {
   try {
-    const records = getAllRecordsForWorkouts()
+    const records = Record.getAllRecordsForWorkouts()
     return records
   } catch (err) {
     throw new Error(err)

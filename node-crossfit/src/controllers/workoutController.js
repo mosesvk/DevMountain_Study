@@ -36,8 +36,8 @@ const getOneWorkoutCtrl = (req, res) => {
     });
 
   try {
-    const workout = getOne(workoutId, params);
-    res.send({ status: 'OK', data: workout, params });
+    const workout = getOne(workoutId);
+    res.send({ status: 'OK', data: workout });
   } catch (error) {
     res
       .status(error?.status || 500)
