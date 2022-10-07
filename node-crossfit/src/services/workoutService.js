@@ -4,6 +4,11 @@ const { v4: uuid } = require('uuid');
 const Workout = require('../database/Workout');
 
 const getAll = () => {
+  try {
+    
+  } catch (err) {
+    throw new Error(err)
+  }
   const allWorkouts = Workout.getAllWorkouts();
 
   return allWorkouts;
@@ -31,7 +36,8 @@ const createNew = (newWorkout) => {
     const createdWorkout = Workout.createNewWorkout(workoutToInsert);
     return createdWorkout;
   } catch (error) {
-    throw new Error({ status: 500, message: error?.message || error });
+    throw new Error(error)
+    // throw new Error({ status: 500, message: error?.message || error });
   }
 };
 

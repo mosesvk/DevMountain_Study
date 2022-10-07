@@ -9,10 +9,19 @@ const {
   deleteOne,
 } = require('../services/workoutService');
 
-const getAllCtrl = (req, res) => {
-  const allWorkouts = getAll();
 
-  res.send({ status: 'OK', data: allWorkouts });
+
+
+
+const getAllCtrl = (req, res) => {
+  try {
+    const allWorkouts = getAll();
+    res.send({ status: 'OK', data: allWorkouts });
+  } catch (error) {
+    res
+      .status(error?.status || 500)
+      .send({ status: 'FAILED', data: { error: error?.message || error } });
+  }
 };
 
 const getOneCtrl = (req, res) => {
@@ -20,15 +29,20 @@ const getOneCtrl = (req, res) => {
     params: { workoutId },
   } = req;
 
-  console.log('getOneCtrl');
-  console.log(params);
-  console.log('---');
+  if (!workoutId)
+    throw res.status(400).send({
+      status: 'FAILED',
+      data: 'parameter "workoutId" cannot be empty',
+    });
 
-  if (!workoutId) return;
-
-  const workout = getOne(workoutId, params);
-
-  res.send({ status: 'OK', data: workout, params });
+  try {
+    const workout = getOne(workoutId, params);
+    res.send({ status: 'OK', data: workout, params });
+  } catch (error) {
+    res
+      .status(error?.status || 500)
+      .send({ status: 'FAILED', data: { error: error?.message || error } });
+  }
 };
 
 const createNewCtrl = (req, res) => {
@@ -76,11 +90,21 @@ const updateOneCtrl = (req, res) => {
     params: { workoutId },
   } = req;
 
-  if (!workoutId) return;
+  if (!workoutId) {
+    res.status(400).send({
+      status: 'FAILED',
+      data: { error: "Parameter ':workoutId' can not be empty" },
+    });
+  }
 
-  const updatedWorkout = updateOne(workoutId, body);
-
-  res.send({ status: 'OK', data: updatedWorkout });
+  try {
+    const updatedWorkout = updateOne(workoutId, body);
+    res.send({ status: 'OK', data: updatedWorkout });
+  } catch (error) {
+    res
+      .status(error?.status || 500)
+      .send({ status: 'FAILED', data: { error: error?.message || error } });
+  }
 };
 
 const deleteOneCtrl = (req, res) => {
@@ -88,11 +112,21 @@ const deleteOneCtrl = (req, res) => {
     params: { workoutId },
   } = req;
 
-  if (!workoutId) return;
+  if (!workoutId) {
+    res.status(400).send({
+      status: 'FAILED',
+      data: { error: "Parameter ':workoutId' can not be empty" },
+    });
+  }
 
-  deleteOne(workoutId);
-
-  res.status(204).send({ status: 'OK' });
+  try {
+    deleteOne(workoutId);
+    res.status(204).send({ status: 'OK' });
+  } catch (error) {
+    res
+      .status(error?.status || 500)
+      .send({ status: 'FAILED', data: { error: error?.message || error } });
+  }
 };
 
 module.exports = {
