@@ -1,22 +1,31 @@
 const express = require('express')
 const {
-  getAllCtrl,
-  getOneCtrl,
-  createNewCtrl,
-  updateOneCtrl,
-  deleteOneCtrl,
+  getAllWorkoutsCtrl,
+  getOneWorkoutCtrl,
+  createNewWorkoutCtrl,
+  updateOneWorkoutCtrl,
+  deleteOneWorkoutCtrl,
 } = require("../../controllers/workoutController");
+const {
+  getAllRecordsCtrl,
+  getRecordForWorkoutCtrl
+} = require('../../controllers/recordController')
+
 
 const router = express.Router() 
 
-router.get('/', getAllCtrl)
+app.route('/')
+  .get(getAllWorkoutsCtrl)
+  .get(getOneWorkoutCtrl)
+  .get(getAllRecordsCtrl)
+  .post(createNewWorkoutCtrl)
 
-router.get('/:workoutId', getOneCtrl)
+app.route('/:workoutId')
+  .get(getOneWorkoutCtrl)
+  .patch(updateOneWorkoutCtrl)
+  .delete(deleteOneWorkoutCtrl)
 
-router.post('/', createNewCtrl)
-
-router.patch('/:workoutId', updateOneCtrl)
-
-router.delete('/:workoutId', deleteOneCtrl)
+app.route('/:workoutId/records')
+  .get(getRecordForWorkoutCtrl)
 
 module.exports = router

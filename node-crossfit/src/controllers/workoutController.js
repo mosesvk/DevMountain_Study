@@ -13,7 +13,7 @@ const {
 
 
 
-const getAllCtrl = (req, res) => {
+const getAllWorkoutsCtrl = (req, res) => {
   try {
     const allWorkouts = getAll();
     res.send({ status: 'OK', data: allWorkouts });
@@ -24,7 +24,7 @@ const getAllCtrl = (req, res) => {
   }
 };
 
-const getOneCtrl = (req, res) => {
+const getOneWorkoutCtrl = (req, res) => {
   const {
     params: { workoutId },
   } = req;
@@ -45,7 +45,7 @@ const getOneCtrl = (req, res) => {
   }
 };
 
-const createNewCtrl = (req, res) => {
+const createNewWorkoutCtrl = (req, res) => {
   const { body, params } = req;
 
   if (
@@ -84,7 +84,7 @@ const createNewCtrl = (req, res) => {
   }
 };
 
-const updateOneCtrl = (req, res) => {
+const updateOneWorkoutCtrl = (req, res) => {
   const {
     body,
     params: { workoutId },
@@ -107,7 +107,7 @@ const updateOneCtrl = (req, res) => {
   }
 };
 
-const deleteOneCtrl = (req, res) => {
+const deleteOneWorkoutCtrl = (req, res) => {
   const {
     params: { workoutId },
   } = req;
@@ -130,9 +130,9 @@ const deleteOneCtrl = (req, res) => {
 };
 
 module.exports = {
-  getAllCtrl,
-  getOneCtrl,
-  createNewCtrl,
-  updateOneCtrl,
-  deleteOneCtrl,
+  getAllWorkoutsCtrl,
+  getOneWorkoutCtrl,
+  createNewWorkoutCtrl,
+  updateOneWorkoutCtrl,
+  deleteOneWorkoutCtrl,
 };
