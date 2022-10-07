@@ -108,6 +108,28 @@
       "id": "999f0891-94cc-464d-af86-b41330c4c6b2",
       "createdAt": "10/6/2022, 5:40:32 AM",
       "updatedAt": "10/6/2022, 5:40:32 AM"
+    },
+    {
+      "name": "Dirty pt. 2 - 500",
+      "mode": "AMRAP 500",
+      "equipment": [
+        "rack",
+        "barbell",
+        "abmat"
+      ],
+      "exercises": [
+        "15 toes to bars",
+        "10 thrusters",
+        "30 abmat sit-ups",
+        "10 thrusters"
+      ],
+      "trainerTips": [
+        "Split your toes to bars into two sets maximum",
+        "Go unbroken on the thrusters"
+      ],
+      "id": "22b1d82b-aaf7-4fbc-9b12-1ae2ce8ebb2b",
+      "createdAt": "10/6/2022, 11:16:57 PM",
+      "updatedAt": "10/6/2022, 11:16:57 PM"
     }
   ]
 }
