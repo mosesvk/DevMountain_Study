@@ -11,7 +11,7 @@ const {
 app.route('/')
   .get(getAllRecordsCtrl)
 
-app.route('/:workoutId/records')
+app.route('/:workoutId')
   .get(getRecordForWorkoutCtrl)
 
 

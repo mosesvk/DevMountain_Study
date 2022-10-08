@@ -30,8 +30,8 @@ const getRecordForWorkoutCtrl = (req, res) => {
   }
 
   try {
-    const record = getRecordForWorkout(workoutId, params)
-    res.send({status: 'OK', data: record, params})
+    const record = getRecordForWorkout(workoutId)
+    res.send({status: 'OK', data: record})
   } catch (error) {
     res
     .status(error?.status || 500)
