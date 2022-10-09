@@ -12,7 +12,7 @@ const getAllWorkouts = (filterParams) => {
     if (filterParams.mode) {
       return DB.workouts.filter((workout) => (
         workout.mode.toLowerCase().includes(filterParams.mode)
-      ))
+      )) 
     }
     return workouts
   } catch (err) {
