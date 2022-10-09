@@ -10,11 +10,8 @@ const {
 } = require("../../controllers/workoutController");
 
 
-
-
 app.route('/')
   .get(getAllWorkoutsCtrl)
-  .get(getOneWorkoutCtrl)
   .post(createNewWorkoutCtrl)
 
 app.route('/:workoutId')

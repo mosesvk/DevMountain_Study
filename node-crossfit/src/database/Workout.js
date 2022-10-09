@@ -2,18 +2,21 @@
     // We'll be exporting some methods for certain database operations like creating a WOD that can be used by our Service Layer.
 
 
-
-
 const DB = require('./db.json');
-const {workouts} = require('./db.json')
 const { saveToDatabase } = require("./utils");
 
 
-const getAllWorkouts = () => {
+const getAllWorkouts = (filterParams) => {
   try {
-    return DB.workouts;
+    let workouts = DB.workouts;
+    if (filterParams.mode) {
+      return DB.workouts.filter((workout) => (
+        workout.mode.toLowerCase().includes(filterParams.mode)
+      ))
+    }
+    return workouts
   } catch (err) {
-    throw new Error(err)
+    throw new Error({stats: 500, message: err})
   }
 };
 

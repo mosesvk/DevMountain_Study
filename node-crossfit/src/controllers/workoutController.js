@@ -14,8 +14,11 @@ const {
 
 
 const getAllWorkoutsCtrl = (req, res) => {
+
+  const {mode} = req.query // this is an object that will consist of our filter parameters
+
   try {
-    const allWorkouts = getAll();
+    const allWorkouts = getAll({mode});
     res.send({ status: 'OK', data: allWorkouts });
   } catch (error) {
     res
