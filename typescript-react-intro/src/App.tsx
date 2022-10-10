@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css';
+import InputField from './components/InputField';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div >
-      <h1>Typescript Proj</h1>
+    <div className='App'>
+      <h1 className='heading'>Typescript ToDo</h1>
+
+      <InputField />
     </div>
   );
 }
