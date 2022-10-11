@@ -15,7 +15,7 @@ const App: React.FC = () => {
       setTodos([...todos, { id: Date.now(), todo, isDone: false }]);
       setTodo('');
     }
-  };
+  }; 
 
   return (
     <div className='App'>
