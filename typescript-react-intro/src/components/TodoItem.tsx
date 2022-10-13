@@ -5,13 +5,13 @@ import { MdDone } from 'react-icons/md';
 import { Draggable } from 'react-beautiful-dnd';
 
 interface Props {
-  idx: number;
+  index: number;
   todo: Todo;
   todos: Todo[];
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 }
 
-const TodoItem: React.FC<Props> = ({ idx, todo, todos, setTodos }) => {
+const TodoItem: React.FC<Props> = ({ index, todo, todos, setTodos }) => {
   const [edit, setEdit] = useState<boolean>(false);
   const [editTodo, setEditTodo] = useState<string>(todo.todo);
 
@@ -43,10 +43,10 @@ const TodoItem: React.FC<Props> = ({ idx, todo, todos, setTodos }) => {
   }, [edit]);
 
   return (
-    <Draggable draggableId={todo.id.toString()} index={idx}>
-      {(provided) => (
+    <Draggable draggableId={todo.id.toString()} index={index}>
+      {(provided, snapshot) => (
         <form
-          className='todos__single'
+          className={`todos__single ${snapshot.isDragging ? 'drag' : ''}`}
           onSubmit={(e) => handleEdit(e, todo.id)}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
