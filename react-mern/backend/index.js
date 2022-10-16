@@ -12,7 +12,7 @@ MongoClient.connect(
   process.env.REST_REVIEWS_DB_URI,
   {
     poolSize: 50,
-    wtimeout: 250,
+    wtimeout: 2500,
     useNewUrlParse: true
   }
 ).catch(err => {
