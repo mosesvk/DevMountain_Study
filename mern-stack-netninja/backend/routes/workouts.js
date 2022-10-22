@@ -6,7 +6,7 @@ const {
   createWorkout,
   deleteWorkoutById,
   updateWorkoutById,
-} = require('../controllers/workouts');
+} = require('../controllers/workoutsCtrl');
 
 app.route('/').get(getAllWorkouts).post(createWorkout);
 
