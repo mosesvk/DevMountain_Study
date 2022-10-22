@@ -19,7 +19,7 @@ const WorkoutForm = () => {
       }
     })
 
-    const json = await response.json
+    const json = await response.json()
 
     if (!response.ok) {
       setError(json.error)
@@ -44,14 +44,14 @@ const WorkoutForm = () => {
         value={title}
       />
 
-      <label>Exercise Load (lbs.): </label>
+      <label>Load (lbs.): </label>
       <input
         type='number'
         onChange={(e) => setLoad(e.target.value)}
         value={load}
       />
 
-      <label>Reps : </label>
+      <label>Reps: </label>
       <input
         type='number'
         onChange={(e) => setReps(e.target.value)}
