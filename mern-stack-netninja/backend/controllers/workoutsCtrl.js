@@ -49,18 +49,44 @@ const createWorkout = asyncHandler(async (req, res) => {
 });
 
 // DELETE workout
-const deleteWorkoutById = (req, res) => {
+const deleteWorkoutById = asyncHandler(async (req, res) => {
   const id = req.params.id;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    res
+      .status(404)
+      .send({ message: 'No workout was found with that given id' });
+  }
+
+  try {
+    await Workout.findByIdAndDelete(id);
+    res.status(200).send({ message: 'Workout Successfully Deleted' });
+  } catch (err) {
+    res.status(404).send({ message: 'Workout Could not be deleted' });
+  }
 
   res.json({ message: `deleting workout id - ${id}` });
-};
+});
 
 // UPDATE workout
-const updateWorkoutById = (req, res) => {
+const updateWorkoutById = asyncHandler(async (req, res) => {
   const id = req.params.id;
 
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    res
+      .status(404)
+      .send({ message: 'No workout was found with that given id' });
+  }
+
+  try {
+    const updatedWorkout = await Workout.findByIdAndUpdate({ _id: id }, { ...req.body });
+    res.status(200).send({ message: 'Workout successfully Updated', body: updatedWorkout });
+  } catch (err) {
+    res.status(500).send({ message: 'Workout did NOT Update' });
+  }
+
   res.json({ message: `updating workout id - ${id}` });
-};
+});
 
 module.exports = {
   getAllWorkouts,
