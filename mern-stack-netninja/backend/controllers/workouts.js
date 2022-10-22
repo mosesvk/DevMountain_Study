@@ -12,7 +12,8 @@ const getWorkoutById = (req, res) => {
 
 // POST workout
 const createWorkout = (req, res) => {
-  res.json({ message: req.body });
+  
+  res.json(req.body);
 };
 
 // DELETE workout
