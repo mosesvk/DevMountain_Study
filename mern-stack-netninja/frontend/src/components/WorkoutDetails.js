@@ -1,4 +1,7 @@
 const WorkoutDetails = ({ workout }) => {
+  const date = new Date(workout.createdAt)
+
+  console.log(date)
 
   return (
     <div className="workout-details">

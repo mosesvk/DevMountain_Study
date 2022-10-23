@@ -24,7 +24,8 @@ const WorkoutForm = () => {
     const json = await response.json()
 
     if (!response.ok) {
-      setError(json.error)
+      setError(json.message)
+      // console.log(json)
     }
     if (response.ok) {
       setError(null)

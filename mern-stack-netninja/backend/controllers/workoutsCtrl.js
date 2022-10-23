@@ -44,7 +44,7 @@ const createWorkout = asyncHandler(async (req, res) => {
     console.log(`successfully added workout to mongoDB`);
   } catch (err) {
     console.error(err);
-    res.json({ message: err.message });
+    res.status(400).json({ message: err.message });
   }
 });
 
