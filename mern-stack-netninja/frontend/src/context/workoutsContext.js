@@ -1,17 +1,16 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useReducer } from 'react'
 
-export const WorkoutsContext = createContext(); // this creates a brand new context
-const Provider = WorkoutsContext.Provider;
+export const WorkoutsContext = createContext()
 
-export const workoutReducer = (state, action) => {
-  switch(action.type) {
+export const workoutsReducer = (state, action) => {
+  switch (action.type) {
     case 'SET_WORKOUTS':
-      return {
-        workouts: action.payload
+      return { 
+        workouts: action.payload 
       }
     case 'CREATE_WORKOUT':
-      return {
-        workouts: [action.payload, ...state.workouts]
+      return { 
+        workouts: [action.payload, ...state.workouts] 
       }
     default:
       return state
@@ -19,11 +18,13 @@ export const workoutReducer = (state, action) => {
 }
 
 export const WorkoutsContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(workoutReducer, {
+  const [state, dispatch] = useReducer(workoutsReducer, { 
     workouts: null
   })
-
+  
   return (
-    <Provider value={{...state, dispatch}}>{children}</Provider>
-  );
-};
+    <WorkoutsContext.Provider value={{ ...state, dispatch }}>
+      { children }
+    </WorkoutsContext.Provider>
+  )
+}
