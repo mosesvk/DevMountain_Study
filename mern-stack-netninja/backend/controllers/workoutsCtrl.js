@@ -50,7 +50,7 @@ const createWorkout = asyncHandler(async (req, res) => {
 
 // DELETE workout
 const deleteWorkoutById = asyncHandler(async (req, res) => {
-  const id = req.params.id;
+  const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     res
@@ -58,35 +58,34 @@ const deleteWorkoutById = asyncHandler(async (req, res) => {
       .send({ message: 'No workout was found with that given id' });
   }
 
-  try {
-    await Workout.findByIdAndDelete(id);
-    res.status(200).send({ message: 'Workout Successfully Deleted' });
-  } catch (err) {
-    res.status(404).send({ message: 'Workout Could not be deleted' });
+  const workout = await Workout.findOneAndDelete({_id: id})
+
+  if(!workout) {
+    return res.status(400).json({error: 'No such workout'})
   }
 
-  res.json({ message: `deleting workout id - ${id}` });
+  res.status(200).json(workout)
 });
 
 // UPDATE workout
-const updateWorkoutById = asyncHandler(async (req, res) => {
-  const id = req.params.id;
+// update a workout
+const updateWorkoutById = async (req, res) => {
+  const { id } = req.params
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    res
-      .status(404)
-      .send({ message: 'No workout was found with that given id' });
+    return res.status(400).json({error: 'No such workout'})
   }
 
-  try {
-    const updatedWorkout = await Workout.findByIdAndUpdate({ _id: id }, { ...req.body });
-    res.status(200).send({ message: 'Workout successfully Updated', body: updatedWorkout });
-  } catch (err) {
-    res.status(500).send({ message: 'Workout did NOT Update' });
+  const workout = await Workout.findOneAndUpdate({_id: id}, {
+    ...req.body
+  })
+
+  if (!workout) {
+    return res.status(400).json({error: 'No such workout'})
   }
 
-  res.json({ message: `updating workout id - ${id}` });
-});
+  res.status(200).json(workout)
+}
 
 module.exports = {
   getAllWorkouts,
