@@ -1,22 +1,25 @@
 const asyncHandler = require('express-async-handler');
-const mongoose = require('mongoose');
+require('dotenv').config();
+const jwt = require('jsonwebtoken')
 
 const User = require('../models/userModel')
+
+const createToken = (_id) => {
+  return jwt.sign({_id}, process.env.SECRET, {expiresIn: '3d'})
+}
 
 const loginUser = asyncHandler(async (req, res) => {
   const {email, password} = req.body
 
-  if (!email) {
-    res.status(404).send({error: 'Email is required'})
-  }
-  if (!password) {
-    res.status(404).send({error: 'Password is required'})
-  }
-  if (password.length < 6) {
-    res.status(500).send({error: 'Password needs to be at least 6 characters long'})
-  }
+  try {
+    const user = await User.login(email, password)
 
-  res.status(200).send({message: 'User successfully logged in', body: req.body})
+    const token = createToken(user._id)
+
+    res.status(200).send({email, token})
+  } catch (err) {
+    res.status(400).send({error: err.message})
+  }
 })
 
 
@@ -25,7 +28,10 @@ const signupUser = asyncHandler(async (req, res) => {
 
   try {
     const user = await User.signup(email, password)
-    res.status(200).json({email, user})
+
+    const token = createToken(user._id)
+
+    res.status(200).json({email, token})
   } catch (err) {
     res.status(400).json({error: err.message})
   }
