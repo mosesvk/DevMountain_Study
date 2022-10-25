@@ -4,7 +4,7 @@
 /* layout */
 :root {
   --primary: #1aac83;
-  --error: #ea6690;
+  --error: #e7195a;
 }
 body {
   background: #f1f1f1;
@@ -98,7 +98,7 @@ div.error {
   margin: 20px 0;
 }
 input.error {
-  border: 2px solid var(--error);
+  border: 1px solid var(--error);
 }
 
 /* navbar */
@@ -109,6 +109,17 @@ nav {
 nav a {
   margin-left: 10px;
 }
+nav button {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+}
+
 /* auth forms */
 form.signup, form.login {
   max-width: 400px;

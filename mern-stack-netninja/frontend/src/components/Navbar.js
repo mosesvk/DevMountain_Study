@@ -1,6 +1,13 @@
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { useLogout } from '../hooks/useLogout';
 
 const Navbar = () => {
+  const { logout } = useLogout();
+
+  const logoutHandler = () => {
+    logout();
+  };
+
   return (
     <header>
       <div className='container'>
@@ -9,13 +16,16 @@ const Navbar = () => {
         </Link>
         <nav>
           <div>
+            <button onClick={logoutHandler}>Log out</button>
+          </div>
+          <div>
             <Link to='/login'>Login</Link>
             <Link to='/signup'>Signup</Link>
           </div>
         </nav>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
