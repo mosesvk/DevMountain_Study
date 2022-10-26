@@ -6,7 +6,7 @@ const Workout = require('../models/workoutModel');
 // GET ALL workouts
 const getAllWorkouts = asyncHandler(async (req, res) => {
   const user_id = req.user._id;
-  try {aqw  
+  try {
     const workouts = await Workout.find({ user_id }).sort({ createdAt: -1 });
     res.status(200).json(workouts);
   } catch (err) {
