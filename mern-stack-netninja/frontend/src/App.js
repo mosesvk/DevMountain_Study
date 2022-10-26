@@ -27,7 +27,7 @@ function App() {
             <Route
               path='signup'
               element={!user ? <Signup /> : <Navigate to='/' />}
-    f        />
+            />
           </Routes>
         </div>
       </BrowserRouter>
