@@ -55,8 +55,8 @@ const createWorkout = asyncHandler(async (req, res) => {
 
 
   try {
-    const user_id = req.user_id // remember that we get the user_id from the 'requireAuth.js' middleware function. If the user is authorized (or logged in)
-    console.log('hit')
+
+    const user_id = req.user._id // remember that we get the user_id from the 'requireAuth.js' middleware function. If the user is authorized (or logged in)
     const workout = await Workout.create({ title, reps, load, user_id });
     res.status(200).json(workout);
     console.log(`successfully added workout to mongoDB`);
