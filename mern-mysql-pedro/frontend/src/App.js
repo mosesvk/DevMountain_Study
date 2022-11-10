@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 
 function App() {
-  const [postsList, setPostsList] = useState([]);
+  const [postsList, setPostsList] = useState(null);
   const url = process.env.REACT_APP_URL;
 
   useEffect(() => {
