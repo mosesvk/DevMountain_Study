@@ -2,10 +2,11 @@ const express = require('express');
 const {randomBytes} = require('crypto') // generates new id that is assigned to the post that the user is going to create
 require('dotenv').config(); 
 var bodyParser = require('body-parser')
-
+const cors = require('cors')
 
 const app = express();
 app.use(bodyParser.json())
+app.use(cors())
 
 const posts = {}
 
