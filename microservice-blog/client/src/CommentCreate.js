@@ -3,11 +3,12 @@ import axios from "axios";
 
 const CommentCreate = ({ postId }) => {
   const [content, setContent] = useState("");
+  const urlComments = process.env.REACT_APP_URL_COMMENTS  
 
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    await axios.post(`http://localhost:4001/posts/${postId}/comments`, {
+    await axios.post(`${urlComments}/posts/${postId}/comments`, {
       content,
     });
 

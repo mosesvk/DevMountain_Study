@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+
 const PostCreate = () => {
   const [title, setTitle] = useState("");
-
+  const urlPosts = process.env.REACT_APP_URL_POSTS
+  
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    await axios.post("http://localhost:4000/posts", {
+    await axios.post(`${urlPosts}/api/posts`, {
       title,
     });
 

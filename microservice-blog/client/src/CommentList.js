@@ -3,10 +3,11 @@ import axios from "axios";
 
 const CommentList = ({ postId }) => {
   const [comments, setComments] = useState([]);
+  const urlComments = process.env.REACT_APP_URL_COMMENTS
 
   const fetchData = async () => {
     const res = await axios.get(
-      `http://localhost:4001/posts/${postId}/comments`
+      `${urlComments}/posts/${postId}/comments`
     );
 
     setComments(res.data);
@@ -14,7 +15,7 @@ const CommentList = ({ postId }) => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  });
 
   const renderedComments = comments.map((comment) => {
     return <li key={comment.id}>{comment.content}</li>;

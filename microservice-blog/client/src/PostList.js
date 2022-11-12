@@ -3,18 +3,21 @@ import axios from "axios";
 import CommentCreate from "./CommentCreate";
 import CommentList from "./CommentList";
 
+
 const PostList = () => {
   const [posts, setPosts] = useState({});
+  const urlPosts = process.env.REACT_APP_URL_POSTS
 
   const fetchPosts = async () => {
-    const res = await axios.get("http://localhost:4000/posts");
-
+    const res = await axios.get(`${urlPosts}/api/posts`);
     setPosts(res.data);
   };
 
+  console.log(posts)
+
   useEffect(() => {
     fetchPosts();
-  }, []);
+  });
 
   const renderedPosts = Object.values(posts).map((post) => {
     return (
