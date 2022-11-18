@@ -1,7 +1,5 @@
 # Specify a base image
-FROM node:14-alpine
-
-WORKDIR /usr/app
+FROM node:alpine
 
 # Install some depenendencies
 COPY ./ ./
