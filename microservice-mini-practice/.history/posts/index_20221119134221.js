@@ -19,7 +19,6 @@ app.post('/posts', async (req, res) => {
   const id = randomBytes(4).toString('hex');
   const { title } = req.body;
 
-  console.log(title)
   posts[id] = {
     id,
     title
@@ -31,8 +30,6 @@ app.post('/posts', async (req, res) => {
       id, title
     }
   })
-
-  console.log(posts)
 
   res.status(201).send(posts[id]);
 });
