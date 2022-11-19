@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata: 
+metadata:
   name: posts-depl
-spec: 
+spec:
   replicas: 1
-  selector: 
+  selector:
     matchLabels:
       app: posts
-  template: 
+  template:
     metadata:
-      labels: 
+      labels:
         app: posts
-    spec: 
-      containers: 
+    spec:
+      containers:
         - name: posts
-          image: mosesvk/posts
+          image: cygnetops/posts-82
 ---
 apiVersion: v1
 kind: Service
-metadata: 
+metadata:
   name: posts-clusterip-srv
-spec: 
-  selector: 
+spec:
+  selector:
     app: posts
-  ports: 
+  ports:
     - name: posts
       protocol: TCP
       port: 4000
