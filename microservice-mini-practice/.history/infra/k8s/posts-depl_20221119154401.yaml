@@ -1,30 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: comments-depl
+  name: posts-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: comments
+      app: posts
   template:
     metadata:
       labels:
-        app: comments
+        app: posts
     spec:
       containers:
-        - name: comments
-          image: mosesvk/comments
+        - name: posts
+          image: mosesvk/event-bus
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: comments-srv
+  name: posts-clusterip-srv
 spec:
   selector:
-    app: comments
+    app: posts
   ports:
-    - name: comments
+    - name: posts
       protocol: TCP
-      port: 4001
-      targetPort: 4001
+      port: 4000
+      targetPort: 4000
