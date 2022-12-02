@@ -4,14 +4,14 @@ import ImageShow from './ImageShow'
 
 const ImageList = ({images}) => {
   
-  const renderedImages = images.map((img) => (
-    <ImageShow key={img.id} img={img}  /> 
+  const renderedImages = images.map((img, idx) => (
+    <ImageShow /> 
   ))
 
   return (
-    <>
-      {renderedImages}
-    </>
+    <div>
+
+    </div>
   )
 }
 

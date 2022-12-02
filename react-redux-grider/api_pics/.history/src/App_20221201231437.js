@@ -8,8 +8,8 @@ const App = () => {
 
   const handleSubmit = async (searchTerm) => {
     // console.log('hit', searchTerm)
-    const res = await searchImages(searchTerm);
-    setImages(res)
+    const data = await searchImages(searchTerm);
+    setImages(data)
   };
 
   return (
