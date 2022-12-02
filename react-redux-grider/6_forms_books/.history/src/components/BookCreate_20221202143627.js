@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
+const initialValues = {
+  title: '',
+  author: ''
+}
 
 const BookCreate = ({ onCreate }) => {
-  const [values, setValues] = useState({
-    title: '',
-    author: ''
-  });
+  const [values, setValues] = useState(initialValues);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
