@@ -19,7 +19,7 @@ const App = () => {
   const editBookById = (book_updated) => {
     const { id } = book_updated;
     const updatedBooks = books.map((book) => {
-      if (book.id === id) return book_updated
+      if (book.id === id) return book_updated;
 
       return book;
     });

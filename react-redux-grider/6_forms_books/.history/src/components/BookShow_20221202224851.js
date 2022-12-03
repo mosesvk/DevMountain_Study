@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import BookEdit from './BookEdit';
+import BookEdit from './BookEdit'
 
-const BookShow = ({ book, onDelete, onEdit }) => {
+const BookShow = ({ book, onDelete }) => {
   const [showEdit, setShowEdit] = useState(false);
 
   const deleteHandler = () => {
@@ -13,10 +13,8 @@ const BookShow = ({ book, onDelete, onEdit }) => {
       <h2>{book.title}</h2>
       <p>by: {book.author}</p>
       <button onClick={deleteHandler}>Delete</button>
-      {!showEdit && (
-        <button onClick={() => setShowEdit(!showEdit)}>Edit</button>
-      )}
-      {showEdit && <BookEdit book={book} onEdit={onEdit} />}
+      {!showEdit && <button>Edit</button>}
+      {showEdit && <BookEdit />}
     </div>
   );
 };

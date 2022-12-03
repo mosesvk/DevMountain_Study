@@ -10,13 +10,13 @@ const BookEdit = ({ book, onEdit }) => {
   const submitHandler = (event) => {
     event.preventDefault()
 
-    onEdit(bookDesc)
+    console.log(values)
   };
 
   const changeHandler = (event) => {
     const {name, value} = event.target
-    setBookDesc({
-      ...bookDesc,
+    setValues({
+      ...values,
       [name]: value
     })
   };

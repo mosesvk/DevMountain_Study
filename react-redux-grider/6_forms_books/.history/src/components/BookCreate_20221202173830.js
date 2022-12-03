@@ -14,7 +14,7 @@ const BookCreate = ({ onCreate }) => {
     setValues({
       ...values,
       [name]: value, 
-      id: Math.floor(Math.random() * 9999)
+      id: Math.floor(Math.random(1000))
     });
   };
 

@@ -10,7 +10,7 @@ const BookEdit = ({ book, onEdit }) => {
   const submitHandler = (event) => {
     event.preventDefault()
 
-    onEdit(bookDesc)
+    onEdit()
   };
 
   const changeHandler = (event) => {

@@ -9,7 +9,7 @@ const BookEdit = ({ book, onEdit }) => {
 
   const submitHandler = (event) => {
     event.preventDefault()
-
+    console.log(bookDesc)
     onEdit(bookDesc)
   };
 
