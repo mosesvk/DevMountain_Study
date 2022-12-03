@@ -45,6 +45,7 @@ const BookCreate = ({ onCreate }) => {
           name='author'
           label='Author'
         />
+        <input type='file' value={values.imageUrl} src='https://picsum.photos/300/200' accept='image/*' className='input'/>
         <input type='submit' value='Submit' className='button' />
       </form>
     </div>

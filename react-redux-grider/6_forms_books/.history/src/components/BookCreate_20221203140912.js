@@ -6,7 +6,7 @@ const BookCreate = ({ onCreate }) => {
     title: '',
     author: '', 
     id: '',
-    imageURL: ''
+    image: ''
   });
 
   const handleChange = (event) => {
@@ -45,6 +45,7 @@ const BookCreate = ({ onCreate }) => {
           name='author'
           label='Author'
         />
+        <input type='file' value={imageUrl} accept='image/*' className='input'/>
         <input type='submit' value='Submit' className='button' />
       </form>
     </div>

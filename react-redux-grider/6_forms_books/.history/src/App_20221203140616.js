@@ -28,10 +28,10 @@ const App = () => {
   };
 
   return (
-    <div className='app'>
+    <>
       <BookList books={books} onDelete={deleteBookById} onEdit={editBookById} />
       <BookCreate onCreate={createBook} />
-    </div>
+    </>
   );
 };
 

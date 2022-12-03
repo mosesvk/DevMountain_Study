@@ -15,10 +15,6 @@ const BookShow = ({ book, onDelete, onEdit }) => {
 
   return (
     <div className='book-show'>
-      <img 
-        alt='books'
-        src='https://picsum.photos/300/200'
-      />
       <h2>{book.title}</h2>
       <p>by: {book.author}</p>
       <div className='actions'>
