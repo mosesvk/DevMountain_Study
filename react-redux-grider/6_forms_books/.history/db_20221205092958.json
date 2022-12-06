@@ -1,8 +1,10 @@
 {
   "books": [
     {
-      "title": "Dark Tower",
-      "id": 9875
+      "title": "Harry Potter",
+      "author": "JK Rowl",
+      "id": 9875,
+      "imageURL": ""
     },
     {
       "title": "Harry Potter #2",
