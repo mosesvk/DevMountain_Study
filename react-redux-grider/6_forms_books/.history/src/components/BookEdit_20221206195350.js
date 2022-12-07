@@ -1,28 +1,27 @@
 import { useState } from 'react';
-import useBooksContext from '../hooks/use-books-context';
+import {editBookById} from '../context/books';
 
 const BookEdit = ({ book, onSubmit }) => {
-  const { editBookById } = useBooksContext()
 
   const [bookDesc, setBookDesc] = useState({
     title: book.title,
     author: book.author,
     id: book.id
-  });
+  }); 
 
   const submitHandler = (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    onSubmit();
-    editBookById(bookDesc);
+    onSubmit(bookDesc)
+    editBookById(book.id, bookDesc)
   };
 
   const changeHandler = (event) => {
-    const { name, value } = event.target;
+    const {name, value} = event.target
     setBookDesc({
       ...bookDesc,
       [name]: value
-    });
+    })
   };
 
   return (
@@ -35,7 +34,7 @@ const BookEdit = ({ book, onSubmit }) => {
       />
       <input
         value={bookDesc.author}
-        name='author'
+        name='title'
         placeholder={book.author}
         onChange={changeHandler}
       />

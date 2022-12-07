@@ -8,7 +8,7 @@ const element = document.getElementById('root');
 const root = ReactDOM.createRoot(element);
 
 root.render(
-  <Provider>
+  <Provider value={5}>
     <App />
   </Provider>
 );

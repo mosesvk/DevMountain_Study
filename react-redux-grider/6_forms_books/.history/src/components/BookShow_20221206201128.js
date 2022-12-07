@@ -3,7 +3,7 @@ import BookEdit from './BookEdit';
 import useBooksContext from '../hooks/use-books-context';
 
 const BookShow = ({ book }) => {
-  const { deleteBookById } = useBooksContext()
+  const { deleteBookById } = useContext(BooksContext)
   const [showEdit, setShowEdit] = useState(false);
 
   const deleteHandler = () => {
