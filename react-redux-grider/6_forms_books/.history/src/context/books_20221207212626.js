@@ -6,15 +6,11 @@ const BooksContext = createContext();
 function Provider({ children }) {
   const [books, setBooks] = useState([]);
 
-  const fetchBooks = useCallback (async () => {
+  const fetchBooks = async () => {
     const {data} = await axios.get('http://localhost:3001/books')
 
     setBooks(data)
-  }, [])
-
-  // we need useCallback because 'fetchBooks' is a dependancy in the "App.js" file which is This file's child component
-  // useCallback's empty array [], allows us to only run the fetchBooks function once
-    // if we don't, our server will be in an infinite loop calling api's
+  }
 
   const createBook = async (book) => {
 
