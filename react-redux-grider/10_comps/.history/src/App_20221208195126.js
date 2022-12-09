@@ -1,8 +1,7 @@
-import { GoBell, GoCloudDownload } from 'react-icons/go';
+import { GoBell } from 'react-icons/go';
 import Button from './components/Button';
 
-const App = () => { 
-
+const App = () => {
   return (
     <div>
       <Button success rounded outline>
@@ -10,7 +9,6 @@ const App = () => {
         Success
       </Button>
       <Button danger outline>
-        <GoCloudDownload />
         Danger
       </Button>
       <Button warning>Warning</Button>

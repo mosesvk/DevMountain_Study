@@ -3,9 +3,13 @@ import Button from './components/Button';
 
 const App = () => { 
 
+    const handleClick = () => {
+        console.log('Clicked Success Button')
+    }
+
   return (
     <div>
-      <Button success rounded outline>
+      <Button success rounded outline onClick={handleClick}>
         <GoBell />
         Success
       </Button>

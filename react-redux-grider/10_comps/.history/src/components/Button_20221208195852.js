@@ -9,13 +9,10 @@ function Button({
   warning,
   danger,
   outline,
-  rounded, 
-  ...rest
+  rounded
 }) {
 
-    // rest is EVERY OTHER prop that is passed down. 
-    // we need to pass down rest.className
-    const classes = className(rest.className, 'm-5 flex items-center px-3 py-1.5 border', {
+    const classes = className('flex items-center px-3 py-1.5 border', {
         'border-blue-500 bg-blue-500 text-white': primary,
         'border-gray-900 bg-gray-900 text-white': secondary,
         'border-green-500 bg-green-500 text-white': success,
@@ -31,7 +28,7 @@ function Button({
     })
 
   return (
-    <button {...rest} className={classes}>
+    <button className={classes}>
       {children}
     </button>
   );

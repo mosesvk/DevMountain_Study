@@ -1,8 +1,7 @@
 import { GoBell, GoCloudDownload } from 'react-icons/go';
 import Button from './components/Button';
 
-const App = () => { 
-
+const App = () => {
   return (
     <div>
       <Button success rounded outline>
