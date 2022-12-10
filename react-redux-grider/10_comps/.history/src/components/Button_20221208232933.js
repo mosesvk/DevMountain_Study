@@ -11,9 +11,6 @@ function Button({
   rounded,
   ...rest
 }) {
-  // rest is the rest of the props. '
-  // we need rest.className so we can implement custom classNames applied to a button
-  // otherwise the 'className' imported above will overide it.
   const classes = className(
     rest.className,
     'm-5 flex items-center px-3 py-1.5 border',
