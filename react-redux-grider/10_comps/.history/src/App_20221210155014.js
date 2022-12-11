@@ -23,9 +23,10 @@ function App() {
     }
   ];
 
+
   return (
     <>
-      <Accordion items={items} />
+      <Accordion items={items}/>
       <ButtonPage />
     </>
   );
