@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Dropdown from './components/Dropdown';
 
 function App() {
-  const [selection, setSelection] = useState(null)
+  const [selection, setSelection] = useState('Select...')
 
   const handleSelect = (option) => {
     setSelection(option)

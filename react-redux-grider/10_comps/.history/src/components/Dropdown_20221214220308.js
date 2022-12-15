@@ -20,10 +20,12 @@ function Dropdown({ options, selection, onSelect }) {
     );
   });
 
+  let content = 'Select...'
+  if (selection) content = selection.label
 
   return (
     <div>
-      <div onClick={handleClick}>{selection?.label || 'Select...'}.</div>
+      <div onClick={handleClick}>{content}.</div>
       {isOpen && <div>{renderedOptions}</div>}
     </div>
   );
