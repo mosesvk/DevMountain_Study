@@ -13,11 +13,9 @@ function Dropdown({ options, value, onChange }) {
         // Whenever we click outside of the dropbox we want the box to collapse
       if (!divEl.current.contains(event.target)) setIsOpen(false)
     }
-      // clickhandler will fire 'handler' function whenever we click
+
     document.addEventListener('click', handler, true)
-      
-      // cleanup function. 
-        // When Dropdown is removed from the screen, we don't want anymore clickHandlers
+
     return () => {
       document.removeEventListener('click', handler)
     }

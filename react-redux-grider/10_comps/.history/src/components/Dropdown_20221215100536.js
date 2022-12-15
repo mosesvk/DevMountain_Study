@@ -17,7 +17,7 @@ function Dropdown({ options, value, onChange }) {
     document.addEventListener('click', handler, true)
       
       // cleanup function. 
-        // When Dropdown is removed from the screen, we don't want anymore clickHandlers
+        // When Dropdown is removed from the screen, you don't have to worry about it no more. 
     return () => {
       document.removeEventListener('click', handler)
     }
