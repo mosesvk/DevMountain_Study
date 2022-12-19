@@ -6,16 +6,16 @@ import ButtonPage from './pages/ButtonPage';
 
 function App() {
   return (
-    <div className='container mx-auto grid grid-cols-6 gap-4 mt-4'>
-      <Sidebar />
-      <div className='col-span-5'>
+    <div>
+        <Sidebar />
+      <div>
         <Route path='/'>
           <DropdownPage />
         </Route>
-        <Route path='/accordion'>
+        <Route path='accordion'>
           <AccordionPage />
         </Route>
-        <Route path='/buttons'>
+        <Route path='buttons'>
           <ButtonPage />
         </Route>
       </div>

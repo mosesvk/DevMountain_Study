@@ -9,7 +9,6 @@ function NavigationProvider({ children }) {
     const handler = () => {
       setCurrentPath(window.location.pathname);
     };
-
     window.addEventListener('popstate', handler);
 
     return () => {
@@ -23,7 +22,7 @@ function NavigationProvider({ children }) {
   };
 
   return (
-    <NavigationContext.Provider value={{currentPath, navigate}}>
+    <NavigationContext.Provider value={{ currentPath, navigate }}>
       {children}
     </NavigationContext.Provider>
   );
