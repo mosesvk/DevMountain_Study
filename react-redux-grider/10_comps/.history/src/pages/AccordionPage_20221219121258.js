@@ -1,5 +1,4 @@
 import Accordion from '../components/Accordion'
-
 const AccordionPage = () => {
   const items = [
     {
