@@ -23,7 +23,7 @@ function App() {
         <Route path='/modal'>
           <ModalPage />
         </Route>
-        <Route path='/table'>
+        <Route path='/modal'>
           <TablePage />
         </Route>
       </div>
