@@ -68,8 +68,10 @@ function SortableTable(props) {
   }
 
   return (
-
+    <div>
+      {sortOrder} - {sortBy}
       <Table {...props} data={sortedData} config={updatedConfig} />
+    </div>
   );
 }
 

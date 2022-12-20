@@ -1,4 +1,3 @@
-// import Table from '../components/Table';
 import SortableTable from '../components/SortableTable';
 
 const TablePage = () => {

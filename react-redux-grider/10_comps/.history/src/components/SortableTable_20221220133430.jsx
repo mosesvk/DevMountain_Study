@@ -8,12 +8,6 @@ function SortableTable(props) {
   const { config, data } = props;
 
   const sortHandler = (label) => {
-    if (sortBy && label !== sortBy) {
-        setSortOrder('asc')
-        setSortBy(label)
-        return
-    }
-
     if (sortOrder === null) {
       setSortOrder('asc');
       setSortBy(label);
@@ -68,42 +62,43 @@ function SortableTable(props) {
   }
 
   return (
-
+    <div>
+      {sortOrder} - {sortBy}
       <Table {...props} data={sortedData} config={updatedConfig} />
+    </div>
   );
 }
 
 function getIcons(label, sortBy, sortOrder) {
-  if (label !== sortBy)
-    return (
-      <div>
-        <GoArrowSmallUp />
-        <GoArrowSmallDown />
-      </div>
-    );
-
-  if (sortOrder === null) {
-    return (
-      <div>
-        <GoArrowSmallUp />
-        <GoArrowSmallDown />
-      </div>
-    );
-  } else if (sortOrder === 'asc') {
-    return (
-      <div>
-        <GoArrowSmallUp />
-        <GoArrowSmallDown style={{ visibility: 'hidden' }} />
-      </div>
-    );
-  } else if (sortOrder === 'desc') {
-    return (
-      <div>
-        <GoArrowSmallUp style={{ visibility: 'hidden' }} />
-        <GoArrowSmallDown />
-      </div>
-    );
+    if (label !== sortBy) {
+      return (
+        <div>
+          <GoArrowSmallUp />
+          <GoArrowSmallDown />
+        </div>
+      );
+    }
+  
+    if (sortOrder === null) {
+      return (
+        <div>
+          <GoArrowSmallUp />
+          <GoArrowSmallDown />
+        </div>
+      );
+    } else if (sortOrder === 'asc') {
+      return (
+        <div>
+          <GoArrowSmallUp />
+        </div>
+      );
+    } else if (sortOrder === 'desc') {
+      return (
+        <div>
+          <GoArrowSmallDown />
+        </div>
+      );
+    }
   }
-}
 
 export default SortableTable;

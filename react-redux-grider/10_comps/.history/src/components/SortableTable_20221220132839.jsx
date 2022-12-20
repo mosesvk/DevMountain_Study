@@ -8,12 +8,6 @@ function SortableTable(props) {
   const { config, data } = props;
 
   const sortHandler = (label) => {
-    if (sortBy && label !== sortBy) {
-        setSortOrder('asc')
-        setSortBy(label)
-        return
-    }
-
     if (sortOrder === null) {
       setSortOrder('asc');
       setSortBy(label);
@@ -35,17 +29,18 @@ function SortableTable(props) {
       ...column,
       header: () => (
         <th
-          className='cursor-pointer hover:bg-gray-100'
+          className="cursor-pointer hover:bg-gray-100"
           onClick={() => sortHandler(column.label)}
         >
-          <div className='flex items-center'>
+          <div className="flex items-center">
             {getIcons(column.label, sortBy, sortOrder)}
             {column.label}
           </div>
         </th>
-      )
+      ),
     };
   });
+
 
   let sortedData = data;
   if (sortOrder && sortBy) {
@@ -68,8 +63,10 @@ function SortableTable(props) {
   }
 
   return (
-
+    <div>
+      {sortOrder} - {sortBy}
       <Table {...props} data={sortedData} config={updatedConfig} />
+    </div>
   );
 }
 
@@ -93,13 +90,11 @@ function getIcons(label, sortBy, sortOrder) {
     return (
       <div>
         <GoArrowSmallUp />
-        <GoArrowSmallDown style={{ visibility: 'hidden' }} />
       </div>
     );
   } else if (sortOrder === 'desc') {
     return (
       <div>
-        <GoArrowSmallUp style={{ visibility: 'hidden' }} />
         <GoArrowSmallDown />
       </div>
     );

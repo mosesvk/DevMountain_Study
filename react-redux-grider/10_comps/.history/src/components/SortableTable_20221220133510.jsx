@@ -8,12 +8,6 @@ function SortableTable(props) {
   const { config, data } = props;
 
   const sortHandler = (label) => {
-    if (sortBy && label !== sortBy) {
-        setSortOrder('asc')
-        setSortBy(label)
-        return
-    }
-
     if (sortOrder === null) {
       setSortOrder('asc');
       setSortBy(label);
@@ -68,8 +62,10 @@ function SortableTable(props) {
   }
 
   return (
-
+    <div>
+      {sortOrder} - {sortBy}
       <Table {...props} data={sortedData} config={updatedConfig} />
+    </div>
   );
 }
 
@@ -92,14 +88,13 @@ function getIcons(label, sortBy, sortOrder) {
   } else if (sortOrder === 'asc') {
     return (
       <div>
+        <br/>
         <GoArrowSmallUp />
-        <GoArrowSmallDown style={{ visibility: 'hidden' }} />
       </div>
     );
   } else if (sortOrder === 'desc') {
     return (
       <div>
-        <GoArrowSmallUp style={{ visibility: 'hidden' }} />
         <GoArrowSmallDown />
       </div>
     );
