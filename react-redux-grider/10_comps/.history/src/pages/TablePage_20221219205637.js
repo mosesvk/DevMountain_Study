@@ -17,7 +17,7 @@ const TablePage = () => {
         { label: 'Score', render: (fruit) => fruit.score  },
     ]
 
-    const keyFn = (fruit) => {
+    const keyFn = () => {
         return fruit.name
     }
 

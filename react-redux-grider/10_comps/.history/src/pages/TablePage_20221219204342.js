@@ -1,4 +1,3 @@
-import { hasFormSubmit } from '@testing-library/user-event/dist/utils'
 import React from 'react'
 import Table from '../components/Table'
 
@@ -12,17 +11,13 @@ const TablePage = () => {
     ]
     
     const config = [
-        { label: 'Name of Color', render: (fruit) => fruit.name },
-        { label: 'Color', render: (fruit) => <div className={`p-3 m-2 ${fruit.color}`}></div>  },
-        { label: 'Score', render: (fruit) => fruit.score  },
+        { label: 'Name of Color' },
+        { label: 'Col' },
+        { label: 'Name' },
     ]
 
-    const keyFn = (fruit) => {
-        return fruit.name
-    }
-
   return (
-    <div><Table data={data} config={config} keyFn={keyFn}/></div>
+    <div><Table data={data} config={config} /></div>
   )
 }
 

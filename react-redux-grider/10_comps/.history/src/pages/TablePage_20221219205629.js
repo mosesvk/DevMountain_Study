@@ -17,12 +17,12 @@ const TablePage = () => {
         { label: 'Score', render: (fruit) => fruit.score  },
     ]
 
-    const keyFn = (fruit) => {
+    const keyFn = () => {
         return fruit.name
     }
 
   return (
-    <div><Table data={data} config={config} keyFn={keyFn}/></div>
+    <div><Table data={data} config={config} /></div>
   )
 }
 
