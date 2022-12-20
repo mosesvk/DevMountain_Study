@@ -1,3 +1,5 @@
+import { hasFormSubmit } from '@testing-library/user-event/dist/utils';
+import React from 'react';
 import SortableTable from '../components/SortableTable';
 
 const TablePage = () => {
@@ -21,7 +23,7 @@ const TablePage = () => {
     {
       label: 'Score',
       render: (fruit) => fruit.score,
-      sortValue: (fruit) => fruit.score
+      sortValue: (fruit) => fruit.name
     }
   ];
 
