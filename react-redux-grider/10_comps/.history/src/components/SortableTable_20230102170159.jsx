@@ -1,12 +1,10 @@
+import { useState } from 'react';
 import { GoArrowSmallDown, GoArrowSmallUp } from 'react-icons/go';
 import Table from './Table';
-import useSort from '../hooks/use-sort';
 
 function SortableTable(props) {
 
   const { config, data } = props;
-
-  const {sortOrder, sortBy, sortedData, sortColumnHandler} = useSort(data, config)
 
   const updatedConfig = config.map((column) => {
     if (!column.sortValue) {
@@ -18,7 +16,7 @@ function SortableTable(props) {
       header: () => (
         <th
           className='cursor-pointer hover:bg-gray-100'
-          onClick={() => sortColumnHandler(column.label)}
+          onClick={() => sortHandler(column.label)}
         >
           <div className='flex items-center'>
             {getIcons(column.label, sortBy, sortOrder)}
