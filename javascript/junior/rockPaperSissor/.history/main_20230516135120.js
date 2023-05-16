@@ -27,7 +27,7 @@ if (playGame) {
 
     alert(result)
     playGame = confirm('play again?')
-    if (!playGame) alert('Ok, Thanks for Playing.')
+    playAgain ? location.reload() : alert('ok, thanks for playing.')
     } else {
         alert("You didn't enter rock, paper, or scissors")
     }

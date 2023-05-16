@@ -11,8 +11,12 @@ if (playGame) {
       playerOne === 'scissors'
     ) {
       const computerChoice = Math.floor(Math.floor(Math.random() * 3 + 1));
-      const rpsArray = ['rock', 'paper', 'scissors']
-      const computer = rpsArray[computerChoice]
+      const computer =
+        computerChoice === 1
+          ? 'rock'
+          : computerChoice === 2
+          ? 'paper'
+          : 'scissors';
 
       const result =
         playerOne === computer
@@ -26,8 +30,8 @@ if (playGame) {
           : `playerOne: ${playerOne}\nComputer: ${computer}\nplayerOne wins`;
 
     alert(result)
-    playGame = confirm('play again?')
-    if (!playGame) alert('Ok, Thanks for Playing.')
+    const playAgain = confirm('play again?')
+    playAgain ? location.reload() : alert('ok, thanks for playing.')
     } else {
         alert("You didn't enter rock, paper, or scissors")
     }

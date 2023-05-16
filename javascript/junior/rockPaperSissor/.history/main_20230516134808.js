@@ -2,19 +2,23 @@ let playGame = confirm('Shall we play rock, paper, or scissors?');
 
 if (playGame) {
   // play
-  const playerChoice = prompt('Please enter rock, paper, or scissors.');
+  let playerChoice = prompt('Please enter rock, paper, or scissors.');
   if (playerChoice || playerChoice === '') {
-    const playerOne = playerChoice.trim().toLowerCase();
+    let playerOne = playerChoice.trim().toLowerCase();
     if (
       playerOne === 'rock' ||
       playerOne === 'paper' ||
       playerOne === 'scissors'
     ) {
-      const computerChoice = Math.floor(Math.floor(Math.random() * 3 + 1));
-      const rpsArray = ['rock', 'paper', 'scissors']
-      const computer = rpsArray[computerChoice]
+      let computerChoice = Math.floor(Math.floor(Math.random() * 3 + 1));
+      let computer =
+        computerChoice === 1
+          ? 'rock'
+          : computerChoice === 2
+          ? 'paper'
+          : 'scissors';
 
-      const result =
+      let result =
         playerOne === computer
           ? 'Tie game!'
           : playerOne === 'rock' && computer === 'paper'
@@ -26,8 +30,8 @@ if (playGame) {
           : `playerOne: ${playerOne}\nComputer: ${computer}\nplayerOne wins`;
 
     alert(result)
-    playGame = confirm('play again?')
-    if (!playGame) alert('Ok, Thanks for Playing.')
+    let playAgain = confirm('play again?')
+    playAgain ? location.reload() : alert('ok, thanks for playing.')
     } else {
         alert("You didn't enter rock, paper, or scissors")
     }

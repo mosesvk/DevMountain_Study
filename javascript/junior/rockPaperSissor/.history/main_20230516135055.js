@@ -26,8 +26,8 @@ if (playGame) {
           : `playerOne: ${playerOne}\nComputer: ${computer}\nplayerOne wins`;
 
     alert(result)
-    playGame = confirm('play again?')
-    if (!playGame) alert('Ok, Thanks for Playing.')
+    const playAgain = confirm('play again?')
+    playAgain ? location.reload() : alert('ok, thanks for playing.')
     } else {
         alert("You didn't enter rock, paper, or scissors")
     }
