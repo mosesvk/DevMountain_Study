@@ -1,3 +1,6 @@
+
+// This is the first refactored code
+
 let playGame = confirm('Shall we play rock, paper, or scissors?');
 
 if (playGame) {
