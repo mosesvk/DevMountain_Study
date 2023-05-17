@@ -19,18 +19,3 @@ car.engine = () => {
     return 'Whoooosh!'
 }
 // console.log(car.engine())
-
-
-const band = {
-    vocals: 'Robert Plant',
-    guitar: 'Jimmy Page', 
-    bass: 'John Paul Johns', 
-    drums: 'John Bonham'
-}
-
-console.log(Object.keys(band))
-console.log(Object.values(band))
-
-const {vocals: singer} = band
-
-console.log(singer)

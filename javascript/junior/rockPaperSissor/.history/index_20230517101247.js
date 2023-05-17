@@ -30,7 +30,3 @@ const band = {
 
 console.log(Object.keys(band))
 console.log(Object.values(band))
-
-const {vocals: singer} = band
-
-console.log(singer)
