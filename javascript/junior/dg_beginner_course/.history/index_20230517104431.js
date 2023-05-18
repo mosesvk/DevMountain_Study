@@ -28,9 +28,9 @@ const band = {
     drums: 'John Bonham'
 }
 
-console.log(Object.keys(band))
-console.log(Object.values(band))
+// console.log(Object.keys(band))
+// console.log(Object.values(band))
 
-const {vocals: singer} = band
+const {vocals: singer, guitar: strings} = band
 
-console.log(singer)
+// console.log(singer, strings)
