@@ -23,13 +23,3 @@ console.log(typeof myObj)
 
 const sendJSON = JSON.stringify(myObj)
 console.log(sendJSON)
-console.log(typeof myObj)
-console.log(sendJSON.name) // undefined because it is a string
-
-const receiveJSON = JSON.parse(sendJSON)
-console.log(receiveJSON) 
-    /*
-        Notice that it is back to an object
-        BUT the function hello was lost from the Stringify
-    */
-console.log(typeof receiveJSON)

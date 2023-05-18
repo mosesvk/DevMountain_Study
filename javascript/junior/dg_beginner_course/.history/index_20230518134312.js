@@ -32,4 +32,3 @@ console.log(receiveJSON)
         Notice that it is back to an object
         BUT the function hello was lost from the Stringify
     */
-console.log(typeof receiveJSON)
