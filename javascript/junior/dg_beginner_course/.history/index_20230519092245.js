@@ -36,3 +36,8 @@ localStorage.setItem('myLocalStore', JSON.stringify(myObject2))
 const mySessionData = JSON.parse(sessionStorage.getItem('mySessionStore'))
 const myLocalData = JSON.parse(localStorage.getItem('myLocalStore'))
 // console.log(mySessionData, myLocalData)
+
+const key = localStorage.key(0)
+const storeLength = localStorage.length
+console.log(key, storeLength)
+
