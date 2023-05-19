@@ -35,4 +35,4 @@ localStorage.setItem('myLocalStore', JSON.stringify(myObject2))
 
 const mySessionData = JSON.parse(sessionStorage.getItem('mySessionStore'))
 const myLocalData = JSON.parse(localStorage.getItem('myLocalStore'))
-// console.log(mySessionData, myLocalData)
+console.log(mySessionData, myLocalData)

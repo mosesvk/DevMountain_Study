@@ -1,4 +1,4 @@
-// Web Storage API / Cookies
+// Web Storage API
 
 // Not part of the DOM - refers to the Window API
 // Available to JS via the global variable window
@@ -30,9 +30,7 @@ sessionStorage.setItem('mySessionStore', JSON.stringify(myObject))
 localStorage.setItem('myLocalStore', JSON.stringify(myObject2))
     // remove a stored session
 // sessionStorage.removeItem('mySessionStore')
-// localStorage.removeItem('myLocalStore')
-// localStorage.clear()
 
 const mySessionData = JSON.parse(sessionStorage.getItem('mySessionStore'))
 const myLocalData = JSON.parse(localStorage.getItem('myLocalStore'))
-// console.log(mySessionData, myLocalData)
+console.log(mySessionData, myLocalData)
