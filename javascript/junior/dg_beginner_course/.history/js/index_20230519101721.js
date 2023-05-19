@@ -18,15 +18,8 @@ const filteredPosts = posts.filter((post) => {
 // console.log(filteredPosts);
 
 
-// map / update each of the posts and return a copy and edited
+// map through each of the filteredPosts
 const mappedPosts = filteredPosts.map(post => {
-    return post.id * 10
+    return post.id * 30
 }) ;
 console.log(mappedPosts)
-
-
-// reduce / update each of the posts and return a copy and edited
-const reducedPosts = mappedPosts.reduce((sum, post) => {
-    return sum + post
-})
-console.log(reducedPosts)

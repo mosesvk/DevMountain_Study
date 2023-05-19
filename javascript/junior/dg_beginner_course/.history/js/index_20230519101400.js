@@ -15,18 +15,5 @@ posts.forEach((post) => {
 const filteredPosts = posts.filter((post) => {
   return (post.title = 'lets go');
 });
-// console.log(filteredPosts);
 
-
-// map / update each of the posts and return a copy and edited
-const mappedPosts = filteredPosts.map(post => {
-    return post.id * 10
-}) ;
-console.log(mappedPosts)
-
-
-// reduce / update each of the posts and return a copy and edited
-const reducedPosts = mappedPosts.reduce((sum, post) => {
-    return sum + post
-})
-console.log(reducedPosts)
+console.log(filteredPosts);
