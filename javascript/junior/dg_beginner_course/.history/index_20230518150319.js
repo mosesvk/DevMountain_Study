@@ -12,23 +12,13 @@
 
 const myObject = {
     name: 'Dave', 
-    hobbies: ['eat', 'sleep', 'code'],
     logName: function () {
         console.log(this.name)
     }
 }
 
-const myObject2 = {
-    name: 'East', 
-    hobbies: ['eat', 'sleep', 'code'],
-    logName: function () {
-        console.log(this.name)
-    }
-}
+const myArray = ['eat', 'sleep', 'code']
 
 sessionStorage.setItem('mySessionStore', JSON.stringify(myObject))
-sessionStorage.setItem('mySessionStore2', JSON.stringify(myObject2))
-
-sessionStorage.removeItem('mySessionStore')
 const mySessionData = JSON.parse(sessionStorage.getItem('mySessionStore'))
 console.log(mySessionData)
