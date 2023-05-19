@@ -11,7 +11,6 @@ posts.forEach((post) => {
 
 // console.clear()
 
-// filter / update each of the posts and return a copy and edited
 const filteredPosts = posts.filter((post) => {
   return (post.title = 'lets go');
 });
