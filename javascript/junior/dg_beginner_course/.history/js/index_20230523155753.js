@@ -57,46 +57,21 @@
 
 // Fetch(2nd Example)
 
-    const getDadJoke = async () => {
+const getDadJoke = async () => {
 
-        const res = await fetch('https://icanhazdadjoke.com/', {
-            method: 'GET',
-            headers: {
-                Accept: 'application/json'
-                // Accept: 'text/plain'
-            }
-        })
-
-        const jsonJokeData = await res.json()
-        // const textJokeData = await res.text()
-
-        console.log(jsonJokeData)
-        // console.log(textJokeData)
-    }
-
-    // getDadJoke()
-
-
-// POST (1st example)
-
-const jokeObject = {
-    id: "9hiGeNZ0Tnb",
-    joke: "They tried to make a diamond shaped like a duck. It quacked under the pressure.",
-}
-
-const postData = async (jokeObject) => {
-    // use test api that allows us to post things
-    const res = await fetch('https://httpbin.org/post', {
-        method: 'POST', 
+    const res = await fetch('https://icanhazdadjoke.com/', {
+        method: 'GET',
         headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(jokeObject)
+            // Accept: 'application/json'
+            Accept: 'text/plain'
+        }
     })
 
-    const jsonResponse = await res.json()
+    // const jsonJokeData = await res.json()
+    const textJokeData = await res.text()
 
-    console.log(jsonResponse)
+    // console.log(jsonJokeData.joke)
+    console.log(textJokeData)
 }
 
-postData(jokeObject)
+getDadJoke()

@@ -83,20 +83,3 @@ const jokeObject = {
     id: "9hiGeNZ0Tnb",
     joke: "They tried to make a diamond shaped like a duck. It quacked under the pressure.",
 }
-
-const postData = async (jokeObject) => {
-    // use test api that allows us to post things
-    const res = await fetch('https://httpbin.org/post', {
-        method: 'POST', 
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(jokeObject)
-    })
-
-    const jsonResponse = await res.json()
-
-    console.log(jsonResponse)
-}
-
-postData(jokeObject)

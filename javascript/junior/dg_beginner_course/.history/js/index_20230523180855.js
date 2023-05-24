@@ -89,14 +89,11 @@ const postData = async (jokeObject) => {
     const res = await fetch('https://httpbin.org/post', {
         method: 'POST', 
         headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(jokeObject)
+            Accept: 'application/json'
+        }
     })
 
-    const jsonResponse = await res.json()
+    const jsonJokeData = await res.json()
 
-    console.log(jsonResponse)
+    console.log(jsonJokeData)
 }
-
-postData(jokeObject)
