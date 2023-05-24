@@ -109,7 +109,7 @@ const requestJoke = async (firstName, lastName) => {
     const res = await fetch(`http://api.icndb.com/jokes/random?firstName=${firstName}&lastName=${lastName}`)
 
     const jsonResponse = await res.json()
-    console.log(jsonResponse.value)
+    console.log(jsonResponse)
 }
 
 requestJoke('Clint', 'Eastwood')
