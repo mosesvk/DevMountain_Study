@@ -2,9 +2,5 @@
 // route    POST /api/users/auth 
 // @access  public
 const authUser = (req, res) => {
-    res.status(200).json({message: 'Auth User Connected :)'})
-}
-
-export {
-    authUser
+    res.status(200).json({message: 'Auth User Connected'})
 }
