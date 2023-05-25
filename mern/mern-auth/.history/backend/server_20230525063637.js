@@ -2,7 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 dotenv.config()
 const port = process.env.PORT || 5100
-import userRoutes from './routes/userRoutes.js'
+import userRoutes from './routes/userRoutes'
 
 const app = express()
 
