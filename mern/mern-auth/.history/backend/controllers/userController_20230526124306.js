@@ -7,22 +7,19 @@ const authUser = (req, res) => {
 
 // @desc    Register User
 // route    POST /api/users
-// @access  Public
 
 
 // @desc    Logout User
 // route    POST /api/users/logout
-// @access  Public
 
 
 // @desc    Get User Profile
 // route    GET /api/users/profile
-// @access  Private
 
 
 // @desc    Update User Profile
 // route    PUT /api/users/profile
-// @access  Private
+
 
 export {
     authUser
