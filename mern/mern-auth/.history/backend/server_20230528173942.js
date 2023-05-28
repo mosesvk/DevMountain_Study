@@ -12,7 +12,7 @@ app.use('/api/users', userRoutes)
 app.get('/', (req, res) => res.send('Server is ready'))
 
 // error middleware
-app.use(notFound)
+// app.use(notFound)
 app.use(errorHandler)
 
 app.listen(port, () => console.log(`Server started on port ${port}`))
