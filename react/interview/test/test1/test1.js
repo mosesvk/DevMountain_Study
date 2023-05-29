@@ -11,16 +11,10 @@ const fetchApi = async () => {
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [dataImg, setDataImg] = useState('')
 
   const buttonApiCall = async () => {
     const data = await fetchApi()
     setUsers(data)
-    setFirstName(data.name.first)
-    setLastName(data.name.last)
-    setDataImg(data.picture.thumbnail)
   }
   
   return (<div>
