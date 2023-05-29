@@ -25,7 +25,7 @@ function App() {
     // setDataImg(data.picture.thumbnail);
   };
   
-
+  console.log(users)
 
 
   return (

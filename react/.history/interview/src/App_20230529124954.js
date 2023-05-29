@@ -18,13 +18,12 @@ function App() {
 
   const buttonApiCall = async () => {
     const data = await fetchApi();
-    console.log(data)
-    // setUsers(data);
+    setUsers(data);
     // setFirstName(data.name.first);
     // setLastName(data.name.last);
     // setDataImg(data.picture.thumbnail);
+    console.log(users)
   };
-  
 
 
 

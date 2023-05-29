@@ -18,7 +18,7 @@ function App() {
 
   const buttonApiCall = async () => {
     const data = await fetchApi();
-    console.log(data)
+    console.log(data.name.first)
     // setUsers(data);
     // setFirstName(data.name.first);
     // setLastName(data.name.last);

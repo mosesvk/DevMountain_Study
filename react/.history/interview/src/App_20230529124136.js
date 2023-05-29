@@ -14,24 +14,19 @@ function App() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [dataImg, setDataImg] = useState('');
-  const [showData, setShowData] = useState(false);
 
   const buttonApiCall = async () => {
     const data = await fetchApi();
+    setUsers(data);
     console.log(data)
-    // setUsers(data);
-    // setFirstName(data.name.first);
-    // setLastName(data.name.last);
-    // setDataImg(data.picture.thumbnail);
   };
-  
-
-
 
   return (
     <div>
       <button onClick={buttonApiCall}>Send Data</button>
-      <pre>{users}</pre>
+      <h1>{lastName}</h1>
+      <h2>{firstName}</h2>
+      <img src={dataImg} alt='img' />
     </div>
   );
 }

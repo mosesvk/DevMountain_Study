@@ -18,20 +18,23 @@ function App() {
 
   const buttonApiCall = async () => {
     const data = await fetchApi();
-    console.log(data)
-    // setUsers(data);
-    // setFirstName(data.name.first);
-    // setLastName(data.name.last);
-    // setDataImg(data.picture.thumbnail);
+    setUsers(data);
+    setFirstName(data.name.first);
+    setLastName(data.name.last);
+    setDataImg(data.picture.thumbnail);
+    setShowData(!showData)
   };
-  
-
-
 
   return (
     <div>
       <button onClick={buttonApiCall}>Send Data</button>
-      <pre>{users}</pre>
+      {showData && (
+        <>
+          <h1>{lastName}</h1>
+          <h2>{firstName}</h2>
+          <img src={dataImg} alt='img' />
+        </>
+      )}
     </div>
   );
 }
