@@ -1,11 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv'
-// const path = require('path');
-const result = dotenv.config()
-if (result.error) {
-    throw result.error
-}
-console.log(result.parsed)
+dotenv.config()
 import {notFound, errorHandler} from './middleware/errorHandler.js'
 import connectDB from './config/db.js'
 const port = process.env.PORT 
