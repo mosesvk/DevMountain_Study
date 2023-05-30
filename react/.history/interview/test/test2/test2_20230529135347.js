@@ -11,7 +11,7 @@ const fetchApi = async () => {
 
 function App() {
   const [users, setUsers] = useState([]);
-
+  
 
   const buttonApiCall = async () => {
     const data = await fetchApi();
@@ -22,15 +22,9 @@ function App() {
   };
 
 
-  const handleClick = (event) => {
-    console.log(event)
-    // console.log('handlClick')
-  }
-
   return (
     <div>
       <button onClick={buttonApiCall}>Send Data</button>
-      <button onClick={(e) => handleClick(e)}>TEST</button>
       {users.map((user) => (
         <div key={user.id}>
           <h3>{user.name.last}, {user.name.first}</h3>

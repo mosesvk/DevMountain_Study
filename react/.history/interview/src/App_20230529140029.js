@@ -22,15 +22,14 @@ function App() {
   };
 
 
-  const handleClick = (event) => {
-    console.log(event)
-    // console.log('handlClick')
+  const handleClick = () => {
+    console.log('handlClick')
   }
 
   return (
     <div>
       <button onClick={buttonApiCall}>Send Data</button>
-      <button onClick={(e) => handleClick(e)}>TEST</button>
+      <button onClick={handleClick}>TEST</button>
       {users.map((user) => (
         <div key={user.id}>
           <h3>{user.name.last}, {user.name.first}</h3>

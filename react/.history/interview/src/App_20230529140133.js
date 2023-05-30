@@ -22,9 +22,8 @@ function App() {
   };
 
 
-  const handleClick = (event) => {
-    console.log(event)
-    // console.log('handlClick')
+  const handleClick = () => {
+    console.log('handlClick')
   }
 
   return (
