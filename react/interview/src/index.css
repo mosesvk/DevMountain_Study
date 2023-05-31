@@ -36,3 +36,12 @@ code {
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+.header {
+  margin: 1rem;
+  text-align: center;
+}
+
+.header > * {
+  font-size: 1.5rem;
+}
