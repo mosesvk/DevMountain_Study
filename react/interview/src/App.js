@@ -11,6 +11,15 @@ const fetchApi = async () => {
   return JSON.stringify(data, null, 2);
 };
 
+const CardComponent = ({user}) => {
+  return (
+    <div className='card' key={user.id}>
+      <h2>{user.name}</h2>
+      <h3>{user.username}</h3>
+    </div>
+  );
+};
+
 const App = () => {
   const [usersArray, setUsersArray] = useState([]);
 
@@ -19,15 +28,16 @@ const App = () => {
     setUsersArray(JSON.parse(data));
   };
 
+  // const filteredUsersArray = usersArray.filter(user => (
+
+  // ))
+
   return (
     <div className='App'>
       <button onClick={clickHandler}>fetch api</button>
       <div className='card-div'>
         {usersArray.map((user) => (
-            <div className='card' key={user.id}>
-              <h2>{user.name}</h2>
-              <h3>{user.username}</h3>
-            </div>
+          <CardComponent user={user} />
         ))}
       </div>
     </div>
