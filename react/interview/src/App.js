@@ -1,44 +1,37 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Card from 'react-bootstrap/Card';
 
-// https://jsonplaceholder.typicode.com/users
+//https://jsonplaceholder.typicode.com/users
 
 const fetchApi = async () => {
-  const { data } = await axios.get('https://randomuser.me/api');
-  // console.log(data.results[0])
-  return JSON.stringify(data.results, null, 2)
+  const { data } = await axios.get(
+    'https://jsonplaceholder.typicode.com/users'
+  );
+  return JSON.stringify(data, null, 2);
 };
 
-function App() {
-  const [users, setUsers] = useState([]);
+const App = () => {
+  const [usersArray, setUsersArray] = useState([]);
 
-
-  const buttonApiCall = async () => {
+  const clickHandler = async () => {
     const data = await fetchApi();
-    const dataJson = JSON.parse(data)
-    setUsers([])
-    const newUserArray = [...dataJson]
-    setUsers(newUserArray);
+    setUsersArray(JSON.parse(data));
   };
 
-
-  const handleClick = (event) => {
-    console.log(event)
-    // console.log('handlClick')
-  }
-
   return (
-    <div>
-      <button onClick={buttonApiCall}>Send Data</button>
-      <button onClick={(e) => handleClick(e)}>TEST</button>
-      {users.map((user) => (
-        <div key={user.id}>
-          <h3>{user.name.last}, {user.name.first}</h3>
-          <img src={user.picture.thumbnail} alt='dataImg'/>
-        </div>
-      ))}
+    <div className='App'>
+      <button onClick={clickHandler}>fetch api</button>
+      <div className='card-div'>
+        {usersArray.map((user) => (
+            <div className='card' key={user.id}>
+              <h2>{user.name}</h2>
+              <h3>{user.username}</h3>
+            </div>
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
