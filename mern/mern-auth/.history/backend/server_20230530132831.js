@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
+import cookieParser from 'cookie-parser'
 import { notFound, errorHandler } from './middleware/errorHandler.js';
 const port = process.env.PORT;
 import connectDB from './config/db.js';
@@ -12,7 +13,6 @@ const app = express();
 
 app.use(express.json()); // lets us send raw json data through postman
 app.use(express.urlencoded({ extended: true })); // let's us send formdata through postman
-
 app.use('/api/users', userRoutes);
 
 app.get('/', (req, res) => res.send('Server is ready'));

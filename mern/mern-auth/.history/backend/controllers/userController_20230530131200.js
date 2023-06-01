@@ -1,62 +1,66 @@
 import asyncHandler from 'express-async-handler';
 import User from '../models/userModel.js';
-import generateToken from '../utils/generateToken.js';
+import generateToken from '../utils/generateToken.js'
 
-// Auth user/ set token || POST /api/users/auth
+// @desc    Auth user/ set token
+// route    POST /api/users/auth
 // @access  Public
 const authUser = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: 'Auth User' });
+  res.status(200).json({ message: `Auth User` });
 });
 
-// Register User || POST /api/users
+// @desc    Register User
+// route    POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const {name, email, password} = req.body
+  const { name, email, password } = req.body;
 
-  const userExists = await User.findOne({email})
+  const userExists = await User.findOne({ email });
 
   if (userExists) {
-    res.status(400)
-    throw new Error('User Already Exists')    
+    res.status(400);
+    throw new Error('User Already Exists');
   }
 
   const user = await User.create({
-    name, 
-    email, 
+    name,
+    email,
     password
-  })
+  });
 
   if (user) {
     generateToken(res, user._id)
-
     res.status(201).json({
-      _id: user._id, 
+      _id: user._id,
       name: user.name,
       email: user.email
-    })
+    });
   } else {
-    res.status(400)
-    throw new Error('Invalid user data')
+    res.status(400);
+    throw new Error('Invalid user data');
   }
 
 });
 
-// Logout User || POST /api/users/logout
+// @desc    Logout User
+// route    POST /api/users/logout
 // @access  Public
 const logoutUser = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: 'LOGOUT User' });
+  res.status(200).json({ message: 'Logout User' });
 });
 
-// Get User Profile || GET /api/users/profile
+// @desc    Get User Profile
+// route    GET /api/users/profile
 // @access  Private
 const getUserProfile = asyncHandler(async (req, res) => {
   res.status(200).json({ message: 'Get User Profile' });
 });
 
-// Update User Profile || PUT /api/users/profile
+// @desc    Update User Profile
+// route    PUT /api/users/profile
 // @access  Private
 const updateUserProfile = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: 'UPDATE User Profile' });
+  res.status(200).json({ message: 'Update User' });
 });
 
 export {
