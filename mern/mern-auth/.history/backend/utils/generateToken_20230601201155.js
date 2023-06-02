@@ -6,9 +6,7 @@ const generateToken = (res, userId) => {
   })
 
   jwt.cookie('jwt', token, {
-    
+
   })
   
 }
-
-export default generateToken
