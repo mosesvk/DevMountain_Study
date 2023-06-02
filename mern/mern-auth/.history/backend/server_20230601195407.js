@@ -11,7 +11,7 @@ connectDB();
 const app = express();
 
 app.use(express.json()) // send raw json through postman
-app.use(express.urlencoded({extended: true})) // send formdata through postman
+app.use(express.urlencoded({extended: true}))
 
 app.use('/api/users', userRoutes);
 

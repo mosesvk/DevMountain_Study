@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-//https://randomuser.me/api
-//?page=1
-
 const fetchApi = async () => {
-  const {data} = await axios.get(`https://randomuser.me/api`)
+  const {data} = await axios.get('https://randomuser.me/api')
   return JSON.stringify(data.results, null, 2)
 }
 
