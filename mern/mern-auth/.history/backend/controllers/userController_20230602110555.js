@@ -76,7 +76,7 @@ const logoutUser = asyncHandler(async (req, res) => {
 // Get User Profile || GET /api/users/profile
 // @access  Private
 const getUserProfile = asyncHandler(async (req, res) => {
-
+  res.status(200).json({ message: 'Get User Profile' });
 });
 
 // Update User Profile || PUT /api/users/profile
