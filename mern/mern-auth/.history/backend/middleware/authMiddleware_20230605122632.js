@@ -2,10 +2,12 @@ import jwt from 'jsonwebtoken'
 import asyncHandler from 'express-async-handler'
 import User from '../models/userModel.js'
 
+console.log('hi')
+
 const protect = asyncHandler(async (req, res, next) => {
-  let token
-  console.log(req.cookies)
-  token = req.cookies.jwt 
+    let token
+
+    token = req.cookies.jwt 
     
     if (token) {
         try {

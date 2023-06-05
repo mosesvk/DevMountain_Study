@@ -3,9 +3,11 @@ import asyncHandler from 'express-async-handler'
 import User from '../models/userModel.js'
 
 const protect = asyncHandler(async (req, res, next) => {
-  let token
-  console.log(req.cookies)
-  token = req.cookies.jwt 
+    let token
+
+    token = req.cookies.jwt
+
+    console.log(token)
     
     if (token) {
         try {
