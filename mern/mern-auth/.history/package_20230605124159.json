@@ -6,8 +6,7 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon backend/server.js",
-    "client": "npm run dev --prefix frontend", 
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "npm run dev --prefix frontend"
   },
   "keywords": [],
   "author": "",
@@ -22,8 +21,5 @@
     "mongoose": "^7.2.1",
     "nodemon": "^2.0.22",
     "path": "^0.12.7"
-  },
-  "devDependencies": {
-    "concurrently": "^8.1.0"
   }
 }
