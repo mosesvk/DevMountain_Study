@@ -8,6 +8,7 @@ import connectDB from './config/db.js';
 import userRoutes from './routes/userRoutes.js';
 
 connectDB();
+
 const app = express();
 
 app.use(express.json()) // send raw json through postman
