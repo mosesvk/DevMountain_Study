@@ -1,6 +1,7 @@
 // import configureStore
 import {configureStore} from '@reduxjs/toolkit'
 import authReducer from './slices/authSlice'
+import { apiSlice } from './slices/apiSlice'
 
 // create a store variable that is equal to the configureStore configuration
 // it will call an object with 3 properties

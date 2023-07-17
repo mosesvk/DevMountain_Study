@@ -12,26 +12,11 @@ const LoginScreen = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const [login, {isLoading}] = useLoginMutation()
-
-  const {userInfo} = useSelector((state) => state.auth)
-
-  useEffect(() => {
-    if (userInfo) {
-        navigate('/')
-    }
-  }, [navigate, userInfo])
+  const [login, {isLoading, error}] = useLoginMutation()
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
-    try {
-        const res = await login({email, password}).unwrap()
-        dispatch(setCredentials({...res}))
-        navigate('/')
-    } catch (err) {
-        console.error(err?.data?.message || err.error)
-    }
+    console.log('object');
   };
 
   return (
