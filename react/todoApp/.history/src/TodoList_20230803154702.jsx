@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import Spinner from './components/Spinner'
+import { Spinner } from '@material-tailwind/react'
 
 const TodoList = () => {
   const [todos, setTodos] = useState(null)
@@ -16,8 +16,8 @@ const TodoList = () => {
 
   console.log(todos)
   return (
-    <div>
-      <Spinner />
+    <div >
+      <Spinner className="h-8 w-8"/>
     </div>
   )
 }

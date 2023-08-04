@@ -4,9 +4,7 @@ const TodoItem = () => {
   const {id} = useParams()
 
   return (
-    <>
-      <h1>Todo Item: {id}</h1>
-    </>
+    <div>todo Item: ${id} </div>
   )
 }
 
