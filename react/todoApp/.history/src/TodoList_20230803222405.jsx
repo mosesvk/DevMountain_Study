@@ -8,8 +8,8 @@ const TodoList = () => {
 
   // https://jsonplaceholder.typicode.com/todos?_start=0&_limit=5
   useEffect(() => {
-    const randNum = Math.round(Math.random() * 100)
-    axios.get(`https://jsonplaceholder.typicode.com/todos?_start=${randNum}&_limit=10`)
+    const randNum = Math.random() * 100
+    axios.get('https://jsonplaceholder.typicode.com/todos')
       .then(({data}) => {
         const resTodos = data
         setTodos(resTodos)

@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Spinner from './components/Spinner'
-import TodoCard from './TodoCard'
+import TodoItem from './TodoItem'
 
 const TodoList = () => {
   const [todos, setTodos] = useState(null)
 
-  // https://jsonplaceholder.typicode.com/todos?_start=0&_limit=5
   useEffect(() => {
-    const randNum = Math.round(Math.random() * 100)
-    axios.get(`https://jsonplaceholder.typicode.com/todos?_start=${randNum}&_limit=10`)
+    axios.get('https://jsonplaceholder.typicode.com/todos')
       .then(({data}) => {
         const resTodos = data
         setTodos(resTodos)
@@ -17,10 +15,11 @@ const TodoList = () => {
       .catch(err => console.error(err))
   }, [])
 
+  console.log(todos)
   return (
     <div>
       {todos ? (
-        todos.map((todo, idx) => <TodoCard todo={todo} key={idx}/>)
+        <TodoItem todos={todos} />
       ) : (<Spinner />)}
     </div>
   )
