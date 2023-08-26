@@ -1,0 +1,37 @@
+## test 4 - Finish up the Backend
+
+</br>
+
+<details open>
+    <summary>Finish Backend Setup</summary>
+    <ul>
+        <li>Start with the Register User Endpoint</li>
+        <ul>
+            <li>Start with the controller, then connect to the userModel</li>
+            <li>remember to USE the json parser in the server. along with using urlcode(Form)</li>
+        </ul>
+        <li>Generate JWT Token & Cookie Parser</li>
+        <ul>
+            <li>import jwt</li>
+            <li>create a function called 'generateToken'. It will take in two arguments: 1. res (from the controller) 2. userId (also from the controller)</li>
+            <li>initialize a variable called 'cookie' that will use the jwt.sign() function. It will take in three argument - 1. the userId in an object,  2. the JWT_SECRET from the .env,  3. an object that gives the expiration time for '30d'</li>
+            <li>Then we will access the res.cookie() method. Which will also take three arguments: 1. 'jwt'  2. JWT_SECRET variable inside our .env  3. an object containing four properties. - httpOnly as true, secure that will depend if the .env NODE_ENV is NOT 'development', sameSite as 'strict', and 30 days in miliseconds</li>
+        </ul>
+        <li>Auth User Endpoint</li>
+        <ul>
+            <li>get the email from req.body</li>
+            <li>get the user from the User.findOne({email}) </li>
+            <li>if there is a user, generate a token with the res and user._id as the arguments</li>
+            <li>res.send the _id, name, and email from the user</li>
+            <li>if there is no user then send an Error for 'Invalid user data'</li>
+            <li>go to userModel.js -> use the userSchema.methods.mathPasswords which will equal an async function that takes in the 'enteredPassword'. This function will return bcrypt.compare(). Which will take in two arguments -> the enteredPassword and THIS.password. </li>
+        </ul>
+        <li>Logout User Endpoint</li>
+        <li>Create Auth Protect Middleware for the 'getUserProfile' and 'updateUserProfile'</li>
+        <ul>
+            <li>This will be in the middleware folder. import the jwt and asyncHandler packages. Also import User from the userModel</li>
+            <li>create a function called 'protect' that is surrounded by the asyncHandler but also has async/await. It takes in req, res, and next as the arguments</li>
+            <li>initialize a variable called 'token'. If there is a token, tryCatch a variable called 'decoded' that equals jwt.verify() that takes in the token and JWT_SECRET from process.env. Also, reassign 'req.user' to the User.findById(decoded.userId) then pass next()... if reaches catch, throw 'not authorized, invalid token' with 401 status... if there is no token, then throw error 'not authorized, no token' with 401 status</li>
+        </ul>
+    </ul>
+</details>
