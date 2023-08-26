@@ -199,9 +199,9 @@ nav {
   display: none;
 }
 .links {
-  height: 0;
+  /* height: 0;
   overflow: hidden;
-  transition: var(--transition); 
+  transition: var(--transition); */
 }
 .show-links {
   height: 10rem;
@@ -247,7 +247,5 @@ nav {
 }
 
 @media screen and (max-width: 800px) {
-  .links {
-    /* display: none; */
-  }
+
 }

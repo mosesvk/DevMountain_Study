@@ -199,9 +199,9 @@ nav {
   display: none;
 }
 .links {
-  height: 0;
+  /* height: 0;
   overflow: hidden;
-  transition: var(--transition); 
+  transition: var(--transition); */
 }
 .show-links {
   height: 10rem;
@@ -243,11 +243,5 @@ nav {
   }
   .social-icons a:hover {
     color: var(--clr-primary-7);
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .links {
-    /* display: none; */
   }
 }

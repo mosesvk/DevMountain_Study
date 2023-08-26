@@ -8,12 +8,7 @@ const links = document.querySelector('.links')
 // contains - checks classList for specific class
 
 navToggle.addEventListener('click', (e) => {
-
-    if (!links.classList.contains('show-links')) {
-        links.classList.add('show-links')
-    } else {
-        links.classList.remove('show-links')
-    }
+    console.log(e.target.classList)
 })
 
 // add - add class
