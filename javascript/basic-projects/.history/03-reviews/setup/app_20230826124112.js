@@ -44,6 +44,5 @@ const reviews = [
 
 // show prev person
 
-
 // show random person
 
