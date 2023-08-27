@@ -4,7 +4,7 @@ const sidebar = document.querySelector('.sidebar')
 
 toggleBtn.addEventListener('click', () => {
     console.log(sidebar)
-    sidebar.classList.toggle('show-sidebar')
+    // sidebar.classList.toggle('show-sidebar')
 })
 
 closeBtn.addEventListener('click', () => {

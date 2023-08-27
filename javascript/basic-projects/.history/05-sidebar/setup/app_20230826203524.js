@@ -3,7 +3,6 @@ const closeBtn = document.querySelector('.close-btn')
 const sidebar = document.querySelector('.sidebar')
 
 toggleBtn.addEventListener('click', () => {
-    console.log(sidebar)
     sidebar.classList.toggle('show-sidebar')
 })
 
