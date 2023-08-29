@@ -1,19 +1,18 @@
 //using selectors inside the element
 
-const articles = document.querySelectorAll('.question');
+const articles = document.querySelectorAll('.question')
 
-articles.forEach((question) => {
-  const button = question.children[0].children[1];
+articles.forEach(question => {
 
-  button.addEventListener('click', () => {
+    const button = question.children[0].children[1]
 
-    articles.forEach((item) =>
-      item.classList.remove('show-text') ? item !== question : ''
-    );
+    button.addEventListener('click', () => {
+        question.classList.toggle('show-text')
+    })
 
-    question.classList.toggle('show-text');
-  });
-});
+})
+
+
 
 // traversing the dom
 // const buttons = document.querySelectorAll('.question-btn')

@@ -6,7 +6,7 @@ articles.forEach((question) => {
   const button = question.children[0].children[1];
 
   button.addEventListener('click', () => {
-
+    
     articles.forEach((item) =>
       item.classList.remove('show-text') ? item !== question : ''
     );

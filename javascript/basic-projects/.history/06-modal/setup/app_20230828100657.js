@@ -6,21 +6,7 @@
 const openBtn = document.querySelector('.modal-btn')
 const modalOverlay = document.querySelector('.modal-overlay')
 const closeBtn = document.querySelector('.close-btn')
-const modalBackground = document.querySelector('.modal-background')
-
 
 openBtn.addEventListener('click', () => {
     console.log(modalOverlay.classList)
-
-    modalOverlay.classList.add('open-modal')
-})
-
-closeBtn.addEventListener('click', () => {
-
-    modalOverlay.classList.remove('open-modal')
-})
-
-modalBackground.addEventListener('click', () => {
-    modalOverlay.classList.remove('open-modal')
-
 })

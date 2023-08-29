@@ -223,7 +223,7 @@ Modal
 /* OPEN/CLOSE MODAL */
 .open-modal {
   visibility: visible;
-  z-index: 10;
+  /* z-index: 10; */
 }
 .modal-background {
   position: absolute;
