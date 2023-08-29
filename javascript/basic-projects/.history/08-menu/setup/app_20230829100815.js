@@ -90,7 +90,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 const displayMenuItems = (menuItems) => {
-
   let displayMenu = menuItems.map((item) => {
     return `
       <article class="menu-item">
@@ -104,7 +103,6 @@ const displayMenuItems = (menuItems) => {
         </div>
      </article>
     `;
-
   });
 
   displayMenu = displayMenu.join('')
@@ -116,7 +114,7 @@ const displayMenuItems = (menuItems) => {
 const displayMenuButtons = () => {
 
   const categories = menu.reduce((values, item) => {
-    console.log('values', values)
+    // console.log('values', values)
     // console.log(item)
 
     if (!values.includes(item.category)) values.push(item.category)

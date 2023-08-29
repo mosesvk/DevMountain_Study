@@ -90,7 +90,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 const displayMenuItems = (menuItems) => {
-
   let displayMenu = menuItems.map((item) => {
     return `
       <article class="menu-item">
@@ -104,7 +103,6 @@ const displayMenuItems = (menuItems) => {
         </div>
      </article>
     `;
-
   });
 
   displayMenu = displayMenu.join('')
@@ -117,11 +115,11 @@ const displayMenuButtons = () => {
 
   const categories = menu.reduce((values, item) => {
     console.log('values', values)
-    // console.log(item)
+    console.log(item)
 
     if (!values.includes(item.category)) values.push(item.category)
 
-    return values
+    return CSSFontFeatureValuesRule
   }, ['all'])
 
   console.log(categories)

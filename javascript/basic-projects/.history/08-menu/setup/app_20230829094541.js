@@ -85,12 +85,10 @@ const btnContainer = document.querySelector('.btn-container');
 
 document.addEventListener("DOMContentLoaded", (event) => {
   // DOM fully loaded and parsed"
-  displayMenuItems(menu)
-  displayMenuButtons()
+  displayMenuItems()
 });
 
 const displayMenuItems = (menuItems) => {
-
   let displayMenu = menuItems.map((item) => {
     return `
       <article class="menu-item">
@@ -104,25 +102,10 @@ const displayMenuItems = (menuItems) => {
         </div>
      </article>
     `;
-
   });
 
   displayMenu = displayMenu.join('')
 
-  // console.log(displayMenu)
+  console.log(displayMenu)
 
 };
-
-const displayMenuButtons = () => {
-
-  const categories = menu.reduce((values, item) => {
-    console.log('values', values)
-    // console.log(item)
-
-    if (!values.includes(item.category)) values.push(item.category)
-
-    return values
-  }, ['all'])
-
-  console.log(categories)
-}

@@ -82,16 +82,13 @@ const btnContainer = document.querySelector('.btn-container');
 // price: 15.99,
 // img: "./images/item-1.jpeg",
 // desc: `I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed `,
-
 document.addEventListener("DOMContentLoaded", (event) => {
   // DOM fully loaded and parsed"
-  displayMenuItems(menu)
-  displayMenuButtons()
+  displayMenuItems()
 });
 
-const displayMenuItems = (menuItems) => {
-
-  let displayMenu = menuItems.map((item) => {
+const displayMenuItems = () => {
+  const displayMenu = menu.map((item) => {
     return `
       <article class="menu-item">
         <img src=${item.img} alt=${item.title} class="photo" />
@@ -104,25 +101,8 @@ const displayMenuItems = (menuItems) => {
         </div>
      </article>
     `;
-
   });
 
-  displayMenu = displayMenu.join('')
-
-  // console.log(displayMenu)
+  console.log(displayMenu)
 
 };
-
-const displayMenuButtons = () => {
-
-  const categories = menu.reduce((values, item) => {
-    console.log('values', values)
-    // console.log(item)
-
-    if (!values.includes(item.category)) values.push(item.category)
-
-    return values
-  }, ['all'])
-
-  console.log(categories)
-}
