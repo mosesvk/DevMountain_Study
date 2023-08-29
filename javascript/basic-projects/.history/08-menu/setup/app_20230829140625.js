@@ -76,6 +76,12 @@ const menu = [
 const sectionCenter = document.querySelector('.section-center');
 const btnContainer = document.querySelector('.btn-container');
 
+// id: 1,
+// title: "buttermilk pancakes",
+// category: "breakfast",
+// price: 15.99,
+// img: "./images/item-1.jpeg",
+// desc: `I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed `,
 
 document.addEventListener("DOMContentLoaded", (event) => {
   // DOM fully loaded and parsed"
@@ -84,8 +90,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 const displayMenuItems = (menuItems) => {
-
-
 
   let displayMenu = menuItems.map((item) => {
     return `
@@ -103,7 +107,10 @@ const displayMenuItems = (menuItems) => {
 
   });
 
-  sectionCenter.innerHTML = displayMenu.join('')
+  displayMenu = displayMenu.join('')
+
+  // console.log(displayMenu)
+
 };
 
 
@@ -141,23 +148,10 @@ const displayMenuButtons = () => {
   // console.log(filterBtns)
 
 
-// traverse through each of the category buttons and add event listeners
-// check the current target's category 
-// only display the menuItems that correlate to that category
-// call the helper function that needs that updated menu list
+
   filterBtns.forEach((btn) => {
 
-    btn.addEventListener('click', (e) => {
-      const category = e.currentTarget.dataset.id
-
-      const menuCategory = category !== 'all' ? menu.filter(({category: menuCategory}) => category === menuCategory) : menu
-
-      console.log(menuCategory)
-
-      displayMenuItems(menuCategory)
-
-    })
-
+    
   })
 }
 

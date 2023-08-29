@@ -103,7 +103,9 @@ const displayMenuItems = (menuItems) => {
 
   });
 
-  sectionCenter.innerHTML = displayMenu.join('')
+  // displayMenu = displayMenu.join('')
+
+  return displayMenu.join('')
 };
 
 

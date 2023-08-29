@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 const displayMenuItems = (menuItems) => {
 
-
+  console.log('hi')
 
   let displayMenu = menuItems.map((item) => {
     return `
@@ -103,7 +103,10 @@ const displayMenuItems = (menuItems) => {
 
   });
 
-  sectionCenter.innerHTML = displayMenu.join('')
+  displayMenu = displayMenu.join('')
+
+  // console.log(displayMenu)
+
 };
 
 

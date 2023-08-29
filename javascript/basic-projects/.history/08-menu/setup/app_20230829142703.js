@@ -85,8 +85,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 const displayMenuItems = (menuItems) => {
 
-
-
   let displayMenu = menuItems.map((item) => {
     return `
       <article class="menu-item">
@@ -103,7 +101,10 @@ const displayMenuItems = (menuItems) => {
 
   });
 
-  sectionCenter.innerHTML = displayMenu.join('')
+  displayMenu = displayMenu.join('')
+
+  // console.log(displayMenu)
+
 };
 
 
@@ -150,7 +151,7 @@ const displayMenuButtons = () => {
     btn.addEventListener('click', (e) => {
       const category = e.currentTarget.dataset.id
 
-      const menuCategory = category !== 'all' ? menu.filter(({category: menuCategory}) => category === menuCategory) : menu
+      const menuCategory = category === 'all' ? menu.filter(({category: menuCategory}) => category === menuCategory) : menu
 
       console.log(menuCategory)
 
