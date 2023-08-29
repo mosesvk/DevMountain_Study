@@ -73,15 +73,12 @@ const menu = [
   }
 ];
 
+// create selectors (need 2 specifically)
 const sectionCenter = document.querySelector('.section-center');
 const btnContainer = document.querySelector('.btn-container');
 
 // on Document load its content
-document.addEventListener("DOMContentLoaded", (event) => {
-  // DOM fully loaded and parsed"
-  displayMenuItems(menu)
-  displayMenuButtons()
-});
+
 
 
 // create a function that displays all of the menu items
@@ -93,23 +90,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 const displayMenuItems = (menuItems) => {
 
-  let displayMenu = menuItems.map((item) => {
-    return `
-      <article class="menu-item">
-        <img src=${item.img} alt=${item.title} class="photo" />
-        <div class="item-info">
-          <header>
-            <h4>${item.title}/h4>
-            <h4 class="price">${item.price}/h4>
-          </header>
-          <p class="item-text">${item.desc}</p>
-        </div>
-     </article>
-    `;
 
-  });
-
-  sectionCenter.innerHTML = displayMenu.join('')
 };
 
 
@@ -129,50 +110,7 @@ const displayMenuItems = (menuItems) => {
 
 const displayMenuButtons = () => {
 
-// filter the categories (two ways)
-  // const categories = menu.reduce((values, item) => {
-  //   console.log('values', values)
-  //   console.log(item)
-
-  //   if (!values.includes(item.category)) values.push(item.category)
-
-  //   return values
-  // }, ['all'])
-
-  let array = ['all']
-  menu.forEach(({category}) => array.push(category))
-  const categories = [...new Set(array)]
 
 
-// create a button element for each of the categories
-// add it inside the button container div
-  const categoryBtns = categories.map((category) => {
-    return `
-      <button type='button' class='filter-btn' data-id=${category}>
-        ${category}
-      </button>
-    `
-  })
-
-  btnContainer.innerHTML = categoryBtns.join('')
-  const filterBtns = btnContainer.querySelectorAll('.filter-btn')
-  // console.log(filterBtns)
-
-
-
-  filterBtns.forEach((btn) => {
-
-    btn.addEventListener('click', (e) => {
-      const category = e.currentTarget.dataset.id
-
-      const menuCategory = category !== 'all' ? menu.filter(({category: menuCategory}) => category === menuCategory) : menu
-
-      console.log(menuCategory)
-
-      displayMenuItems(menuCategory)
-
-    })
-
-  })
 }
 

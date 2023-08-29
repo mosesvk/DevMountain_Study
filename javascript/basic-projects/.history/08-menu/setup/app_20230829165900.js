@@ -120,11 +120,7 @@ const displayMenuItems = (menuItems) => {
   // 1. create a unique array of all the possible categories
   // 2. map through each of the categories and create a button 
     // each button will have a class['filter-btn'] data-id[category name] type['button']
-    // put that html string of buttons inside of the buttons div
-  // 3. traverse through each of the category buttons and add event listeners
-    // check the current target's category 
-    // only display the menuItems that correlate to that category
-    // call the helper function that needs that updated menu list
+  // 3. 
 
 
 const displayMenuButtons = () => {
@@ -159,7 +155,10 @@ const displayMenuButtons = () => {
   // console.log(filterBtns)
 
 
-
+// traverse through each of the category buttons and add event listeners
+// check the current target's category 
+// only display the menuItems that correlate to that category
+// call the helper function that needs that updated menu list
   filterBtns.forEach((btn) => {
 
     btn.addEventListener('click', (e) => {

@@ -76,22 +76,16 @@ const menu = [
 const sectionCenter = document.querySelector('.section-center');
 const btnContainer = document.querySelector('.btn-container');
 
-// on Document load its content
+
 document.addEventListener("DOMContentLoaded", (event) => {
   // DOM fully loaded and parsed"
   displayMenuItems(menu)
   displayMenuButtons()
 });
 
-
-// create a function that displays all of the menu items
-  // You will taking in an argument of "menuItems" 
-  // of which you will map through and display as an HTML article in a string as backticks
-  // that article will display an img and div['item-info']
-  // that div will will contain a header and p['item-text']
-  // the header will contain the h4 title and h4 price
-
 const displayMenuItems = (menuItems) => {
+
+
 
   let displayMenu = menuItems.map((item) => {
     return `
@@ -113,18 +107,6 @@ const displayMenuItems = (menuItems) => {
 };
 
 
-
-// create a function named 'displayMenuButtons'
-  // this will be the bulk of the logic
-  // there will be three main functionalities
-  // 1. create a unique array of all the possible categories
-  // 2. map through each of the categories and create a button 
-    // each button will have a class['filter-btn'] data-id[category name] type['button']
-    // put that html string of buttons inside of the buttons div
-  // 3. traverse through each of the category buttons and add event listeners
-    // check the current target's category 
-    // only display the menuItems that correlate to that category
-    // call the helper function that needs that updated menu list
 
 
 const displayMenuButtons = () => {
@@ -159,7 +141,10 @@ const displayMenuButtons = () => {
   // console.log(filterBtns)
 
 
-
+// traverse through each of the category buttons and add event listeners
+// check the current target's category 
+// only display the menuItems that correlate to that category
+// call the helper function that needs that updated menu list
   filterBtns.forEach((btn) => {
 
     btn.addEventListener('click', (e) => {
