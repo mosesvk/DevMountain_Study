@@ -6,14 +6,6 @@ const preloader = document.querySelector('.preloader')
 const btn = document.querySelector('.switch-btn')
 const video = document.querySelector('.video-container')
 
-btn.addEventListener('click', () => {
-    if(video.paused) {
-        video.play()
-    } else {
-        video.pause()
-    }
-    btn.classList.toggle('slide')
-})
 
 
 // show the video by taking away the 'preloader' div

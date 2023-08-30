@@ -11,8 +11,6 @@ btn.addEventListener("click", function () {
   }
 });
 
-
-
 // preloader
 const preloader = document.querySelector(".preloader");
 
