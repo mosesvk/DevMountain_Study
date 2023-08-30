@@ -24,8 +24,7 @@ navToggle.addEventListener('click', () => {
         // because "show-links" is a SET amount of height
         // if you have more links, it wont show 
         // that's why we are doing this below. 
-        // if you try 'fit-content' we will lose the transition because it is a function
-    
+
     const linksHeight = links.getBoundingClientRect().height;
     const linksContainerHeight = linksContainer.getBoundingClientRect().height;
     // console.log(linksHeight)

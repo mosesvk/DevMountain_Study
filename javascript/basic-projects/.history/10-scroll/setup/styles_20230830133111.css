@@ -242,7 +242,6 @@ nav {
 }
 .show-links {
   height: fit-content;
-  /* transition: var(--transition); */
 }
 .links a {
   background: var(--clr-white);

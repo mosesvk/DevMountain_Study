@@ -241,7 +241,7 @@ nav {
   transition: var(--transition);
 }
 .show-links {
-  height: fit-content;
+  height: fit-content!important;
   /* transition: var(--transition); */
 }
 .links a {

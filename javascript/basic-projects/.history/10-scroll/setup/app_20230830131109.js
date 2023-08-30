@@ -19,22 +19,12 @@ const links = document.querySelector('.links')
 const linksContainer = document.querySelector('.links-container')
 
 navToggle.addEventListener('click', () => {
+
+    const linksHeight = links.getBoundingClientRect();
+    const linksContainerHeight = linksContainer.getBoundingClientRect();
+
+    console.log(linksHeight)
+    console.log(linksContainerHeight)
+
     linksDiv.classList.toggle('show-links')
-    // this will only work with a certain amount of links
-        // because "show-links" is a SET amount of height
-        // if you have more links, it wont show 
-        // that's why we are doing this below. 
-        // if you try 'fit-content' we will lose the transition because it is a function
-    
-    const linksHeight = links.getBoundingClientRect().height;
-    const linksContainerHeight = linksContainer.getBoundingClientRect().height;
-    // console.log(linksHeight)
-    // console.log(linksContainerHeight)
-
-    if (linksContainerHeight === 0) {
-        linksDiv.style.height = `${linksHeight}px`
-    } else {
-        linksDiv.style.height = 0
-    }
-
 })
