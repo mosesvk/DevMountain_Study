@@ -200,25 +200,22 @@ nav {
 }
 /* fixed nav */
 .fixed-nav {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background: var(--clr-white);
   box-shadow: var(--light-shadow);
-  transition: var(--transition);
 }
 .fixed-nav .links a {
   color: var(--clr-grey-1);
-  transition: var(--transition);
-
 }
 .fixed-nav .links a:hover {
   color: var(--clr-secondary);
 }
-.fixed-nav .links-container {
+/* .fixed-nav .links-container {
   height: auto !important;
-}
+} */
 .nav-header {
   display: flex;
   align-items: center;

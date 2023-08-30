@@ -60,7 +60,7 @@ Global Styles
 ===============
 */
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 *,
 ::after,
@@ -244,7 +244,8 @@ nav {
   transition: var(--transition);
 }
 .show-links {
-  height: 200px;
+  height: fit-content;
+  transition: var(--transition);
 }
 .links a {
   background: var(--clr-white);
@@ -327,6 +328,9 @@ header {
     max-width: 40rem;
   }
 }
+
+
+
 /* sections and title */
 .title h2 {
   text-align: center;
@@ -368,6 +372,7 @@ footer p {
   border-radius: var(--radius);
   color: var(--clr-white);
   animation: bounce 2s ease-in-out infinite;
+
   visibility: hidden;
   z-index: -100;
 }

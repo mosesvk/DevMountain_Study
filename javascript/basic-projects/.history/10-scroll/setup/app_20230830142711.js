@@ -49,6 +49,7 @@ window.addEventListener('scroll', () => {
     const navHeight = navbar.getBoundingClientRect().height
     const homeHeight = home.getBoundingClientRect().height
 
+
     if (scrollHeight >= navHeight) {
         navbar.classList.add('fixed-nav')
     } else {

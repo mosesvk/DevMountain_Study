@@ -39,27 +39,13 @@ navToggle.addEventListener('click', () => {
 });
 
 // Fixed Navbar
-const navbar = document.querySelector('#nav')
-const home = document.querySelector('#home')
+const navbar = document.querySelector('.nav')
 const topLink = document.querySelector('.top-link')
 
 window.addEventListener('scroll', () => {
 
     const scrollHeight = window.scrollY
-    const navHeight = navbar.getBoundingClientRect().height
-    const homeHeight = home.getBoundingClientRect().height
+    const navHeight = navBar.getBoundingClientRect()
 
-    if (scrollHeight >= navHeight) {
-        navbar.classList.add('fixed-nav')
-    } else {
-        navbar.classList.remove('fixed-nav')
-    }
-
-    if (scrollHeight >= homeHeight) {
-        topLink.classList.add('show-link')
-    } else {
-        topLink.classList.remove('show-link')
-    }
-
-
+    console.log(scrollHeight, )
 })

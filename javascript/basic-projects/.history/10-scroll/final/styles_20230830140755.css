@@ -200,7 +200,7 @@ nav {
 }
 /* fixed nav */
 .fixed-nav {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -216,9 +216,9 @@ nav {
 .fixed-nav .links a:hover {
   color: var(--clr-secondary);
 }
-.fixed-nav .links-container {
+/* .fixed-nav .links-container {
   height: auto !important;
-}
+} */
 .nav-header {
   display: flex;
   align-items: center;

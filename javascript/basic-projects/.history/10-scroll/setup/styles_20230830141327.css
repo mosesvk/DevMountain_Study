@@ -200,18 +200,15 @@ nav {
 }
 /* fixed nav */
 .fixed-nav {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background: var(--clr-white);
   box-shadow: var(--light-shadow);
-  transition: var(--transition);
 }
 .fixed-nav .links a {
   color: var(--clr-grey-1);
-  transition: var(--transition);
-
 }
 .fixed-nav .links a:hover {
   color: var(--clr-secondary);
@@ -244,7 +241,8 @@ nav {
   transition: var(--transition);
 }
 .show-links {
-  height: 200px;
+  height: fit-content;
+  transition: var(--transition);
 }
 .links a {
   background: var(--clr-white);
@@ -327,6 +325,9 @@ header {
     max-width: 40rem;
   }
 }
+
+
+
 /* sections and title */
 .title h2 {
   text-align: center;
@@ -368,6 +369,7 @@ footer p {
   border-radius: var(--radius);
   color: var(--clr-white);
   animation: bounce 2s ease-in-out infinite;
+
   visibility: hidden;
   z-index: -100;
 }
