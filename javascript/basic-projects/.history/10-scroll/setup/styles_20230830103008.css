@@ -270,7 +270,7 @@ nav {
     justify-content: space-between;
   }
   .nav-header {
-    padding: 0;
+    /* padding: 0; */
   }
   .nav-toggle {
     display: none;

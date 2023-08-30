@@ -213,9 +213,9 @@ nav {
 .fixed-nav .links a:hover {
   color: var(--clr-secondary);
 }
-.fixed-nav .links-container {
+/* .fixed-nav .links-container {
   height: auto !important;
-}
+} */
 .nav-header {
   display: flex;
   align-items: center;
@@ -324,9 +324,6 @@ header {
     max-width: 40rem;
   }
 }
-
-
-
 /* sections and title */
 .title h2 {
   text-align: center;

@@ -17,5 +17,5 @@ const navBtn = document.querySelector('.nav-toggle')
 const linksDiv = document.querySelector('.links-container')
 
 navBtn.addEventListener('click', () => {
-    linksDiv.classList.toggle('show-links')
+    linksDiv.classList.toggle('.show-links')
 })
