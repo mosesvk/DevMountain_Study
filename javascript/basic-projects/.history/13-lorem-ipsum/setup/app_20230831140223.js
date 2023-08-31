@@ -28,7 +28,7 @@ form.addEventListener('submit', (e) => {
   if (value > 0 && value < (text.length - 1)) {
     
   } else {
-    loremText.innerHTML = `<p class='resul'>${text[random]}</p>`
+    loremText.innerHTML = text[random]
   }
 
 

@@ -26,9 +26,9 @@ form.addEventListener('submit', (e) => {
   const value = amount.value
   
   if (value > 0 && value < (text.length - 1)) {
-    
+
   } else {
-    loremText.innerHTML = `<p class='resul'>${text[random]}</p>`
+    
   }
 
 
