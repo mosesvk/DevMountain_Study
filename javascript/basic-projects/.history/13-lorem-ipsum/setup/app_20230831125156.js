@@ -22,14 +22,6 @@ const loremText = document.querySelector('.lorem-text')
 form.addEventListener('submit', (e) => {
   e.preventDefault()
 
-  const random = Math.floor(Math.random() * (text.length - 1))
-  const value = amount.value
-  
-  if (value > 0 && value < (text.length - 1)) {
-
-  } else {
-    
-  }
-
-
+  console.log(amount.value)
+  console.log(parseInt(amount.value))
 })
