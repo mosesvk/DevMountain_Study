@@ -14,8 +14,6 @@ I just told you! You've killed me! Fry! Quit doing the right thing, you jerk! Mi
 
 // When submitting the form
   // display the text [from above]
-  // in the random mode. have it display random texts with a p tag and 'result' class
-  
 
 const form = document.querySelector('.lorem-form')
 const amount = document.querySelector('#amount')
