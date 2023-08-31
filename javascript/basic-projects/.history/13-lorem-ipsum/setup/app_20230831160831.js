@@ -29,11 +29,11 @@ form.addEventListener('submit', (e) => {
   if (value > 0 && value < text.length - 1) {
     let i = 0;
     let content = '';
-    while (i < value) {
-      content += `<p class='result'>${text[i]}</p>`;
+    while (i <= value) {
+      content += text[i];
       i++
     }
-    loremText.innerHTML = content;
+    loremText.innerHTML = ``;
   } else {
     loremText.innerHTML = `<p class='result'>${text[random]}</p>`;
   }
