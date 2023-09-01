@@ -17,4 +17,25 @@ I just told you! You've killed me! Fry! Quit doing the right thing, you jerk! Mi
 // you will only need three main pointers
 // At the start, just have the 'submit' button generate random texts
 
+const form = document.querySelector('.lorem-form');
+const amount = document.querySelector('#amount');
+const loremText = document.querySelector('.lorem-text');
 
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const random = Math.floor(Math.random() * (text.length - 1));
+  const value = amount.value;
+
+  if (value > 0 && value < text.length - 1) {
+    let i = 0;
+    let content = '';
+    while (i < value) {
+      content += `<p class='result'>${text[i]}</p>`;
+      i++
+    }
+    loremText.innerHTML = content;
+  } else {
+    loremText.innerHTML = `<p class='result'>${text[random]}</p>`;
+  }
+});
