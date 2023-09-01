@@ -1,7 +1,4 @@
 // ****** SELECT ITEMS **********
-const submitBtn = document.querySelector('.submit-btn')
-
-
 
 // edit option
 

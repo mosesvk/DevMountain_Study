@@ -73,7 +73,6 @@ function addItem(e) {
     displayAlert("please enter value", "danger");
   }
 }
-
 // display alert
 function displayAlert(text, action) {
   alert.textContent = text;
@@ -100,6 +99,7 @@ function clearItems() {
 }
 
 // delete item
+
 function deleteItem(e) {
   const element = e.currentTarget.parentElement.parentElement;
   const id = element.dataset.id;
@@ -115,7 +115,6 @@ function deleteItem(e) {
   // remove from local storage
   removeFromLocalStorage(id);
 }
-
 // edit item
 function editItem(e) {
   const element = e.currentTarget.parentElement.parentElement;
@@ -128,7 +127,6 @@ function editItem(e) {
   //
   submitBtn.textContent = "edit";
 }
-
 // set backt to defaults
 function setBackToDefault() {
   grocery.value = "";
@@ -164,7 +162,6 @@ function removeFromLocalStorage(id) {
 
   localStorage.setItem("list", JSON.stringify(items));
 }
-
 function editLocalStorage(id, value) {
   let items = getLocalStorage();
 
@@ -180,6 +177,7 @@ function editLocalStorage(id, value) {
 // SETUP LOCALSTORAGE.REMOVEITEM('LIST');
 
 // ****** setup items **********
+
 function setupItems() {
   let items = getLocalStorage();
 
