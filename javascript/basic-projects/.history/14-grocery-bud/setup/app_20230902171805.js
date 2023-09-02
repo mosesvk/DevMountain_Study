@@ -40,7 +40,6 @@ function addToLocalStorage(id, value) {
 }
 
 function getLocalStorage() {
-    // show local storage if there are any 
   return localStorage.getItem('list')
     ? JSON.parse(localStorage.getItem('list'))
     : [];
