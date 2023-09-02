@@ -54,7 +54,7 @@ function setBackToDefault() {
     editFlag = false;
     editID = "";
     submitBtn.textContent = "submit";
-}
+  }
 
 
 

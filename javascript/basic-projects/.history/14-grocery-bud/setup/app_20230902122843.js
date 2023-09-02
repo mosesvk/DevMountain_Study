@@ -48,16 +48,6 @@ function addItem(e) {
   }
 }
 
-
-function setBackToDefault() {
-    groceryInput.value = "";
-    editFlag = false;
-    editID = "";
-    submitBtn.textContent = "submit";
-}
-
-
-
 function addToLocalStorage(id, val) {
   const grocery = { id, val };
   let items = getLocalStorage();

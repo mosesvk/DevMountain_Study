@@ -40,23 +40,11 @@ function addItem(e) {
 
     groceryList.appendChild(element);
 
-    container.classList.add("show-container");
-
     addToLocalStorage(id, value);
   } else {
     console.log(localStorage);
   }
 }
-
-
-function setBackToDefault() {
-    groceryInput.value = "";
-    editFlag = false;
-    editID = "";
-    submitBtn.textContent = "submit";
-}
-
-
 
 function addToLocalStorage(id, val) {
   const grocery = { id, val };
