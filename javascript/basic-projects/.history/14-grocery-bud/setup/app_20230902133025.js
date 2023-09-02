@@ -38,8 +38,8 @@ function setBackToDefault() {
   submitBtn.textContent = 'submit';
 }
 
-function addToLocalStorage(id, value) {
-  const grocery = { id, value };
+function addToLocalStorage(id, val) {
+  const grocery = { id, val };
   let items = getLocalStorage();
   // console.log('grocery', grocery)
   items.push(grocery);
@@ -81,9 +81,9 @@ function createListItem(id, value) {
     `;
 
     const deleteBtn = element.querySelector(".delete-btn");
-    // deleteBtn.addEventListener("click", deleteItem);
+    deleteBtn.addEventListener("click", deleteItem);
     const editBtn = element.querySelector(".edit-btn");
-    // editBtn.addEventListener("click", editItem);
+    editBtn.addEventListener("click", editItem);
   
     // append child
     groceryList.appendChild(element);

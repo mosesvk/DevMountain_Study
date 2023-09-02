@@ -38,8 +38,8 @@ function setBackToDefault() {
   submitBtn.textContent = 'submit';
 }
 
-function addToLocalStorage(id, value) {
-  const grocery = { id, value };
+function addToLocalStorage(id, val) {
+  const grocery = { id, val };
   let items = getLocalStorage();
   // console.log('grocery', grocery)
   items.push(grocery);
