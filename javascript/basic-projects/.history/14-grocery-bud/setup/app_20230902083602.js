@@ -16,8 +16,6 @@ function addItem(e) {
 
     if (value !== '') {
         
-
-        addToLocalStorage(id, value)
     } else {
         
     }

@@ -7,36 +7,20 @@ const groceryContainer = document.querySelector('.grocery-container')
 const clearBtn = document.querySelector('.clear-Btn')
 
 
-submitBtn.addEventListener('click', addItem)
-
-function addItem(e) {
+const addItem = (e) => {
     e.preventDefault()
     const value = groceryInput.value
     const id = new Date().getTime().toString()
 
     if (value !== '') {
-        
 
-        addToLocalStorage(id, value)
     } else {
-        
+        console.log('hello')
     }
 
 }
 
-function addToLocalStorage (id, val) {
-    const grocery = {id, val}
-    let items = getLocalStorage()
-    console.log('items', items)
-    console.log('grocery', grocery)
-}
-
-
-function getLocalStorage() {
-    return localStorage.getItem("list")
-      ? JSON.parse(localStorage.getItem("list"))
-      : [];
-  }
+submitBtn.addEventListener('click', addItem)
 
 
 

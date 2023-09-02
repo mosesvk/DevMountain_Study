@@ -16,19 +16,14 @@ function addItem(e) {
 
     if (value !== '') {
         
-
-        addToLocalStorage(id, value)
     } else {
         
     }
 
 }
 
-function addToLocalStorage (id, val) {
-    const grocery = {id, val}
-    let items = getLocalStorage()
-    console.log('items', items)
-    console.log('grocery', grocery)
+function addToLocalStorage () {
+
 }
 
 

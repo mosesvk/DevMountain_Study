@@ -9,6 +9,11 @@ const clearBtn = document.querySelector('.clear-Btn')
 
 submitBtn.addEventListener('click', addItem)
 
+
+const addToLocalStorage = () => {
+
+}
+
 function addItem(e) {
     e.preventDefault()
     const value = groceryInput.value
@@ -16,27 +21,12 @@ function addItem(e) {
 
     if (value !== '') {
         
-
-        addToLocalStorage(id, value)
     } else {
         
     }
 
 }
 
-function addToLocalStorage (id, val) {
-    const grocery = {id, val}
-    let items = getLocalStorage()
-    console.log('items', items)
-    console.log('grocery', grocery)
-}
-
-
-function getLocalStorage() {
-    return localStorage.getItem("list")
-      ? JSON.parse(localStorage.getItem("list"))
-      : [];
-  }
 
 
 
