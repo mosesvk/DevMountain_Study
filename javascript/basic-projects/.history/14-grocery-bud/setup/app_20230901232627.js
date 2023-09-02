@@ -9,10 +9,8 @@ const clearBtn = document.querySelector('.clear-Btn')
 
 const addItem = (e) => {
     e.preventDefault()
-    const value = groceryInput.value
-    const id = new Date().getTime().toString()
-
-    
+    const value = groceryInput
+    console.log(value)
 
 }
 
