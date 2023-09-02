@@ -11,6 +11,8 @@ submitBtn.addEventListener('click', addItem);
 document.addEventListener('DOMContentLoaded', setUpItems)
 
 function addItem(e) {
+
+
     // remember the default action of a submit will cause will cause the application to re-render
   // create selectors for the text value and id
     // use the date and time to create an id string
