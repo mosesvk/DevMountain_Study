@@ -15,10 +15,11 @@ function addItem(e) {
     const id = new Date().getTime().toString()
 
     if (value !== '') {
+        
 
         addToLocalStorage(id, value)
     } else {
-        console.log(localStorage)
+        
     }
 
 }
@@ -28,10 +29,6 @@ function addToLocalStorage (id, val) {
     let items = getLocalStorage()
     console.log('items', items)
     console.log('grocery', grocery)
-    items.push(grocery)
-    localStorage.setItem('list', JSON.stringify(items))
-    console.log('items', items)
-
 }
 
 
@@ -40,6 +37,13 @@ function getLocalStorage() {
       ? JSON.parse(localStorage.getItem("list"))
       : [];
   }
+
+function removeFromLocalStorage() {
+    
+}
+
+
+
 
 
 // edit option

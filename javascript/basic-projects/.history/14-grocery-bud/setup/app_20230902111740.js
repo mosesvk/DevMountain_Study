@@ -15,10 +15,11 @@ function addItem(e) {
     const id = new Date().getTime().toString()
 
     if (value !== '') {
+        
 
         addToLocalStorage(id, value)
     } else {
-        console.log(localStorage)
+        
     }
 
 }
@@ -29,9 +30,6 @@ function addToLocalStorage (id, val) {
     console.log('items', items)
     console.log('grocery', grocery)
     items.push(grocery)
-    localStorage.setItem('list', JSON.stringify(items))
-    console.log('items', items)
-
 }
 
 

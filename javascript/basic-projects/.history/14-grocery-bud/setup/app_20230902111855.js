@@ -15,10 +15,11 @@ function addItem(e) {
     const id = new Date().getTime().toString()
 
     if (value !== '') {
+        
 
         addToLocalStorage(id, value)
     } else {
-        console.log(localStorage)
+        
     }
 
 }
