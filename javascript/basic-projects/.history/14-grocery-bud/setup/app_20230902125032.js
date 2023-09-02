@@ -40,7 +40,7 @@ function addItem(e) {
 
     groceryList.appendChild(element);
 
-    groceryContainer.classList.add("show-container");
+    container.classList.add("show-container");
 
     addToLocalStorage(id, value);
 
