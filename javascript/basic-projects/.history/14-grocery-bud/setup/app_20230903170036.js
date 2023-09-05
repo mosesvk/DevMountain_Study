@@ -20,14 +20,6 @@ function addItem(e) {
     // add to local storage helper func. pass 2 args
     // set back to default func. 
 
-    e.preventDefault()
-
-    const value = groceryInput.value
-    const id = new Date().getTime().toString();
-
-    console.log(id)
-
-    
 
 }
 
@@ -53,10 +45,6 @@ function getLocalStorage() {
 }
 
 function createListItem(id, value) {
-    // create an article element. add a "data-id" attribute that equals the id passed down
-
-
-
     const element = document.createElement('article');
     let attr = document.createAttribute('data-id');
     attr.value = id;

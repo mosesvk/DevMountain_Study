@@ -22,10 +22,7 @@ function addItem(e) {
 
     e.preventDefault()
 
-    const value = groceryInput.value
-    const id = new Date().getTime().toString();
-
-    console.log(id)
+    console.log(groceryInput.value)
 
     
 

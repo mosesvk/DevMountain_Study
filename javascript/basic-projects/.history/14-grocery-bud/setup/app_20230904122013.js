@@ -21,12 +21,7 @@ function addItem(e) {
     // set back to default func. 
 
     e.preventDefault()
-
-    const value = groceryInput.value
-    const id = new Date().getTime().toString();
-
-    console.log(id)
-
+    
     
 
 }

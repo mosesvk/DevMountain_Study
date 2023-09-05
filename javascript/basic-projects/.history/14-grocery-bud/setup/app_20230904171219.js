@@ -23,7 +23,7 @@ function addItem(e) {
     e.preventDefault()
 
     const value = groceryInput.value
-    const id = new Date().getTime().toString();
+    const id = date.now().getTime()
 
     console.log(id)
 
