@@ -49,7 +49,6 @@ function addToLocalStorage(id, value) {
 
     const items = JSON.parse(localStorage.getItem('list'))
     items.push({id, value})
-    localStorage.setItem('list', items)
     console.log(items)
 
 }

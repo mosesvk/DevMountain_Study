@@ -47,9 +47,7 @@ function addToLocalStorage(id, value) {
         // they will be put into the "list" local storage
         // but we will first need to extract the local storage and push the new items into local storage
 
-    const items = JSON.parse(localStorage.getItem('list'))
-    items.push({id, value})
-    localStorage.setItem('list', items)
+    const items = localStorage.getItem('list')
     console.log(items)
 
 }
