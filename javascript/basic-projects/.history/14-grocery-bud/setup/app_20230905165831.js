@@ -38,8 +38,8 @@ function deleteItem(e) {
     const element = e.currentTarget.parentNode.parentNode
     const deleteId = element.dataset.id
 
-    // console.log(element)
-    // console.log(groceryList)
+    console.log(element)
+    console.log(groceryList)
 
     groceryList.removeChild(element)
 

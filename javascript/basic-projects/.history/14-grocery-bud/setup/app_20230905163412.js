@@ -8,6 +8,8 @@ const clearBtn = document.querySelector('.clear-Btn');
 
 submitBtn.addEventListener('click', addItem);
 
+deleteBtn.addEventListener('click', deleteItem)
+
 document.addEventListener('DOMContentLoaded', setUpItems);
 
 function addItem(e) {
@@ -35,15 +37,7 @@ function addItem(e) {
 function deleteItem(e) {
     e.preventDefault()
 
-    const element = e.currentTarget.parentNode.parentNode
-    const deleteId = element.dataset.id
-
-    // console.log(element)
-    // console.log(groceryList)
-
-    groceryList.removeChild(element)
-
-    removeFromLocalStorage(deleteId)
+    console.log(e.target)
 }
 
 function setBackToDefault() {
@@ -62,15 +56,6 @@ function addToLocalStorage(id, value) {
   localStorage.setItem('list', JSON.stringify(items));
 
   groceryContainer.classList.add('show-container')
-}
-
-function removeFromLocalStorage(id) {
-    const items = getLocalStorage()
-
-    console.log(id)
-    console.log(items)
-
-    // items.filter((item, idx) )
 }
 
 function getLocalStorage() {
@@ -101,7 +86,7 @@ function createListItem(id, value) {
       `;
 
   const deleteBtn = element.querySelector('.delete-btn');
-  deleteBtn.addEventListener("click", deleteItem);
+  // deleteBtn.addEventListener("click", deleteItem);
   const editBtn = element.querySelector('.edit-btn');
   // editBtn.addEventListener("click", editItem);
 

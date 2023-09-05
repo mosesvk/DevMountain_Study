@@ -35,15 +35,11 @@ function addItem(e) {
 function deleteItem(e) {
     e.preventDefault()
 
-    const element = e.currentTarget.parentNode.parentNode
-    const deleteId = element.dataset.id
-
-    // console.log(element)
-    // console.log(groceryList)
-
-    groceryList.removeChild(element)
-
-    removeFromLocalStorage(deleteId)
+    const id = e.currentTarget.parentNode.parentNode
+    console.dir(id)
+    // const items = getLocalStorage()
+    // items.filter(item => item.id !== id)
+    // console.log(items)
 }
 
 function setBackToDefault() {
@@ -62,15 +58,6 @@ function addToLocalStorage(id, value) {
   localStorage.setItem('list', JSON.stringify(items));
 
   groceryContainer.classList.add('show-container')
-}
-
-function removeFromLocalStorage(id) {
-    const items = getLocalStorage()
-
-    console.log(id)
-    console.log(items)
-
-    // items.filter((item, idx) )
 }
 
 function getLocalStorage() {

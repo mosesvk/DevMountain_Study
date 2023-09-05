@@ -38,12 +38,10 @@ function deleteItem(e) {
     const element = e.currentTarget.parentNode.parentNode
     const deleteId = element.dataset.id
 
-    // console.log(element)
-    // console.log(groceryList)
+    console.log(element)
+    console.log(groceryList)
 
     groceryList.removeChild(element)
-
-    removeFromLocalStorage(deleteId)
 }
 
 function setBackToDefault() {
@@ -62,15 +60,6 @@ function addToLocalStorage(id, value) {
   localStorage.setItem('list', JSON.stringify(items));
 
   groceryContainer.classList.add('show-container')
-}
-
-function removeFromLocalStorage(id) {
-    const items = getLocalStorage()
-
-    console.log(id)
-    console.log(items)
-
-    // items.filter((item, idx) )
 }
 
 function getLocalStorage() {
