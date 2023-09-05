@@ -47,11 +47,11 @@ function addToLocalStorage(id, value) {
   items.push({id, value});
   localStorage.setItem('list', JSON.stringify(items));
 
-  groceryContainer.classList.add('show-container')
 }
 
 function getLocalStorage() {
   // show local storage if there are any
+
   return localStorage.getItem('list')
     ? JSON.parse(localStorage.getItem('list'))
     : [];

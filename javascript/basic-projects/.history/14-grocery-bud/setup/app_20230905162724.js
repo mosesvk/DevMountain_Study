@@ -42,16 +42,21 @@ function addToLocalStorage(id, value) {
   // they will be put into the "list" local storage
   // but we will first need to extract the local storage and push the new items into local storage
 
-  console.log(localStorage.getItem('list'));
-  const items = getLocalStorage() // [...] or []
-  items.push({id, value});
-  localStorage.setItem('list', JSON.stringify(items));
+  const groceryItem = { id, value };
 
-  groceryContainer.classList.add('show-container')
+  console.log({ id, value });
+  console.log(groceryItem);
+
+  console.log(localStorage.getItem('list'));
+  const items = getLocalStorage()
+  items.push(groceryItem);
+  localStorage.setItem('list', JSON.stringify(items));
+  console.log(items);
 }
 
 function getLocalStorage() {
   // show local storage if there are any
+
   return localStorage.getItem('list')
     ? JSON.parse(localStorage.getItem('list'))
     : [];
