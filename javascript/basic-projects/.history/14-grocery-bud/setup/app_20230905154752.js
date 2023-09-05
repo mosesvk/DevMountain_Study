@@ -25,7 +25,7 @@ function addItem(e) {
     const value = groceryInput.value
     const id = new Date().getTime().toString()
 
-    createListItem(id, value)
+    console.log(id)
 
     
 
