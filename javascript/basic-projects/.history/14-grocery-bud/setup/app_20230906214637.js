@@ -67,19 +67,17 @@ function addToLocalStorage(id, value) {
 function removeFromLocalStorage(id) {
     const items = getLocalStorage()
 
-    // console.log(id)
+    console.log(id)
 
-    const newItems = items.filter((item) => {
-        if (item.id !== id) {
-          // console.log(item.id, '-', id)
+    items.filter((item, idx) => {
+        if (idx !== id) {
             return item
         }
     })
-    
-    localStorage.setItem('list', JSON.stringify(newItems))
-    
-    // console.log(newItems)
-    
+
+    console.log(items)
+
+
 }
 
 function getLocalStorage() {
@@ -124,9 +122,5 @@ function setUpItems() {
   // show the grocery container.
 
   const items = getLocalStorage()
-
-  items.map(item => createListItem(item.id, item.value))
-
-  groceryContainer.classList.add('show-container')
 }
 

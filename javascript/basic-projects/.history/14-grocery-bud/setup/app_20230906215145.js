@@ -67,18 +67,18 @@ function addToLocalStorage(id, value) {
 function removeFromLocalStorage(id) {
     const items = getLocalStorage()
 
-    // console.log(id)
+    console.log(id)
 
-    const newItems = items.filter((item) => {
+    items.filter((item) => {
         if (item.id !== id) {
-          // console.log(item.id, '-', id)
+          console.log(item.id, '-', id)
             return item
         }
     })
     
-    localStorage.setItem('list', JSON.stringify(newItems))
+    localStorage.setItem('list', JSON.stringify(items))
     
-    // console.log(newItems)
+    console.log(items)
     
 }
 

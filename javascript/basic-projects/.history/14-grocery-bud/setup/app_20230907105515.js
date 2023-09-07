@@ -71,7 +71,7 @@ function removeFromLocalStorage(id) {
 
     const newItems = items.filter((item) => {
         if (item.id !== id) {
-          // console.log(item.id, '-', id)
+          console.log(item.id, '-', id)
             return item
         }
     })
