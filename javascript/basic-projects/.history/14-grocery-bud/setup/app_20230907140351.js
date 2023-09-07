@@ -30,8 +30,6 @@ function addItem(e) {
   createListItem(id, value);
 
   addToLocalStorage(id, value);
-
-  setBackToDefault()
 }
 
 function deleteItem(e) {
@@ -48,16 +46,12 @@ function deleteItem(e) {
     removeFromLocalStorage(deleteId)
 }
 
-function editItme(e) {
-
-}
-
 function setBackToDefault() {
   // set the value input and editId to an empty string
   // editFlag needs to be false and the submit button text to be 'submit'
 
   groceryInput.value = ''
-
+  
 }
 
 function addToLocalStorage(id, value) {
