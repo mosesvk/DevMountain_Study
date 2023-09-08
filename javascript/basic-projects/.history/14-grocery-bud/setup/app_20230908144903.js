@@ -45,6 +45,8 @@ function addItem(e) {
 
     editLocalStorage(editId, value)
 
+
+
     setBackToDefault();
 
   }
@@ -71,8 +73,8 @@ function editItem(e) {
   editElement = e.currentTarget.parentElement.previousElementSibling;
   // editElement = e.currentTarget.parentElement.previousElementSibling;
 
-  // console.log(element);
-  // console.log(editElement);
+  console.log(element);
+  console.log(editElement);
 
   groceryInput.value = editElement.innerHTML;
   editFlag = true;
@@ -88,7 +90,7 @@ function setBackToDefault() {
   // editFlag needs to be false and the submit button text to be 'submit'
 
   groceryInput.value = '';
-  submitBtn.textContent = 'Submit'
+  submitBtn.textContent = Submit
   submitBtn.classList.remove('greenBtn');
   element.classList.remove('redBackground');
   editId = ''

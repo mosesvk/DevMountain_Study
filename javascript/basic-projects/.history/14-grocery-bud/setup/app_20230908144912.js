@@ -45,6 +45,8 @@ function addItem(e) {
 
     editLocalStorage(editId, value)
 
+
+
     setBackToDefault();
 
   }
@@ -88,7 +90,7 @@ function setBackToDefault() {
   // editFlag needs to be false and the submit button text to be 'submit'
 
   groceryInput.value = '';
-  submitBtn.textContent = 'Submit'
+  submitBtn.textContent = Submit
   submitBtn.classList.remove('greenBtn');
   element.classList.remove('redBackground');
   editId = ''

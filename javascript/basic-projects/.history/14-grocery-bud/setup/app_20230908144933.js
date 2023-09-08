@@ -45,6 +45,8 @@ function addItem(e) {
 
     editLocalStorage(editId, value)
 
+
+
     setBackToDefault();
 
   }
