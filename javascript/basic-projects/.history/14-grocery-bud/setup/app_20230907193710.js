@@ -55,12 +55,8 @@ function deleteItem(e) {
 
 function editItem(e) {
 
-  
-
-  editElement = e.currentTarget.parentElement.previousElementSibling
-  // editElement = e.currentTarget.parentElement.previousElementSibling;
-
-  console.log(editElement)
+  editElement = e.currentTarget.parentElement.previosElementSibling
+  // console.log(editElement)
 
   editFlag = true
 

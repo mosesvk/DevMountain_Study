@@ -55,16 +55,8 @@ function deleteItem(e) {
 
 function editItem(e) {
 
-  
-
-  editElement = e.currentTarget.parentElement.previousElementSibling
-  // editElement = e.currentTarget.parentElement.previousElementSibling;
-
+  editElement = e.currentTarget.parentNode.parentNode.children[0]
   console.log(editElement)
-
-  editFlag = true
-
-
 }
 
 function setBackToDefault() {
