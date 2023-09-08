@@ -6,11 +6,6 @@ const alert = document.querySelector('.alert');
 const groceryContainer = document.querySelector('.grocery-container');
 const clearBtn = document.querySelector('.clear-Btn');
 
-// selectors for the edit function
-let editElement
-let editFlag = false 
-let editId = ''
-
 submitBtn.addEventListener('click', addItem);
 
 document.addEventListener('DOMContentLoaded', setUpItems);
@@ -54,8 +49,7 @@ function deleteItem(e) {
 }
 
 function editItem(e) {
-  console.log(e.target)
-  console.log(e.currentTarget)
+  console.log()
 }
 
 function setBackToDefault() {

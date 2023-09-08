@@ -54,8 +54,7 @@ function deleteItem(e) {
 }
 
 function editItem(e) {
-  console.log(e.target)
-  console.log(e.currentTarget)
+  console.log()
 }
 
 function setBackToDefault() {
