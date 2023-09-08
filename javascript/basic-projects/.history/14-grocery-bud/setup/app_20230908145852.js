@@ -38,13 +38,17 @@ function addItem(e) {
     addToLocalStorage(id, value);
 
     setBackToDefault();
-  } else if (value !== '' && editFlag) {
-    editElement.innerHTML = value;
 
-    editLocalStorage(editId, value);
+  } else if (value !== '' && editFlag) {
+
+    editElement.innerHTML = value
+
+    editLocalStorage(editId, value)
 
     setBackToDefault();
+
   }
+
 }
 
 function deleteItem(e) {
@@ -84,13 +88,12 @@ function setBackToDefault() {
   // editFlag needs to be false and the submit button text to be 'submit'
 
   groceryInput.value = '';
-  submitBtn.textContent = 'Submit';
+  submitBtn.textContent = 'Submit'
   submitBtn.classList.remove('greenBtn');
-  [...new Set(groceryList.children)].forEach((item) =>
-    item.classList.remove('redBackground')
-  );
-  editId = '';
-  editFlag = false;
+  console.log(groceryList.children)
+  // element.classList.remove('redBackground');
+  editId = ''
+  editFlag = false
 }
 
 function addToLocalStorage(id, value) {
@@ -124,9 +127,9 @@ function removeFromLocalStorage(id) {
 }
 
 function editLocalStorage(id, value) {
-  const items = getLocalStorage();
+  const items = getLocalStorage() 
 
-  console.log(items);
+  console.log(items)
 }
 
 function getLocalStorage() {
