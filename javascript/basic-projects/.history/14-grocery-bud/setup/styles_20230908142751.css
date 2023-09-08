@@ -156,7 +156,7 @@ p {
   color: white!important
 }
 .redBackground {
-  background: #ff000057!important
+  background: #ff000057;
 }
 .btn:hover {
   color: var(--clr-white);

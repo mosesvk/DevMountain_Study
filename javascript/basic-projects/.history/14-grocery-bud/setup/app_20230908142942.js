@@ -7,9 +7,9 @@ const groceryContainer = document.querySelector('.grocery-container');
 const clearBtn = document.querySelector('.clear-Btn');
 
 // selectors for the edit function
-let editElement;
-let editFlag = false;
-let editId = '';
+let editElement
+let editFlag = false 
+let editId = ''
 
 submitBtn.addEventListener('click', addItem);
 
@@ -32,69 +32,52 @@ function addItem(e) {
   const value = groceryInput.value;
   const id = new Date().getTime().toString();
 
-  if (value !== '' && !editFlag) {
-    createListItem(id, value);
+  createListItem(id, value);
 
-    addToLocalStorage(id, value);
+  addToLocalStorage(id, value);
 
-    setBackToDefault();
-
-  } else if (value !== '' && editFlag) {
-
-    editElement.innerHTML = value
-
-    editLocalStorage(editId, value)
-
-
-
-    setBackToDefault();
-
-  }
-
+  setBackToDefault()
 }
 
 function deleteItem(e) {
-  e.preventDefault();
+    e.preventDefault()
 
-  const element = e.currentTarget.parentNode.parentNode;
-  const deleteId = element.dataset.id;
+    const element = e.currentTarget.parentNode.parentNode
+    const deleteId = element.dataset.id
 
-  // console.log(element)
-  // console.log(groceryList)
+    // console.log(element)
+    // console.log(groceryList)
 
-  groceryList.removeChild(element);
+    groceryList.removeChild(element)
 
-  removeFromLocalStorage(deleteId);
+    removeFromLocalStorage(deleteId)
 }
 
 function editItem(e) {
-  const element = e.currentTarget.parentElement.parentElement;
 
-  editElement = e.currentTarget.parentElement.previousElementSibling;
+  const element = e.currentTarget.parentElement.parentElement
+
+  editElement = e.currentTarget.parentElement.previousElementSibling
   // editElement = e.currentTarget.parentElement.previousElementSibling;
 
-  console.log(element);
-  console.log(editElement);
+  console.log(element)
+  console.log(editElement)
 
-  groceryInput.value = editElement.innerHTML;
-  editFlag = true;
-  editId = element.dataset.id;
+  groceryInput.value = editElement.innerHTML
+  editFlag = true
+  editId = element.dataset.id
 
-  submitBtn.textContent = 'EDIT';
-  submitBtn.classList.add('greenBtn');
-  element.classList.add('redBackground');
+  submitBtn.textContent = 'EDIT'
+  submitBtn.classList.add('greenBtn')
+  element.classList.add('redBackground')
 }
 
 function setBackToDefault() {
   // set the value input and editId to an empty string
   // editFlag needs to be false and the submit button text to be 'submit'
 
-  groceryInput.value = '';
-  submitBtn.textContent = Submit
-  submitBtn.classList.remove('greenBtn');
-  element.classList.remove('redBackground');
-  editId = ''
-  editFlag = false
+  groceryInput.value = ''
+
 }
 
 function addToLocalStorage(id, value) {
@@ -102,29 +85,30 @@ function addToLocalStorage(id, value) {
   // they will be put into the "list" local storage
   // but we will first need to extract the local storage and push the new items into local storage
 
-  const items = getLocalStorage(); // [...] or []
-  items.push({ id, value });
+  const items = getLocalStorage() // [...] or []
+  items.push({id, value});
 
   localStorage.setItem('list', JSON.stringify(items));
 
-  groceryContainer.classList.add('show-container');
+  groceryContainer.classList.add('show-container')
 }
 
 function removeFromLocalStorage(id) {
-  const items = getLocalStorage();
+    const items = getLocalStorage()
 
-  // console.log(id)
+    // console.log(id)
 
-  const newItems = items.filter((item) => {
-    if (item.id !== id) {
-      // console.log(item.id, '-', id)
-      return item;
-    }
-  });
-
-  localStorage.setItem('list', JSON.stringify(newItems));
-
-  // console.log(newItems)
+    const newItems = items.filter((item) => {
+        if (item.id !== id) {
+          // console.log(item.id, '-', id)
+            return item
+        }
+    })
+    
+    localStorage.setItem('list', JSON.stringify(newItems))
+    
+    // console.log(newItems)
+    
 }
 
 function getLocalStorage() {
@@ -155,9 +139,9 @@ function createListItem(id, value) {
       `;
 
   const deleteBtn = element.querySelector('.delete-btn');
-  deleteBtn.addEventListener('click', deleteItem);
+  deleteBtn.addEventListener("click", deleteItem);
   const editBtn = element.querySelector('.edit-btn');
-  editBtn.addEventListener('click', editItem);
+  editBtn.addEventListener("click", editItem);
 
   // append child
   groceryList.appendChild(element);
@@ -168,9 +152,10 @@ function setUpItems() {
   // display the items as a grocery item using the helper function
   // show the grocery container.
 
-  const items = getLocalStorage();
+  const items = getLocalStorage()
 
-  items.map((item) => createListItem(item.id, item.value));
+  items.map(item => createListItem(item.id, item.value))
 
-  groceryContainer.classList.add('show-container');
+  groceryContainer.classList.add('show-container')
 }
+
