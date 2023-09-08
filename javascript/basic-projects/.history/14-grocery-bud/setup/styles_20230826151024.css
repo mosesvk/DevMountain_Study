@@ -151,10 +151,6 @@ p {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: var(--radius);
 }
-.greenBtn {
-  background: var(--clr-green-dark)!important;
-  color: white!important
-}
 .btn:hover {
   color: var(--clr-white);
   background: var(--clr-black);

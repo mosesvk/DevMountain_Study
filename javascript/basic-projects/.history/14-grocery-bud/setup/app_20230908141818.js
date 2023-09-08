@@ -63,13 +63,9 @@ function editItem(e) {
   console.log(element)
   console.log(editElement)
 
-  groceryInput.value = editElement.innerHTML
   editFlag = true
-  editId = element.dataset.id
 
-  submitBtn.textContent = 'EDIT'
-  submitBtn.classList.add('greenBtn')
-  
+
 }
 
 function setBackToDefault() {

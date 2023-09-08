@@ -69,7 +69,7 @@ function editItem(e) {
 
   submitBtn.textContent = 'EDIT'
   submitBtn.classList.add('greenBtn')
-  
+
 }
 
 function setBackToDefault() {

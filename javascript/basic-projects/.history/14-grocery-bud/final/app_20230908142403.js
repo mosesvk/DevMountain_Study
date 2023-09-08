@@ -129,7 +129,7 @@ function editItem(e) {
   editID = element.dataset.id;
   //
   submitBtn.textContent = "edit";
-
+  submitBtn.classList.add('greenBtn')
 }
 
 // set backt to defaults

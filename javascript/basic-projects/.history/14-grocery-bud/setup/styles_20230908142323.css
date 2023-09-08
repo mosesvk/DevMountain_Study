@@ -152,8 +152,8 @@ p {
   border-radius: var(--radius);
 }
 .greenBtn {
-  background: var(--clr-green-dark)!important;
-  color: white!important
+  background: var(--clr-green-dark);
+  color: white
 }
 .btn:hover {
   color: var(--clr-white);
