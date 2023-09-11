@@ -52,7 +52,7 @@ const result = (
   </p>
 )
 
-const yearBorn = 1993
+const yearBorn = 1820
 const currentYear = new Date().getFullYear()
 const age = currentYear - yearBorn
 const personAge = (
@@ -64,7 +64,7 @@ const personAge = (
 
 // JSX element, main
 const techs = ['HTML', 'CSS', 'JavaScript']
-const techsFormatted = techs.map((tech, idx) => <li key={idx}>{tech}</li>)
+const techsFormatted = techs.map((tech) => <li>{tech}</li>)
 
 const user = (
   <div>
