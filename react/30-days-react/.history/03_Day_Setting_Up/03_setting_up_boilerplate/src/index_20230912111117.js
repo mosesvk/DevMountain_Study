@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
+import asabenehImage from './images/asabeneh.jpg'
 import Technologies from './components/Technologies'
 import Subscribe from './components/Subscribe'
 

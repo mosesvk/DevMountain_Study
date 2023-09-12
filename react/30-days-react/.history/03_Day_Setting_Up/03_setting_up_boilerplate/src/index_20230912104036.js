@@ -1,13 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
+import asabenehImage from './images/asabeneh.jpg'
 import Technologies from './components/Technologies'
-import Subscribe from './components/Subscribe'
 
 
 
 
 const welcome = 'Welcome to 30 Days Of React'
+const title = 'Getting Started React'
+const subtitle = 'JavaScript Library'
+const author = {
+  firstName: 'Asabeneh',
+  lastName: 'Yetayeh',
+}
 const date = 'Oct 2, 2020'
 
 // JSX element, header
@@ -21,14 +26,21 @@ const header = (
 )
 
 
+// JSX element, main
+const techs = ['HTML', 'CSS', 'JavaScript']
+const techsFormatted = techs.map((tech, idx) => <li key={idx}>{tech}</li>)
 
+const user = (
+  <div>
+    <img className='userImg' src={asabenehImage} alt='asabeneh image' />
+  </div>
+)
 
 // JSX element, main
 const main = (
   <main>
     <div className='main-wrapper'>
-      <Technologies />
-      <Subscribe />
+      {user}
     </div>
   </main>
 )
