@@ -18,15 +18,15 @@ function App() {
       // -> this is not good because it modifies a piece of state
   };
 
-  const renderedAnimals = animals?.map((animal, idx) => (
-    <Animal key={idx} type={animal} />
-  ))
-
   return (
     <>
       <button onClick={handleClick}>Add Animal</button>
       <div className='animal-list'>
-        {renderedAnimals}
+        {animals?.map((item) => (
+          <>
+            <Animal type={item}/>
+          </>
+        ))}
       </div>
     </>
   );
