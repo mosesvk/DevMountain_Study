@@ -13,7 +13,7 @@ const Animal = ({ type }) => {
   return (
     <div className='animal-show'>
       <img className='animal' alt='animal' src={svgMap[type]} />
-      {/* <img className='animal' alt='animal' src={bird} /> */}
+      <img className='animal' alt='animal' src={bird} />
     </div>
   );
 };

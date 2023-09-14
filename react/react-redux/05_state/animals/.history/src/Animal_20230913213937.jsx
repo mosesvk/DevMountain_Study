@@ -6,7 +6,7 @@ import cow from '../src/assets/cow.svg'
 import gator from '../src/assets/gator.svg'
 import horse from '../src/assets/gator.svg'
 
-const svgMap = {bird, dog, cat, cow, gator, horse}
+// const svgMap = {bird, dog, cat, cow, gator, horse}
 
 const Animal = ({ type }) => {
     console.log(type)
