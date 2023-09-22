@@ -23,10 +23,7 @@
 
       // Loop through the array of menu links and add dynamic classes
       menuLinks.forEach((link, index) => {
-        console.log(index, classNames.length)
         const classNameIndex = index % classNames.length;
-        console.log(classNameIndex)
-        console.log('----')
         link.classList.add(classNames[classNameIndex]);
       });
 
