@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="bg-gray-800 text-white p-4">
+      <!-- Header Div -->
+      <h1 class="text-2xl font-bold">To-Do App</h1>
+    </div>
+    <div class="flex h-screen">
+      <div class="w-1/4 bg-gray-200">
+        <!-- Left Sidebar (col-3) -->
+        <h2 class="text-xl font-bold mb-4">Lists</h2>
+        <input
+          type="text"
+          id="new-list-input"
+          placeholder="New List"
+          class="border p-2 rounded mb-2"
+          onkeydown="if (event.key === 'Enter') addList();"
+        />
+        <ul id="lists" class="list-none p-0">
+          <!-- Lists will be displayed here -->
+        </ul>
+      </div>
+
+      <div id="todo-div" class="w-3/4 bg-white p-3">
+        <!-- Right Content (col-8) -->
+        <h2 id="current-list-name" class="text-xl font-bold mb-4"></h2>
+        <input
+          type="text"
+          id="new-todo-input"
+          placeholder="New Task"
+          class="border p-2 rounded mb-2"
+          onkeydown="if (event.key === 'Enter') addTodo();"
+        />
+        <button
+          onclick="addTodo()"
+          class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+        >
+          Add Task
+        </button>
+        <ul id="current-list-todos" class="list-none p-0">
+          <!-- Todos will be displayed here -->
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      // Model
+      let lists = {};
+      let currentList = null;
+      let selectedListId = null; // Track the selected list item
+
+      // Functions
+      function render() {
+        // Render list selectors
+        const currentListNameElement =
+          document.getElementById('current-list-name');
+        const currentListTodosElement =
+          document.getElementById('current-list-todos');
+        const todoDivContainer = document.getElementById('todo-div');
+
+        // Inside your JavaScript code where you create and append list elements
+
+        const listsElement = document.getElementById('lists');
+        listsElement.innerHTML = '';
+
+        // Check if there are any lists
+        if (Object.keys(lists).length === 0) {
+          currentListNameElement.textContent = ''; // Clear the current list name
+          currentListTodosElement.innerHTML = ''; // Clear the current list todos
+          currentList = null; // Reset the currentList
+          todoDivContainer.style.display = 'none'; // Hide the todo-div container
+        } else {
+          for (const listId in lists) {
+            const list = lists[listId];
+            const listItem = document.createElement('li');
+
+            listItem.innerHTML = `
+              <p class="w-full text-grey-darkest">${list.name}</p>
+              <button class="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red" onClick="removeList(${list.id})">Remove</button>
+            `;
+            listItem.classList.add(
+              'cursor-pointer',
+              'bg-gray-300',
+              'hover:bg-gray-400',
+              'rounded',
+              'p-2',
+              'border',
+              'border-solid',
+              'flex'
+            );
+
+            if (listId == selectedListId) {
+              listItem.classList.add('bg-gray-600', 'text-white');
+              todoDivContainer.style.display = 'block'; // Show the todo-div container
+            } else {
+              todoDivContainer.style.display = 'none'; // Hide the todo-div
+            }
+
+            // Check if this list is the current one, and if so, apply the selected background color
+            listItem.addEventListener('click', () =>
+              setCurrentListAndRender(listId)
+            );
+            listsElement.appendChild(listItem);
+          }
+
+          let currentId = currentListNameElement.innerHTML;
+
+          if (currentList) {
+            currentListNameElement.textContent = currentList.name;
+            currentListTodosElement.innerHTML = '';
+            currentList.todos.forEach((todo, index) => {
+              const todoElement = document.createElement('li');
+              todoElement.innerHTML = `
+                <p class="w-full text-grey-darkest">${todo.text}</p>
+                <button class="transition duration-300 text-green-300 border-green-300 hover:bg-green-300 flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white" onClick="markTodoAsCompleted(${index})">Done</button>
+                <button class="transition duration-300 flex-no-shrink p-2 ml-2 border-2 rounded text-red-300 border-red-300 hover:text-white hover:bg-red-300" onClick="deleteTodo(${index})">Remove</button>
+               `;
+
+              todoElement.classList.add(
+                'cursor-pointer',
+                'rounded',
+                'p-2',
+                'border',
+                'border-solid',
+                'flex'
+              );
+
+              currentListTodosElement.appendChild(todoElement);
+            });
+          } else {
+            currentListNameElement.textContent = '';
+            currentListTodosElement.innerHTML = '';
+            currentList = null; // Reset the currentList
+          }
+        }
+      }
+
+      function addList() {
+        const newListName = document.getElementById('new-list-input').value;
+
+        if (newListName) {
+          // Check if a list with the same name already exists
+          const existingList = Object.values(lists).find(
+            (list) => list.name === newListName
+          );
+
+          if (!existingList) {
+            const newListId = Date.now().toString(); // Generate a unique ID
+            lists[newListId] = { name: newListName, id: newListId, todos: [] };
+            save();
+            render();
+          } else {
+            alert('A list with the same name already exists.'); // Show an alert or handle the duplicate name case as needed
+          }
+        }
+      }
+
+      function setCurrentListAndRender(listId) {
+        currentList = lists[listId];
+        selectedListId = listId; // Update the selected list item
+        render();
+      }
+
+      function addTodo() {
+        const newTodoText = document.getElementById('new-todo-input').value;
+        if (newTodoText && currentList) {
+          // Check if a todo with the same text already exists in the current list
+          const existingTodo = currentList.todos.find(
+            (todo) => todo.text === newTodoText
+          );
+
+          if (!existingTodo) {
+            currentList.todos.push({ text: newTodoText, completed: false });
+            save();
+            render();
+          } else {
+            alert(
+              'A todo with the same text already exists in the current list.'
+            ); // Show an alert or handle the duplicate text case as needed
+          }
+        }
+      }
+
+      function markTodoAsCompleted(index) {
+        if (currentList) {
+          currentList.todos[index].completed = true;
+          save();
+          render();
+        }
+      }
+
+      function removeList(listId) {
+        if (lists.hasOwnProperty(listId)) {
+          // check if the list exists
+          delete lists[listId];
+          save(); // Save the updated lists to localStorage if needed
+          render(); // Update the UI to reflect the changes
+        }
+      }
+
+      function deleteTodo(index) {
+        if (currentList) {
+          currentList.todos.splice(index, 1);
+          save();
+          render();
+        }
+      }
+
+      // Save Data to LocalStorage
+      function save() {
+        localStorage.setItem('lists', JSON.stringify(lists));
+        localStorage.setItem('currentList', JSON.stringify(currentList));
+      }
+
+      // Load data from local storage on page load
+      const savedLists = JSON.parse(localStorage.getItem('lists'));
+      const savedCurrentList = JSON.parse(localStorage.getItem('currentList'));
+      if (savedLists) {
+        lists = savedLists;
+      }
+      if (savedCurrentList) {
+        currentList = savedCurrentList;
+      }
+
+      // Initial render
+      render();
+    </script>
+  </body>
+</html>
