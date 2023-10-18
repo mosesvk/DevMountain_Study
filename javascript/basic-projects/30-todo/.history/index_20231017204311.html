@@ -36,8 +36,8 @@
   </head>
   <body>
     <div class="outer">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Todo App</a>
+      <nav class="navbar">
+        <!-- navbar not needed but looks cool -->
       </nav>
       <div class="container-fluid">
         <div class="row">
@@ -67,22 +67,10 @@
             <!-- Current todo list container -->
             <div id="currentTodoContainer">
               <h3 id="currentListName">Current Todo List</h3>
-              <!-- Input box for adding new to-dos -->
-              <input
-                type="text"
-                id="todoInput"
-                class="form-control"
-                placeholder="Add a new to-do"
-              />
-              <!-- "Add" button to add to-dos -->
-              <button id="addTodoButton" class="btn btn-primary mt-2">
-                Add
-              </button>
               <!-- Container for displaying current to-dos (generated dynamically with JavaScript) -->
               <ul id="currentTodoList"></ul>
             </div>
           </div>
-          
         </div>
       </div>
     </div>
