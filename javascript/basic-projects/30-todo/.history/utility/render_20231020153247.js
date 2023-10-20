@@ -58,7 +58,6 @@ function loadList(lists, listKey) {
 
   const selectedList = lists[listKey];
 
-  console.log(selectedList)
   if (selectedList) {
 
     listNameContainer.textContent = selectedList.name;

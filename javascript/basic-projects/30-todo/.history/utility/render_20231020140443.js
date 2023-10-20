@@ -3,11 +3,10 @@ let currentSelectedListLink = null; // To keep track of the currently selected l
 
 function render() {
   const listsContainer = document.getElementById('listsContainer');
-  const currentTodoContainer = document.getElementById('currentTodoContainer'); // Get the currentTodoContainer element
 
   listsContainer.innerHTML = '';
 
-  const lists = JSON.parse(localStorage.getItem('data'));
+  const lists = JSON.parse(localStorage.getItem('data'))
 
   if (lists) {
     for (const listKey in lists) {
@@ -28,26 +27,30 @@ function render() {
       listLink.textContent = list.name;
 
       listLink.addEventListener('click', function (e) {
+        console.log(e.target.textContent)
         if (currentSelectedListLink) {
+          // Remove the active class
           currentSelectedListLink.classList.remove('bg-blue-500');
+          // Set text color to the default value using Tailwind CSS class
           currentSelectedListLink.classList.add('text-blue-600');
-          localStorage.setItem('selectedList', listLink.textContent);
+
+          // localStorage.setItem('selectedList', listLink.textContent)
         }
 
         loadList(lists, listKey);
         listLink.classList.add('bg-blue-500');
         listLink.classList.add('text-white');
+        // Set text color to white for the selected link
         listLink.classList.remove('text-blue-600');
 
+        // Update the currently selected list link
         currentSelectedListLink = listLink;
       });
 
       listsContainer.appendChild(listLink);
     }
   }
-
 }
-
 
 function loadList(lists, listKey) {
   const todoListContainer = document.getElementById('currentTodoList');
@@ -58,13 +61,8 @@ function loadList(lists, listKey) {
 
   const selectedList = lists[listKey];
 
-  console.log(selectedList)
   if (selectedList) {
-
     listNameContainer.textContent = selectedList.name;
-
-    // If there is a selected list, remove the 'hidden' class to display the container
-    currentTodoContainer.classList.remove('hidden');
 
     selectedList.todos.forEach((todo) => {
       const listItem = document.createElement('li');
@@ -73,8 +71,5 @@ function loadList(lists, listKey) {
 
       todoListContainer.appendChild(listItem);
     });
-  } else {
-        // If there is no selected list, add the 'hidden' class to hide the container
-        currentTodoContainer.classList.add('hidden');
   }
 }

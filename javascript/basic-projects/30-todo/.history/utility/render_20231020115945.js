@@ -1,55 +1,43 @@
 let currentSelectedListLink = null; // To keep track of the currently selected list link
 
-
 function render() {
-  const listsContainer = document.getElementById('listsContainer');
-  const currentTodoContainer = document.getElementById('currentTodoContainer'); // Get the currentTodoContainer element
-
-  listsContainer.innerHTML = '';
-
-  const lists = JSON.parse(localStorage.getItem('data'));
-
-  if (lists) {
+    const listsContainer = document.getElementById('listsContainer');
+  
+    listsContainer.innerHTML = '';
+  
     for (const listKey in lists) {
       const list = lists[listKey];
-
+  
       const listLink = document.createElement('a');
       listLink.href = '#';
-      listLink.classList.add(
-        'block',
-        'p-2',
-        'rounded-lg',
-        'my-1',
-        'hover:bg-blue-200',
-        'text-blue-600',
-        'hover:text-blue-800',
-        'transition-colors'
-      );
+      listLink.classList.add('block', 'p-2', 'rounded-lg', 'my-1', 'hover:bg-blue-200', 'text-blue-600', 'hover:text-blue-800', 'transition-colors');
       listLink.textContent = list.name;
-
-      listLink.addEventListener('click', function (e) {
+  
+      listLink.addEventListener('click', function () {
         if (currentSelectedListLink) {
+          // Remove the active class
           currentSelectedListLink.classList.remove('bg-blue-500');
-          currentSelectedListLink.classList.add('text-blue-600');
-          localStorage.setItem('selectedList', listLink.textContent);
+          // Set text color to white
+          currentSelectedListLink.style.color = 'white';
         }
 
-        loadList(lists, listKey);
+        loadList(listKey);
         listLink.classList.add('bg-blue-500');
-        listLink.classList.add('text-white');
-        listLink.classList.remove('text-blue-600');
+        // Set text color to match the desired text color
+        // listLink.style.color = 'white';
 
+        // Update the currently selected list link
         currentSelectedListLink = listLink;
       });
-
+  
       listsContainer.appendChild(listLink);
     }
-  }
-
 }
 
 
-function loadList(lists, listKey) {
+
+
+function loadList(listKey) {
   const todoListContainer = document.getElementById('currentTodoList');
   const listNameContainer = document.getElementById('currentListName');
 
@@ -58,13 +46,8 @@ function loadList(lists, listKey) {
 
   const selectedList = lists[listKey];
 
-  console.log(selectedList)
   if (selectedList) {
-
     listNameContainer.textContent = selectedList.name;
-
-    // If there is a selected list, remove the 'hidden' class to display the container
-    currentTodoContainer.classList.remove('hidden');
 
     selectedList.todos.forEach((todo) => {
       const listItem = document.createElement('li');
@@ -73,8 +56,5 @@ function loadList(lists, listKey) {
 
       todoListContainer.appendChild(listItem);
     });
-  } else {
-        // If there is no selected list, add the 'hidden' class to hide the container
-        currentTodoContainer.classList.add('hidden');
   }
 }

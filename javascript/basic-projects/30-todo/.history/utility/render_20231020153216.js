@@ -46,6 +46,15 @@ function render() {
     }
   }
 
+  // Check if there is an active selectedList
+  const selectedList = localStorage.getItem('selectedList');
+
+  if (selectedList) {
+    
+  } else {
+    // If there is no selected list, add the 'hidden' class to hide the container
+    currentTodoContainer.classList.add('hidden');
+  }
 }
 
 
@@ -58,7 +67,6 @@ function loadList(lists, listKey) {
 
   const selectedList = lists[listKey];
 
-  console.log(selectedList)
   if (selectedList) {
 
     listNameContainer.textContent = selectedList.name;
@@ -73,8 +81,5 @@ function loadList(lists, listKey) {
 
       todoListContainer.appendChild(listItem);
     });
-  } else {
-        // If there is no selected list, add the 'hidden' class to hide the container
-        currentTodoContainer.classList.add('hidden');
   }
 }

@@ -46,6 +46,14 @@ function render() {
     }
   }
 
+  // Check if there is an active selectedList
+  const selectedList = localStorage.getItem('selectedList');
+
+  if (selectedList) {
+    
+  } else {
+
+  }
 }
 
 
@@ -58,7 +66,6 @@ function loadList(lists, listKey) {
 
   const selectedList = lists[listKey];
 
-  console.log(selectedList)
   if (selectedList) {
 
     listNameContainer.textContent = selectedList.name;
