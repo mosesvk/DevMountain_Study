@@ -138,7 +138,7 @@ addListBtn.addEventListener('click', function () {
   if (listName.trim() !== '') {
     // Add your new list to the data and update it in local storage
     const lists = JSON.parse(localStorage.getItem('data')) || {};
-    const listKey = Date.now().toString(); // create a unique key
+    const listKey = Date.now().toString(); // Implement a function to generate a unique key
     lists[listKey] = { name: listName, todos: [] };
     localStorage.setItem('data', JSON.stringify(lists));
 

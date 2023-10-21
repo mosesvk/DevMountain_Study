@@ -17,11 +17,8 @@ function addList(lists, listKey, listName) {
     if (currentSelectedListLink) {
       currentSelectedListLink.classList.remove('bg-blue-500');
       currentSelectedListLink.classList.add('text-blue-600');
-      localStorage.setItem('selectedList', listKey);
+      localStorage.setItem('selectedList', listLink.textContent);
     }
-
-    // Set the selectedList in local storage
-    localStorage.setItem('selectedList', listKey);
 
     loadList(lists, listKey);
     listLink.classList.add('bg-blue-500');
@@ -42,9 +39,11 @@ function loadList(lists, listKey) {
   listNameContainer.textContent = '';
 
   const selectedList = lists[listKey];
+  console.log(selectedList);
 
   if (selectedList) {
     listNameContainer.textContent = selectedList.name;
+
     // If there is a selected list, remove the 'hidden' class to display the container
     currentTodoContainer.classList.remove('hidden');
 
@@ -70,28 +69,6 @@ function loadList(lists, listKey) {
       listItemText.textContent = todo.text;
       listItemText.classList.add('flex-1'); // Ensure the text takes up the remaining space
 
-      // Create a checkbox input for marking as completed
-      const checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.classList.add('mr-2');
-      // Set the checkbox state based on the 'completed' property
-      checkbox.checked = todo.completed;
-      checkbox.addEventListener('change', function () {
-        // Update the 'completed' property in the current list's todos
-        todo.completed = checkbox.checked;
-        // Update the lists in local storage
-        localStorage.setItem('data', JSON.stringify(lists));
-        // Re-render the list
-        render();
-      });
-
-      // Apply the "line-through" class if the todo is completed
-      if (todo.completed) {
-        listItemText.classList.add('line-through');
-      } else {
-        listItemText.classList.remove('line-through'); // Remove the class if not completed
-      }
-
       // Create a delete button for the list item
       const deleteButton = document.createElement('button');
       deleteButton.textContent = 'Delete';
@@ -115,8 +92,7 @@ function loadList(lists, listKey) {
         }
       });
 
-      // Append the list item text, checkbox, and delete button to the list item
-      listItem.appendChild(checkbox);
+      // Append the list item text and delete button to the list item
       listItem.appendChild(listItemText);
       listItem.appendChild(deleteButton);
 
@@ -128,17 +104,18 @@ function loadList(lists, listKey) {
   }
 }
 
+
 // Add an event listener for the "Add List" button
 const addListBtn = document.getElementById('addListButton');
 addListBtn.addEventListener('click', function () {
   // Get the list name from the input field (you should have an input field for the list name)
-  const listNameInput = document.getElementById('listInput');
+  const listNameInput = document.getElementById('listNameInput');
   const listName = listNameInput.value;
 
   if (listName.trim() !== '') {
     // Add your new list to the data and update it in local storage
     const lists = JSON.parse(localStorage.getItem('data')) || {};
-    const listKey = Date.now().toString(); // create a unique key
+    const listKey = generateUniqueListKey(); // Implement a function to generate a unique key
     lists[listKey] = { name: listName, todos: [] };
     localStorage.setItem('data', JSON.stringify(lists));
 

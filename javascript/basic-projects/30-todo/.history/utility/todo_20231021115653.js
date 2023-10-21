@@ -72,6 +72,7 @@ function addTodo() {
         // Call a function to update the UI with completed status
       }
 
+      console.log()
       render();
 
     });

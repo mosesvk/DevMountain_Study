@@ -1,3 +1,14 @@
+// Function to update the UI with todo completion status
+function updateUITodoStatus(todoItem, completed) {
+  console.log(todoItem, completed)
+  if (completed) {
+    todoItem.classList.add('line-through', 'text-gray-500');
+  } else {
+    todoItem.classList.remove('line-through', 'text-gray-500');
+  }
+}
+
+
 let addTodoBtn = document.querySelector('#addTodoButton');
 addTodoBtn.addEventListener('click', addTodo);
 
@@ -45,36 +56,24 @@ function addTodo() {
       'transition-colors'
     );
 
-    // Create a checkbox input for marking as completed
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.classList.add('mr-2');
-    checkbox.addEventListener('click', function () {
-      // Update the completed status in the current list's todos
-      const index = currentList.todos.findIndex(
-        (todo) => todo.text === todoText
-      );
+  // Create a checkbox input for marking as completed
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.classList.add('mr-2');
+  checkbox.addEventListener('change', function () {
+    // Update the completed status in the current list's todos
+    const index = currentList.todos.findIndex(
+      (todo) => todo.text === todoText
+    );
+    if (index !== -1) {
+      currentList.todos[index].completed = checkbox.checked;
+      // Update the lists in local storage
+      localStorage.setItem('data', JSON.stringify(lists));
 
-      if (index !== -1) {
-        currentList.todos[index].completed = checkbox.checked;
-        currentList.todos.sort((a, b) =>
-          a.completed === b.completed ? 0 : a.completed ? 1 : -1
-        );
-
-        // Update the lists in local storage
-        localStorage.setItem('data', JSON.stringify(lists));
-
-        if (checkbox.checked) {
-          todoItem.children[1].classList.add('line-through', 'text-gray-500');
-        } else {
-          todoItem.children[1].classList.remove('line-through', 'text-gray-500');
-        }
-        // Call a function to update the UI with completed status
-      }
-
-      render();
-
-    });
+      // Call a function to update the UI with completed status
+      updateUITodoStatus(todoItem, checkbox.checked);
+    }
+  });
 
     // Create a span for the todo text
     const todoTextSpan = document.createElement('span');
@@ -124,7 +123,13 @@ function addTodo() {
     const currentTodoList = document.getElementById('currentTodoList');
     currentTodoList.appendChild(todoItem);
 
+    // Call a function to update the UI with completed status
+    updateUITodoStatus(todoItem, false); // Default is not completed
+
     // Call the render function to update the interface
     render();
   }
 }
+
+
+

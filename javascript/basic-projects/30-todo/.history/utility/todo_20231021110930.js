@@ -49,31 +49,26 @@ function addTodo() {
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.classList.add('mr-2');
-    checkbox.addEventListener('click', function () {
+    checkbox.addEventListener('change', function () {
       // Update the completed status in the current list's todos
       const index = currentList.todos.findIndex(
         (todo) => todo.text === todoText
       );
-
       if (index !== -1) {
         currentList.todos[index].completed = checkbox.checked;
-        currentList.todos.sort((a, b) =>
-          a.completed === b.completed ? 0 : a.completed ? 1 : -1
-        );
-
         // Update the lists in local storage
         localStorage.setItem('data', JSON.stringify(lists));
 
+        // If the todo is completed, move it to the bottom of the list
         if (checkbox.checked) {
-          todoItem.children[1].classList.add('line-through', 'text-gray-500');
-        } else {
-          todoItem.children[1].classList.remove('line-through', 'text-gray-500');
+          // Remove the todo from its current position
+          const completedTodo = currentList.todos.splice(index, 1)[0];
+          // Push it to the end of the list
+          currentList.todos.push(completedTodo);
+          // Call the render function to update the interface
+          render();
         }
-        // Call a function to update the UI with completed status
       }
-
-      render();
-
     });
 
     // Create a span for the todo text
@@ -128,3 +123,4 @@ function addTodo() {
     render();
   }
 }
+

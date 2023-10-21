@@ -65,15 +65,13 @@ function addTodo() {
         localStorage.setItem('data', JSON.stringify(lists));
 
         if (checkbox.checked) {
-          todoItem.children[1].classList.add('line-through', 'text-gray-500');
+          todoItem.classList.add('line-through', 'text-gray-500');
         } else {
-          todoItem.children[1].classList.remove('line-through', 'text-gray-500');
+          todoItem.classList.remove('line-through', 'text-gray-500');
         }
         // Call a function to update the UI with completed status
+        // updateUITodoStatus(todoItem, checkbox.checked);
       }
-
-      render();
-
     });
 
     // Create a span for the todo text
@@ -123,6 +121,9 @@ function addTodo() {
     // Add the new to-do item to the currentTodoList
     const currentTodoList = document.getElementById('currentTodoList');
     currentTodoList.appendChild(todoItem);
+
+    // Call a function to update the UI with completed status
+    updateUITodoStatus(todoItem, false); // Default is not completed
 
     // Call the render function to update the interface
     render();

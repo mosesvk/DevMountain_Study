@@ -1,8 +1,6 @@
 let currentSelectedListLink = null; // To keep track of the currently selected list link
 
 
-
-
 function render() {
   const listsContainer = document.getElementById('listsContainer');
   const currentTodoContainer = document.getElementById('currentTodoContainer'); // Get the currentTodoContainer element
@@ -21,5 +19,6 @@ function render() {
 }
 
 
-
+// Attach the addList function to the "Add List" button click event
+document.getElementById('addListButton').addEventListener('click', render);
 

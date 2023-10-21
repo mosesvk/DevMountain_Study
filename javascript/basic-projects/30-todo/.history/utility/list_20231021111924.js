@@ -81,16 +81,7 @@ function loadList(lists, listKey) {
         todo.completed = checkbox.checked;
         // Update the lists in local storage
         localStorage.setItem('data', JSON.stringify(lists));
-        // Re-render the list
-        render();
       });
-
-      // Apply the "line-through" class if the todo is completed
-      if (todo.completed) {
-        listItemText.classList.add('line-through');
-      } else {
-        listItemText.classList.remove('line-through'); // Remove the class if not completed
-      }
 
       // Create a delete button for the list item
       const deleteButton = document.createElement('button');
@@ -128,6 +119,7 @@ function loadList(lists, listKey) {
   }
 }
 
+
 // Add an event listener for the "Add List" button
 const addListBtn = document.getElementById('addListButton');
 addListBtn.addEventListener('click', function () {
@@ -138,7 +130,7 @@ addListBtn.addEventListener('click', function () {
   if (listName.trim() !== '') {
     // Add your new list to the data and update it in local storage
     const lists = JSON.parse(localStorage.getItem('data')) || {};
-    const listKey = Date.now().toString(); // create a unique key
+    const listKey = Date.now().toString() // Implement a function to generate a unique key
     lists[listKey] = { name: listName, todos: [] };
     localStorage.setItem('data', JSON.stringify(lists));
 

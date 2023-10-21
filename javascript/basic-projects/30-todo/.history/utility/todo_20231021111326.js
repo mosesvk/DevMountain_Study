@@ -49,32 +49,6 @@ function addTodo() {
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.classList.add('mr-2');
-    checkbox.addEventListener('click', function () {
-      // Update the completed status in the current list's todos
-      const index = currentList.todos.findIndex(
-        (todo) => todo.text === todoText
-      );
-
-      if (index !== -1) {
-        currentList.todos[index].completed = checkbox.checked;
-        currentList.todos.sort((a, b) =>
-          a.completed === b.completed ? 0 : a.completed ? 1 : -1
-        );
-
-        // Update the lists in local storage
-        localStorage.setItem('data', JSON.stringify(lists));
-
-        if (checkbox.checked) {
-          todoItem.children[1].classList.add('line-through', 'text-gray-500');
-        } else {
-          todoItem.children[1].classList.remove('line-through', 'text-gray-500');
-        }
-        // Call a function to update the UI with completed status
-      }
-
-      render();
-
-    });
 
     // Create a span for the todo text
     const todoTextSpan = document.createElement('span');
@@ -122,9 +96,25 @@ function addTodo() {
 
     // Add the new to-do item to the currentTodoList
     const currentTodoList = document.getElementById('currentTodoList');
-    currentTodoList.appendChild(todoItem);
+    
+    // Add an event listener to the checkbox
+    checkbox.addEventListener('change', function () {
+      // Check if the checkbox is checked (to-do is completed)
+      if (checkbox.checked) {
+        // Move the todoItem to the bottom of the list
+        currentTodoList.appendChild(todoItem);
+        // Apply a style to cross out the text
+        todoTextSpan.style.textDecoration = 'line-through';
+      } else {
+        // Remove the text decoration
+        todoTextSpan.style.textDecoration = 'none';
+      }
+    });
 
     // Call the render function to update the interface
     render();
   }
 }
+
+
+

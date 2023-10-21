@@ -13,6 +13,7 @@ function addTodo() {
     // Set a default list key or handle it as needed in your application
     selectedListKey = 'defaultList';
     // You can also update the 'selectedList' in local storage here if needed.
+    localStorage.setItem('selectedList', selectedListKey);
   }
 
   // Get the text from the input field
@@ -21,7 +22,7 @@ function addTodo() {
   // Check if the text is not empty
   if (todoText.trim() !== '') {
     // Retrieve the lists from local storage
-    const lists = JSON.parse(localStorage.getItem('data')) || {};
+    let lists = JSON.parse(localStorage.getItem('data')) || {};
 
     if (!lists[selectedListKey]) {
       lists[selectedListKey] = { name: selectedListKey, todos: [] };
@@ -49,31 +50,22 @@ function addTodo() {
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.classList.add('mr-2');
-    checkbox.addEventListener('click', function () {
+    
+    // Initialize the checkbox state based on the 'completed' property
+    checkbox.checked = false; // By default, the new task is not completed
+    checkbox.addEventListener('change', function () {
       // Update the completed status in the current list's todos
       const index = currentList.todos.findIndex(
         (todo) => todo.text === todoText
       );
-
       if (index !== -1) {
         currentList.todos[index].completed = checkbox.checked;
-        currentList.todos.sort((a, b) =>
-          a.completed === b.completed ? 0 : a.completed ? 1 : -1
-        );
 
+        // Call the render function to update the interface
+        render(lists, selectedListKey);
         // Update the lists in local storage
         localStorage.setItem('data', JSON.stringify(lists));
-
-        if (checkbox.checked) {
-          todoItem.children[1].classList.add('line-through', 'text-gray-500');
-        } else {
-          todoItem.children[1].classList.remove('line-through', 'text-gray-500');
-        }
-        // Call a function to update the UI with completed status
       }
-
-      render();
-
     });
 
     // Create a span for the todo text
@@ -99,10 +91,11 @@ function addTodo() {
       );
       if (index !== -1) {
         currentList.todos.splice(index, 1);
+
+        // Call the render function to update the interface
+        render(lists, selectedListKey);
         // Update the lists in local storage
         localStorage.setItem('data', JSON.stringify(lists));
-        // Call the render function to update the interface
-        render();
       }
     });
 
@@ -125,6 +118,9 @@ function addTodo() {
     currentTodoList.appendChild(todoItem);
 
     // Call the render function to update the interface
-    render();
+    render(lists, selectedListKey);
   }
 }
+
+
+

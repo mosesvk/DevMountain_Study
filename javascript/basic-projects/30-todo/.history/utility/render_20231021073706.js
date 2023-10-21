@@ -1,8 +1,6 @@
 let currentSelectedListLink = null; // To keep track of the currently selected list link
 
 
-
-
 function render() {
   const listsContainer = document.getElementById('listsContainer');
   const currentTodoContainer = document.getElementById('currentTodoContainer'); // Get the currentTodoContainer element
