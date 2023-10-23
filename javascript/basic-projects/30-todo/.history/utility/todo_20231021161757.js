@@ -49,10 +49,33 @@ function addTodo() {
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.classList.add('mr-2');
-    checkbox.addEventListener(
-      'click',
-      updateCheckboxState(lists, selectedListKey, todoText, checkbox, todoItem)
-    );
+    checkbox.addEventListener('click', function () {
+      // Update the completed status in the current list's todos
+      const index = currentList.todos.findIndex(
+        (todo) => todo.text === todoText
+      );
+
+      if (index !== -1) {
+        currentList.todos[index].completed = checkbox.checked;
+        currentList.todos.sort((a, b) =>
+          a.completed === b.completed ? 0 : a.completed ? 1 : -1
+        );
+
+        // Update the lists in local storage
+        localStorage.setItem('data', JSON.stringify(lists));
+
+        if (checkbox.checked) {
+          todoItem.children[1].classList.add('line-through', 'text-gray-500');
+        } else {
+          todoItem.children[1].classList.remove(
+            'line-through',
+            'text-gray-500'
+          );
+        }
+      }
+
+      render();
+    });
 
     // Create a span for the todo text
     const todoTextSpan = document.createElement('span');
@@ -80,7 +103,7 @@ function addTodo() {
         // Update the lists in local storage
         localStorage.setItem('data', JSON.stringify(lists));
         // Call the render function to update the interface
-        render('todo');
+        render();
       }
     });
 
@@ -95,10 +118,10 @@ function addTodo() {
       a.completed === b.completed ? 0 : a.completed ? 1 : -1
     );
 
+    console.log(lists)
+
     // Update the lists in local storage for the specific list
     localStorage.setItem('data', JSON.stringify(lists));
-
-    console.log(lists[selectedListKey]);
 
     // Clear the input field
     todoInput.value = '';
@@ -107,35 +130,6 @@ function addTodo() {
     const currentTodoList = document.getElementById('currentTodoList');
     currentTodoList.appendChild(todoItem);
 
-    render('todo');
+    render();
   }
-}
-
-function updateCheckboxState(
-  lists,
-  selectedListKey,
-  todoText,
-  checkbox,
-  todoItem
-) {
-  const currentList = lists[selectedListKey];
-  const index = currentList.todos.findIndex((todo) => todo.text === todoText);
-
-  if (index !== -1) {
-    currentList.todos[index].completed = checkbox.checked;
-
-    // Update the lists in local storage
-    localStorage.setItem('data', JSON.stringify(lists));
-
-    console.log(JSON.parse(localStorage.getItem('data')))
-
-
-    if (checkbox.checked) {
-      todoItem.children[1].classList.add('line-through', 'text-gray-500');
-    } else {
-      todoItem.children[1].classList.remove('line-through', 'text-gray-500');
-    }
-  }
-
-  render();
 }

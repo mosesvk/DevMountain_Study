@@ -10,14 +10,9 @@ function render(todo) {
 
   const lists = JSON.parse(localStorage.getItem('data'));
 
-  console.log(JSON.parse(localStorage.getItem('data')))
-
-  // console.log('----')
-
   if (lists) {
     for (const listKey in lists) {
       const list = lists[listKey];
-      // console.log(list)
       addList(lists, listKey, list.name);
     }
   }

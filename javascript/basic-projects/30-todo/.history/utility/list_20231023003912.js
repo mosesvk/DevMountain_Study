@@ -29,6 +29,7 @@ function addList(lists, listKey, listName) {
     listLink.classList.remove('text-blue-600');
 
     currentSelectedListLink = listLink;
+    console.log(currentSelectedListLink);
   });
 
   listsContainer.appendChild(listLink);
@@ -42,7 +43,6 @@ function loadList(lists, listKey) {
   listNameContainer.textContent = '';
 
   const selectedList = lists[listKey];
-  console.log(selectedList)
 
   if (selectedList) {
     listNameContainer.textContent = selectedList.name;

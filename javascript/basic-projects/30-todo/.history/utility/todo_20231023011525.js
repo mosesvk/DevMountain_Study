@@ -129,7 +129,6 @@ function updateCheckboxState(
 
     console.log(JSON.parse(localStorage.getItem('data')))
 
-
     if (checkbox.checked) {
       todoItem.children[1].classList.add('line-through', 'text-gray-500');
     } else {

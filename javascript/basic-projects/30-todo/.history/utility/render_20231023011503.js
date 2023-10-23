@@ -10,7 +10,7 @@ function render(todo) {
 
   const lists = JSON.parse(localStorage.getItem('data'));
 
-  console.log(JSON.parse(localStorage.getItem('data')))
+  console.log(localStorage.getItem('data'))
 
   // console.log('----')
 

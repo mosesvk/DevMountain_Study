@@ -29,6 +29,7 @@ function addList(lists, listKey, listName) {
     listLink.classList.remove('text-blue-600');
 
     currentSelectedListLink = listLink;
+    console.log(currentSelectedListLink)
   });
 
   listsContainer.appendChild(listLink);
@@ -42,25 +43,10 @@ function loadList(lists, listKey) {
   listNameContainer.textContent = '';
 
   const selectedList = lists[listKey];
-  console.log(selectedList)
 
   if (selectedList) {
     listNameContainer.textContent = selectedList.name;
     // If there is a selected list, remove the 'hidden' class to display the container
-
-    // Set the selected list link's classes to maintain styling
-    if (currentSelectedListLink) {
-      currentSelectedListLink.classList.remove('bg-blue-500');
-      currentSelectedListLink.classList.add('text-blue-600');
-    }
-    currentSelectedListLink = document.querySelector(
-      `[data-list-key="${listKey}"]`
-    );
-    if (currentSelectedListLink) {
-      currentSelectedListLink.classList.add('bg-blue-500', 'text-white');
-      currentSelectedListLink.classList.remove('text-blue-600');
-    }
-
     currentTodoContainer.classList.remove('hidden');
 
     selectedList.todos.forEach((todo) => {

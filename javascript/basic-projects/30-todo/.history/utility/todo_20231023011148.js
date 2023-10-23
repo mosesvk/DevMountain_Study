@@ -49,8 +49,7 @@ function addTodo() {
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.classList.add('mr-2');
-    checkbox.addEventListener(
-      'click',
+    checkbox.addEventListener('click', () =>
       updateCheckboxState(lists, selectedListKey, todoText, checkbox, todoItem)
     );
 
@@ -126,9 +125,6 @@ function updateCheckboxState(
 
     // Update the lists in local storage
     localStorage.setItem('data', JSON.stringify(lists));
-
-    console.log(JSON.parse(localStorage.getItem('data')))
-
 
     if (checkbox.checked) {
       todoItem.children[1].classList.add('line-through', 'text-gray-500');
