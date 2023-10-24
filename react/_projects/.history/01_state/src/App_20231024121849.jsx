@@ -93,19 +93,12 @@ function App() {
     }
   };
 
-  function deleteList(listKey) {
-    const updatedLists = { ...lists };
-    delete updatedLists[listKey];
-    setLists(updatedLists);
-
-    // If the deleted list was the currently selected list, clear the selection
-    if (selectedListKey === listKey) {
-      setSelectedListKey(null);
-    }
-  }
-
   return (
     <div className='outer'>
+      {' '}
+      <button onClick={() => deleteTodo(index)} className='text-red-500 ml-2'>
+        Delete
+      </button>
       <nav className='bg-blue-500 p-4'>
         <a className='text-white text-xl' href='#'>
           Todo App
@@ -122,11 +115,6 @@ function App() {
                 placeholder='Enter a new list name'
                 value={newListName} // Bind the input value to the newListName state
                 onChange={(e) => setNewListName(e.target.value)} // Update newListName on input change
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    addList();
-                  }
-                }}
               />
               <button
                 className='bg-blue-500 text-white p-2 mt-2 rounded-lg'
@@ -136,14 +124,7 @@ function App() {
               </button>
               <div className='mt-3' id='listsContainer'>
                 {Object.keys(lists).map((listKey, index) => (
-                  <ListItem
-                    key={index}
-                    listKey={listKey}
-                    lists={lists}
-                    setSelectedListKey={setSelectedListKey}
-                    selectedListKey={selectedListKey}
-                    deleteList={deleteList}
-                  />
+                  <ListItem key={index} listKey={listKey}/>
                 ))}
               </div>
             </div>
@@ -161,11 +142,6 @@ function App() {
                   placeholder='Add a new to-do'
                   value={todoText}
                   onChange={(e) => setTodoText(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      addTodo();
-                    }
-                  }}
                 />
                 <button
                   className='bg-blue-500 text-white p-2 mt-2 rounded-lg'

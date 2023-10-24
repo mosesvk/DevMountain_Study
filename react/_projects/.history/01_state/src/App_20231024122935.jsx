@@ -93,17 +93,7 @@ function App() {
     }
   };
 
-  function deleteList(listKey) {
-    const updatedLists = { ...lists };
-    delete updatedLists[listKey];
-    setLists(updatedLists);
-
-    // If the deleted list was the currently selected list, clear the selection
-    if (selectedListKey === listKey) {
-      setSelectedListKey(null);
-    }
-  }
-
+  console.log(lists)
   return (
     <div className='outer'>
       <nav className='bg-blue-500 p-4'>
@@ -122,11 +112,6 @@ function App() {
                 placeholder='Enter a new list name'
                 value={newListName} // Bind the input value to the newListName state
                 onChange={(e) => setNewListName(e.target.value)} // Update newListName on input change
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    addList();
-                  }
-                }}
               />
               <button
                 className='bg-blue-500 text-white p-2 mt-2 rounded-lg'
@@ -142,7 +127,6 @@ function App() {
                     lists={lists}
                     setSelectedListKey={setSelectedListKey}
                     selectedListKey={selectedListKey}
-                    deleteList={deleteList}
                   />
                 ))}
               </div>
@@ -161,11 +145,6 @@ function App() {
                   placeholder='Add a new to-do'
                   value={todoText}
                   onChange={(e) => setTodoText(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      addTodo();
-                    }
-                  }}
                 />
                 <button
                   className='bg-blue-500 text-white p-2 mt-2 rounded-lg'

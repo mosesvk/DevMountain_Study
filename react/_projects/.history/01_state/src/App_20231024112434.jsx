@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import ListItem from './components/ListItem';
 
 function App() {
   const [todoText, setTodoText] = useState('');
-  const [selectedListKey, setSelectedListKey] = useState(null);
+  const [selectedListKey, setSelectedListKey] = useState('defaultList');
   const [lists, setLists] = useState({});
   const [newListName, setNewListName] = useState(''); // Added state to track the new list name input
 
@@ -45,15 +44,6 @@ function App() {
     }
   }
 
-  function deleteTodo(index) {
-    const currentList = lists[selectedListKey];
-    const todoToDelete = currentList.todos[index];
-    if (todoToDelete) {
-      currentList.todos.splice(index, 1);
-      setLists({ ...lists });
-    }
-  }
-
   function handleCheckboxChange(todo, e) {
     const completed = e.target.checked;
     todo.completed = completed;
@@ -75,9 +65,6 @@ function App() {
         onChange={(e) => handleCheckboxChange(todo, e)}
       />
       {todo.text}
-      <button onClick={() => deleteTodo(index)} className='text-red-500 ml-2'>
-        Delete
-      </button>
     </li>
   ));
 
@@ -92,17 +79,6 @@ function App() {
       setNewListName(''); // Clear the input field after adding the list
     }
   };
-
-  function deleteList(listKey) {
-    const updatedLists = { ...lists };
-    delete updatedLists[listKey];
-    setLists(updatedLists);
-
-    // If the deleted list was the currently selected list, clear the selection
-    if (selectedListKey === listKey) {
-      setSelectedListKey(null);
-    }
-  }
 
   return (
     <div className='outer'>
@@ -122,11 +98,6 @@ function App() {
                 placeholder='Enter a new list name'
                 value={newListName} // Bind the input value to the newListName state
                 onChange={(e) => setNewListName(e.target.value)} // Update newListName on input change
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    addList();
-                  }
-                }}
               />
               <button
                 className='bg-blue-500 text-white p-2 mt-2 rounded-lg'
@@ -135,15 +106,20 @@ function App() {
                 Add List
               </button>
               <div className='mt-3' id='listsContainer'>
-                {Object.keys(lists).map((listKey, index) => (
-                  <ListItem
-                    key={index}
-                    listKey={listKey}
-                    lists={lists}
-                    setSelectedListKey={setSelectedListKey}
-                    selectedListKey={selectedListKey}
-                    deleteList={deleteList}
-                  />
+                {Object.keys(lists).map((listKey) => (
+                  <a
+                    href='#'
+                    key={listKey}
+                    className={`block bg-gray-100 p-2 rounded-lg my-1 ${
+                      selectedListKey === listKey
+                        ? 'bg-blue-500 text-white'
+                        : ''
+                    }`}
+                    onClick={() => setSelectedListKey(listKey)}
+                  >
+                    {lists[listKey]?.name || ''}{' '}
+                    {/* Add the conditional check here */}
+                  </a>
                 ))}
               </div>
             </div>
@@ -161,11 +137,6 @@ function App() {
                   placeholder='Add a new to-do'
                   value={todoText}
                   onChange={(e) => setTodoText(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      addTodo();
-                    }
-                  }}
                 />
                 <button
                   className='bg-blue-500 text-white p-2 mt-2 rounded-lg'

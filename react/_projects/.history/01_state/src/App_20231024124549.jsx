@@ -122,11 +122,6 @@ function App() {
                 placeholder='Enter a new list name'
                 value={newListName} // Bind the input value to the newListName state
                 onChange={(e) => setNewListName(e.target.value)} // Update newListName on input change
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    addList();
-                  }
-                }}
               />
               <button
                 className='bg-blue-500 text-white p-2 mt-2 rounded-lg'
