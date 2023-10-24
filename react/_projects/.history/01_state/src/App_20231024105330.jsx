@@ -66,10 +66,7 @@ function App() {
     }
   };
 
-  console.log(todoText)
-  console.log(selectedListKey)
   console.log(lists)
-
 
   return (
     <div className="outer">
