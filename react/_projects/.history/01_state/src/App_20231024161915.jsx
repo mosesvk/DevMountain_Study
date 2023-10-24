@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ListItem from './components/ListItem';
 
 function App() {
@@ -7,6 +7,20 @@ function App() {
   const [lists, setLists] = useState({});
   const [newListName, setNewListName] = useState(''); // Added state to track the new list name input
 
+  // Load data from local storage when the component mounts
+  useEffect(() => {
+    const storedLists = JSON.parse(localStorage.getItem('lists'));
+    console.log(storedLists)
+    if (storedLists) {
+      setLists(storedLists);
+    }
+  }, []);
+
+  // Save data to local storage whenever the "lists" state changes
+  useEffect(() => {
+    localStorage.setItem('lists', JSON.stringify(lists));
+    console.log(localStorage.getItem('lists'))
+  }, [lists]);
 
   function updateUITodoStatus(todoItem, completed) {
     if (todoItem && todoItem.classList) {
