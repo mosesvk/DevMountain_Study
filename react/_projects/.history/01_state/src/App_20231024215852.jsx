@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import List from './components/List';
+import ListItem from './components/ListItem';
 
 function App() {
   const [todoText, setTodoText] = useState('');
@@ -7,6 +7,8 @@ function App() {
   const [lists, setLists] = useState({});
   const [newListName, setNewListName] = useState(''); // Added state to track the new list name input
   const [selectedListItemIndex, setSelectedListItemIndex] = useState(null);
+
+
 
   function updateUITodoStatus(todoItem, completed) {
     if (todoItem && todoItem.classList) {
@@ -61,11 +63,7 @@ function App() {
       className={`flex items-center justify-between p-2 rounded-lg my-1 text-gray-800 transition-colors ${
         todo.completed ? 'line-through text-gray-500' : ''
       }
-      ${
-        selectedListKey === selectedListKey && index === selectedListItemIndex
-          ? 'bg-blue-200'
-          : 'bg-gray-100'
-      }
+      ${selectedListKey === selectedListKey && index === selectedListItemIndex ? 'bg-blue-200' : 'bg-gray-100'}
       `}
       onClick={() => handleItemClick(selectedListKey, index)}
     >
@@ -81,6 +79,8 @@ function App() {
       </button>
     </li>
   ));
+  
+  
 
   const addList = () => {
     if (newListName.trim() !== '') {
@@ -115,15 +115,39 @@ function App() {
       <div className='container mx-auto'>
         <div className='flex'>
           <div className='w-1/4 p-4'>
-            <List
-              newListName={newListName}
-              setNewListName={setNewListName}
-              addList={addList}
-              lists={lists}
-              selectedListKey={selectedListKey}
-              setSelectedListKey={setSelectedListKey}
-              deleteList={deleteList}
-            />
+            <div className='flex flex-col'>
+              <input
+                type='text'
+                id='listInput'
+                className='rounded-lg border p-2'
+                placeholder='Enter a new list name'
+                value={newListName} // Bind the input value to the newListName state
+                onChange={(e) => setNewListName(e.target.value)} // Update newListName on input change
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    addList();
+                  }
+                }}
+              />
+              <button
+                className='bg-blue-500 text-white p-2 mt-2 rounded-lg'
+                onClick={addList}
+              >
+                Add List
+              </button>
+              <div className='mt-3' id='listsContainer'>
+                {Object.keys(lists).map((listKey, index) => (
+                  <ListItem
+                    key={index}
+                    listKey={listKey}
+                    lists={lists}
+                    setSelectedListKey={setSelectedListKey}
+                    selectedListKey={selectedListKey}
+                    deleteList={deleteList}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
           <div className='w-3/4 p-4'>
             {selectedListKey && (
@@ -139,7 +163,7 @@ function App() {
                   value={todoText}
                   onChange={(e) => setTodoText(e.target.value)}
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
+                    if (e.key === "Enter") {
                       addTodo();
                     }
                   }}
