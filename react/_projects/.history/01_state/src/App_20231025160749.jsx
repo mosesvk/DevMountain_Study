@@ -56,6 +56,32 @@ function App() {
     setSelectedListItemIndex(index); // Assuming you have a state variable and a setter function for selectedListItemIndex
   };
 
+  const todoList = lists[selectedListKey]?.todos.map((todo, index) => (
+    <li
+      key={index}
+      className={`flex items-center justify-between p-2 rounded-lg my-1 text-gray-800 transition-colors ${
+        todo.completed ? 'line-through text-gray-500' : ''
+      }
+      ${
+        selectedListKey === selectedListKey && index === selectedListItemIndex
+          ? 'bg-blue-200'
+          : 'bg-gray-100'
+      }
+      `}
+      onClick={() => handleItemClick(selectedListKey, index)}
+    >
+      <input
+        type='checkbox'
+        className='mr-2'
+        checked={todo.completed}
+        onChange={(e) => handleCheckboxChange(todo, e)}
+      />
+      {todo.text}
+      <button onClick={() => deleteTodo(index)} className='text-red-500 ml-2'>
+        Delete
+      </button>
+    </li>
+  ));
 
   const addList = () => {
     if (newListName.trim() !== '') {
@@ -101,7 +127,37 @@ function App() {
             />
           </div>
           <div className='w-3/4 p-4'>
-            <Todo selectedListKey={selectedListKey} lists={lists} setTodoText={setTodoText} todoText={todoText} addTodo={addTodo} handleItemClick={handleItemClick} handleCheckboxChange={handleCheckboxChange} deleteTodo={deleteTodo} selectedListItemIndex={selectedListItemIndex}/>
+            <Todo selectedListKey={selectedListKey} lists={lists} setTodoText={setTodoText} todoText={todoText} addTodo={addTodo} todoList={todoList} />
+            {selectedListKey && (
+              <div id='currentTodoContainer'>
+                <h3 className='text-2xl font-bold mb-4' id='currentListName'>
+                  {lists[selectedListKey]?.name || ''}
+                </h3>
+                <input
+                  type='text'
+                  id='todoInput'
+                  className='rounded-lg border p-2'
+                  placeholder='Add a new to-do'
+                  value={todoText}
+                  onChange={(e) => setTodoText(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      addTodo();
+                    }
+                  }}
+                />
+                <button
+                  className='bg-blue-500 text-white p-2 mt-2 rounded-lg'
+                  id='addTodoButton'
+                  onClick={addTodo}
+                >
+                  Add
+                </button>
+                <ul className='mt-4' id='currentTodoList'>
+                  {todoList}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>
