@@ -10,8 +10,8 @@ const ListItem = ({
 }) => {
   return (
     <div
-      className={`flex items-center justify-between  p-2 rounded-lg my-1 cursor-pointer  transition-transform transform-gpu ${
-        selectedListKey === listKey ? 'bg-blue-500 text-white hover:bg-blue-300' : 'bg-gray-100 hover:bg-gray-300'
+      className={`flex items-center justify-between  p-2 rounded-lg my-1 cursor-pointer hover:bg-gray-300 transition-transform transform-gpu ${
+        selectedListKey === listKey ? 'bg-blue-500 text-white' : 'bg-gray-100'
       }`}
       key={listKey}
       onClick={() => setSelectedListKey(listKey)}

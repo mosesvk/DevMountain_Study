@@ -6,8 +6,6 @@ function App() {
   const [selectedListKey, setSelectedListKey] = useState(null);
   const [lists, setLists] = useState({});
   const [newListName, setNewListName] = useState(''); // Added state to track the new list name input
-  const [selectedListItemIndex, setSelectedListItemIndex] = useState(null);
-
 
 
   function updateUITodoStatus(todoItem, completed) {
@@ -63,7 +61,7 @@ function App() {
       className={`flex items-center justify-between p-2 rounded-lg my-1 text-gray-800 transition-colors ${
         todo.completed ? 'line-through text-gray-500' : ''
       }
-      ${selectedListKey === selectedListKey && index === selectedListItemIndex ? 'bg-blue-200' : 'bg-gray-100'}
+      ${selectedListKey === selectedListItem && index === selectedListItemIndex ? 'bg-blue-200' : 'bg-gray-100'}
       `}
       onClick={() => handleItemClick(selectedListKey, index)}
     >
@@ -79,8 +77,6 @@ function App() {
       </button>
     </li>
   ));
-  
-  
   
 
   const addList = () => {

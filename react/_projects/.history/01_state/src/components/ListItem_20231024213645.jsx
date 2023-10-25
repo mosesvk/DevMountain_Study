@@ -10,20 +10,20 @@ const ListItem = ({
 }) => {
   return (
     <div
-      className={`flex items-center justify-between  p-2 rounded-lg my-1 cursor-pointer  transition-transform transform-gpu ${
-        selectedListKey === listKey ? 'bg-blue-500 text-white hover:bg-blue-300' : 'bg-gray-100 hover:bg-gray-300'
+      className={`flex items-center justify-between  p-2 rounded-lg my-1 ${
+        selectedListKey === listKey ? 'bg-blue-500 text-white' : 'bg-gray-100'
       }`}
-      key={listKey}
-      onClick={() => setSelectedListKey(listKey)}
     >
-      <div
-        className={`text-xl ${
-          selectedListKey === listKey ? 'text-white' : 'text-gray-800'
-        }`}
+      <a
+        href='#'
+        key={listKey}
+        onClick={() => setSelectedListKey(listKey)}
+        className='flex items-center'
       >
-        {lists[listKey]?.name || ''}
-      </div>
-
+        <div className='text-xl text-gray-800'>
+          {lists[listKey]?.name || ''}
+        </div>
+      </a>
       <button
         onClick={() => deleteList(listKey)}
         className='text-red-500 ml-2 hover:text-red-700'
