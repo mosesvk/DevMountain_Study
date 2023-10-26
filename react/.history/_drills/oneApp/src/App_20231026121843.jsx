@@ -1,6 +1,10 @@
 
 
-function App() {
+const userInfo = () => {
+  
+}
+
+const App = () => {
 
   return (
     <>
