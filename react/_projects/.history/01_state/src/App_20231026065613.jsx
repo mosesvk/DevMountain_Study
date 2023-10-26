@@ -54,25 +54,13 @@ function App() {
 
   const addList = () => {
     if (newListName.trim() !== '') {
-      // Check if the newListName already exists in the lists
-      const isDuplicateName = Object.values(lists).some(
-        (list) => list.name === newListName
-      );
-
-      if (!isDuplicateName) {
-        const newListKey = Date.now().toString();
-        setLists({
-          ...lists,
-          [newListKey]: { name: newListName, todos: [] }
-        });
-        setSelectedListKey(newListKey);
-        setNewListName('');
-      } else {
-        // Handle the case where newListName is a duplicate
-        alert('A list with the same name already exists.');
-        setNewListName('');
-
-      }
+      const newListKey = Date.now().toString();
+      setLists({
+        ...lists,
+        [newListKey]: { name: newListName, todos: [] }
+      });
+      setSelectedListKey(newListKey);
+      setNewListName('');
     }
   };
 

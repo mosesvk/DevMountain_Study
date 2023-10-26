@@ -70,8 +70,6 @@ function App() {
       } else {
         // Handle the case where newListName is a duplicate
         alert('A list with the same name already exists.');
-        setNewListName('');
-
       }
     }
   };

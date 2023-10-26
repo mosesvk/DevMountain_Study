@@ -3,87 +3,81 @@ import List from './components/List';
 import Todo from './components/Todo';
 
 function App() {
+  const [todoText, setTodoText] = useState('');
   const [selectedListKey, setSelectedListKey] = useState(null);
   const [lists, setLists] = useState({});
-  const [newListName, setNewListName] = useState('');
-  const [todoText, setTodoText] = useState('');
+  const [newListName, setNewListName] = useState(''); // Added state to track the new list name input
   const [selectedListItemIndex, setSelectedListItemIndex] = useState(null);
 
-  // Move state management functions to the top of the component
-  const handleCheckboxChange = (todo, e) => {
-    const completed = e.target.checked;
-    todo.completed = completed;
-    setLists({ ...lists });
-    updateUITodoStatus(todo, completed);
-  };
-
-  const handleItemClick = (selectedListKey, index) => {
-    setSelectedListKey(selectedListKey);
-    setSelectedListItemIndex(index);
-  };
-
-  const updateUITodoStatus = (todo, completed) => {
-    if (todo && todo.classList) {
+  function updateUITodoStatus(todoItem, completed) {
+    if (todoItem && todoItem.classList) {
       if (completed) {
-        todo.classList.add('line-through', 'text-gray-500');
+        todoItem.classList.add('line-through', 'text-gray-500');
       } else {
-        todo.classList.remove('line-through', 'text-gray-500');
+        todoItem.classList.remove('line-through', 'text-gray-500');
       }
     }
-  };
+  }
 
-  const addTodo = () => {
+  function addTodo() {
     if (todoText.trim() !== '') {
       const currentList = lists[selectedListKey];
+
       const newTodo = { text: todoText, completed: false };
       currentList.todos.push(newTodo);
+
       setLists({ ...lists });
+
       setTodoText('');
+
       updateUITodoStatus(newTodo, false);
     }
-  };
+  }
 
-  const deleteTodo = (index) => {
+  function deleteTodo(index) {
     const currentList = lists[selectedListKey];
     const todoToDelete = currentList.todos[index];
     if (todoToDelete) {
       currentList.todos.splice(index, 1);
       setLists({ ...lists });
     }
+  }
+
+  function handleCheckboxChange(todo, e) {
+    const completed = e.target.checked;
+    todo.completed = completed;
+    setLists({ ...lists });
+    updateUITodoStatus(todo, completed);
+  }
+
+  const handleItemClick = (selectedListKey, index) => {
+    // Update the selected list item in your component's state
+    setSelectedListKey(selectedListKey); // Assuming you have a state variable and a setter function for selectedListKey
+    setSelectedListItemIndex(index); // Assuming you have a state variable and a setter function for selectedListItemIndex
   };
 
   const addList = () => {
     if (newListName.trim() !== '') {
-      // Check if the newListName already exists in the lists
-      const isDuplicateName = Object.values(lists).some(
-        (list) => list.name === newListName
-      );
-
-      if (!isDuplicateName) {
-        const newListKey = Date.now().toString();
-        setLists({
-          ...lists,
-          [newListKey]: { name: newListName, todos: [] }
-        });
-        setSelectedListKey(newListKey);
-        setNewListName('');
-      } else {
-        // Handle the case where newListName is a duplicate
-        alert('A list with the same name already exists.');
-        setNewListName('');
-
-      }
+      const newListKey = Date.now().toString();
+      setLists({
+        ...lists,
+        [newListKey]: { name: newListName, todos: [] }
+      });
+      setSelectedListKey(newListKey);
+      setNewListName(''); // Clear the input field after adding the list
     }
   };
 
-  const deleteList = (listKey) => {
+  function deleteList(listKey) {
     const updatedLists = { ...lists };
     delete updatedLists[listKey];
     setLists(updatedLists);
+
+    // If the deleted list was the currently selected list, clear the selection
     if (selectedListKey === listKey) {
       setSelectedListKey(null);
     }
-  };
+  }
 
   return (
     <div className='outer'>
