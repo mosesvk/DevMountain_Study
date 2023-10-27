@@ -59,13 +59,14 @@ const showPerson = (person) => {
 
 // show next person
 nextBtn.addEventListener('click', () => {
-
+  console.log('(currentIndex + 1)', (currentIndex + 1))
   currentIndex = (currentIndex + 1) % reviews.length;
   showPerson(reviews[currentIndex]);
 });
 
 // show prev person
 prevBtn.addEventListener('click', () => {
+  console.log('(currentIndex - 1 + reviews.length)', (currentIndex - 1 + reviews.length))
   currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
   showPerson(reviews[currentIndex]);
 });

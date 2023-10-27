@@ -41,34 +41,21 @@ const nextBtn = document.querySelector('.next-btn');
 const randomBtn = document.querySelector('.random-btn');
 
 // set starting item index 
-let currentIndex = 0
+let startIndex = 0
 
 // load initial item - when all the DOM is loaded
 window.addEventListener('DOMContentLoaded', () => {
-  showPerson(reviews[currentIndex])
-})
-
-// show person based on item - helper function
-const showPerson = (person) => {
+  const person = reviews[startIndex]
   img.src = person.img
   author.textContent = person.name
   job.textContent = person.job
   info.textContent = person.text
-}
+})
 
+// show person based on item
 
 // show next person
-nextBtn.addEventListener('click', () => {
-
-  currentIndex = (currentIndex + 1) % reviews.length;
-  showPerson(reviews[currentIndex]);
-});
 
 // show prev person
-prevBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
-  showPerson(reviews[currentIndex]);
-});
-
 
 // show random person

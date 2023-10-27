@@ -59,16 +59,14 @@ const showPerson = (person) => {
 
 // show next person
 nextBtn.addEventListener('click', () => {
-
-  currentIndex = (currentIndex + 1) % reviews.length;
-  showPerson(reviews[currentIndex]);
+  startIndex = (startIndex + 1) % reviews.length;
+  showPerson(reviews[startIndex]);
 });
 
 // show prev person
-prevBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
-  showPerson(reviews[currentIndex]);
+nextBtn.addEventListener('click', () => {
+  startIndex = (startIndex + 1) % reviews.length;
+  showPerson(reviews[startIndex]);
 });
-
 
 // show random person
