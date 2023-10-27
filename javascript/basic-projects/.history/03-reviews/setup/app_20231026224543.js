@@ -30,7 +30,10 @@ const reviews = [
     },
   ];
 
+// Selectors 
+
 // set starting item
+
 
 
 // load initial item
