@@ -21,7 +21,7 @@ function App() {
         value={todo}
         onChange={(e) => setTodo(e.target.value)}
       />
-      <button className='btn' onClick={addTodoHandler}>Add</button>
+      <button onClick={addTodoHandler}>Add</button>
       <ul>
         {todos.map((todo, index) => (
           <li key={index}>{todo}</li>
