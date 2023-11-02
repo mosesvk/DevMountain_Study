@@ -1,7 +1,6 @@
 import Counter from './components/Counter';
 import Login from './components/Login';
 import TodoApp from './components/TodoApp';
-import Fetch from './components/FetchApi'
 
 const App = () => {
   
@@ -10,7 +9,6 @@ const App = () => {
       {/* <Login /> */}
       {/* <Counter /> */}
       {/* <TodoApp /> */}
-      <Fetch />
     </>
   )
 
