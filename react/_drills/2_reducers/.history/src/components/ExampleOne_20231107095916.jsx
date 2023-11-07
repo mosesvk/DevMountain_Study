@@ -3,6 +3,7 @@ import React, { useReducer, useEffect } from 'react';
 
 
 const reducer = (state, action) => {
+    // { count: 0 }
     switch(action.type) {
         case 'increment':
             return state.count + 1

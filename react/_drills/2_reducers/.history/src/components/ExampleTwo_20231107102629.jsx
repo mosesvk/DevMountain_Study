@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 
 const initialState = {
   todos: [],
@@ -6,7 +6,6 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-  console.log(action)
   switch (action.type) {
     case 'addTodo':
       return {
@@ -16,11 +15,6 @@ const reducer = (state, action) => {
         ], 
         task: ''
       };
-    case 'removeTodo': 
-      return {
-        ...state,
-        todos: state.todos.filter((todo) => todo.id !== action.payload)
-      }
     case 'setTask':
       return {
         ...state,
@@ -40,7 +34,6 @@ const ExampleTwo = () => {
   };
 
   const removeTodo = (id) => {
-    dispatch({type: 'removeTodo', payload: id})
     // setTodos(todos.filter((todo) => todo.id !== id));
   };
 

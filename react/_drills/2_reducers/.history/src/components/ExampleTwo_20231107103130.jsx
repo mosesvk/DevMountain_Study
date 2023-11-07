@@ -19,7 +19,7 @@ const reducer = (state, action) => {
     case 'removeTodo': 
       return {
         ...state,
-        todos: state.todos.filter((todo) => todo.id !== action.payload)
+        todos: state.todos.filter((todo) => todo.id !== id)
       }
     case 'setTask':
       return {

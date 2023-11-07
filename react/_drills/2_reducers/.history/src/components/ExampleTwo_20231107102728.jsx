@@ -16,11 +16,6 @@ const reducer = (state, action) => {
         ], 
         task: ''
       };
-    case 'removeTodo': 
-      return {
-        ...state,
-        todos: state.todos.filter((todo) => todo.id !== action.payload)
-      }
     case 'setTask':
       return {
         ...state,
@@ -40,7 +35,6 @@ const ExampleTwo = () => {
   };
 
   const removeTodo = (id) => {
-    dispatch({type: 'removeTodo', payload: id})
     // setTodos(todos.filter((todo) => todo.id !== id));
   };
 

@@ -1,28 +1,32 @@
 import React, { useReducer, useEffect } from 'react';
 
-
+const ACTIONS = {
+    INCREMENT: 'increment', 
+    DECREMENT: 'decrement'
+}
 
 const reducer = (state, action) => {
     switch(action.type) {
-        case 'increment':
-            return state.count + 1
-        case 'decrement': 
-            return state.count - 1
+        case ACTIONS.INCREMENT:
+            return {count: state.count + 1}
+        case ACTIONS.DECREMENT:
+            return {count: state.count - 1}
         default: 
-            return state 
+            return state
     }
 }
 
 const ExampleOne = () => {
     const [state, dispatch] = useReducer(reducer, {count: 0})
-
+    // reducer -> function
+    // dispatch -> action
 
     const increment = () => {
-        dispatch({type: 'increment'})
+        dispatch({type: ACTIONS.INCREMENT})
     }
 
     const decrement = () => {
-        dispatch({type: 'decrement'})
+        dispatch({type: ACTIONS.DECREMENT})
     }
 
 

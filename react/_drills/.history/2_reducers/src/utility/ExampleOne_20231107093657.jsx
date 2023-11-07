@@ -18,7 +18,7 @@ const ExampleOne = () => {
 
 
     const increment = () => {
-        dispatch({type: 'increment'})
+        dispatch({action: 'increment'})
     }
 
     const decrement = () => {
