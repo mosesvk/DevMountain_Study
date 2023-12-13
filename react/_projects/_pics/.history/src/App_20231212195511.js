@@ -1,7 +1,7 @@
 import './App.css';
 import searchImages from './api';
 
-searchImages('cats')
+searchImages()
 
 function App() {
 
