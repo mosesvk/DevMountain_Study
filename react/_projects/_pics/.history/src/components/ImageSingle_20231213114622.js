@@ -6,4 +6,4 @@ const Image = ({image}) => {
   )
 }
 
-export default Image
+export default ImageSingle
