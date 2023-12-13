@@ -10,7 +10,7 @@ const searchImages = async (term) => {
     }
   });
 
-  console.log('api', res.data.results);
+  // console.log('api', res.data.results);
   return res.data.results;
 };
 
