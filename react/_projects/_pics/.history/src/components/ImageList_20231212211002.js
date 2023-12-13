@@ -6,7 +6,7 @@ const ImageList = ({ images }) => {
     return (
         <div className="grid grid-cols-3 gap-4">
             {images.map((image, index) => (
-                <img key={index} src={image.urls.thumb} alt="" className="w-full h-auto" />
+                <img key={index} src={image} alt="" className="w-full h-auto" />
             ))}
         </div>
     );

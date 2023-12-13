@@ -7,6 +7,8 @@ const SearchBar = ({ clickHandler }) => {
     clickHandler(searchTerm);
   };
 
+  console.log(searchTerm);
+
   return (
     <div className='flex items-center justify-center'>
       <input
